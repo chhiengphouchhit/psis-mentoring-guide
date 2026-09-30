@@ -534,14 +534,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Color Swatches
+    // Color Swatches & Gradients (Official PSIS Guideline)
     if (elements.colorPaletteGrid) {
       elements.colorPaletteGrid.innerHTML = "";
+      
+      // 1. Solid Colors
       PSIS_DATA.brand.colors.forEach(c => {
         const div = document.createElement("div");
         div.className = "swatch-item-card";
         div.innerHTML = `
-          <div class="color-preview-block" style="background-color: ${c.hex};">
+          <div class="color-preview-block" style="background-color: ${c.hex}; border-bottom: 1px solid var(--border-subtle);">
             <button class="btn-copy-hex" data-hex="${c.hex}">Copy ${c.hex}</button>
           </div>
           <div class="color-info-meta">
@@ -553,6 +555,29 @@ document.addEventListener("DOMContentLoaded", () => {
         div.querySelector(".btn-copy-hex").addEventListener("click", () => {
           navigator.clipboard.writeText(c.hex).then(() => {
             showToast(`🎨 បានចម្លងកូដពណ៌ ${c.hex}`);
+          });
+        });
+        elements.colorPaletteGrid.appendChild(div);
+      });
+
+      // 2. Gradients (From Guideline Image)
+      (PSIS_DATA.brand.gradients || []).forEach(g => {
+        const div = document.createElement("div");
+        div.className = "swatch-item-card";
+        div.style.gridColumn = "span 2";
+        div.innerHTML = `
+          <div class="color-preview-block" style="background: ${g.css}; border-bottom: 1px solid var(--border-subtle); height: 75px;">
+            <button class="btn-copy-hex">Copy CSS</button>
+          </div>
+          <div class="color-info-meta">
+            <b>${g.name}</b>
+            <code>${g.desc}</code>
+            <p style="font-family:monospace; font-size:11px; margin-top:2px;">background: ${g.css};</p>
+          </div>
+        `;
+        div.querySelector(".btn-copy-hex").addEventListener("click", () => {
+          navigator.clipboard.writeText(`background: ${g.css};`).then(() => {
+            showToast(`🎨 បានចម្លង ${g.name} CSS`);
           });
         });
         elements.colorPaletteGrid.appendChild(div);

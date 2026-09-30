@@ -22,13 +22,16 @@ const PSIS_DATA = {
     tuitionRange: "$3,200 - $3,800 / ឆ្នាំ (មធ្យម ~$3,500)",
     personality: "Modern • Caring • Future-focused • Disciplined • Collaborative • Student-centered",
     colors: [
-      { name: "PSIS Navy Deep", hex: "#06134b", rgb: "6, 19, 75", cmyk: "92, 75, 0, 71", role: "Primary Base, Headers & Badges" },
-      { name: "PSIS Royal Blue", hex: "#0d47a1", rgb: "13, 71, 161", cmyk: "92, 56, 0, 37", role: "Secondary, Hero Gradients & Accents" },
-      { name: "Electric Blue", hex: "#2563eb", rgb: "37, 99, 235", cmyk: "84, 58, 0, 8", role: "Call-to-Action, Active States & Links" },
-      { name: "Prestige Gold", hex: "#f59e0b", rgb: "245, 158, 11", cmyk: "0, 36, 96, 4", role: "Key Highlights, Badges & Accents" },
-      { name: "Soft Canvas Slate", hex: "#f8fafc", rgb: "248, 250, 252", cmyk: "2, 1, 0, 1", role: "Page Background & High Comfort Canvas" },
-      { name: "Border Subtle", hex: "#e2e8f0", rgb: "226, 232, 240", cmyk: "6, 3, 0, 6", role: "Dividers, Card Outlines & Grid Borders" },
-      { name: "Deep Ink Charcoal", hex: "#0f172a", rgb: "15, 23, 42", cmyk: "64, 45, 0, 84", role: "High-contrast Typography & Headings" }
+      { name: "PSIS Primary Royal Blue", hex: "#122297", rgb: "18, 34, 151", cmyk: "88, 77, 0, 41", role: "Primary Brand Identity, Sidebar, Major Headings & Solid Buttons" },
+      { name: "PSIS Warm Golden Amber", hex: "#ffbe57", rgb: "255, 190, 87", cmyk: "0, 25, 66, 0", role: "Primary Accent, Text Highlights, Badges & Golden Callouts" },
+      { name: "PSIS Crimson Maroon", hex: "#912020", rgb: "145, 32, 32", cmyk: "0, 78, 78, 43", role: "Secondary Brand Accent, Alert Notes, Badges & Focus Tags" },
+      { name: "PSIS Canvas Off-White", hex: "#f9f9f9", rgb: "249, 249, 249", cmyk: "0, 0, 0, 2", role: "Canvas Background, Clean Cards & Subtle Panels" },
+      { name: "Gradient Start (Royal Blue)", hex: "#085acd", rgb: "8, 90, 205", cmyk: "96, 56, 0, 20", role: "Gradient Left Stop (Hero & Feature Banners)" },
+      { name: "Gradient End (Deep Navy)", hex: "#170a80", rgb: "23, 10, 128", cmyk: "82, 92, 0, 50", role: "Gradient Right Stop (Hero & Feature Banners)" }
+    ],
+    gradients: [
+      { name: "Primary Brand Gradient", css: "linear-gradient(90deg, #085acd 0%, #170a80 100%)", desc: "#085acd (100%) → #170a80 (100%)" },
+      { name: "Secondary Fade Gradient", css: "linear-gradient(90deg, rgba(23, 10, 128, 0) 0%, #170a80 100%)", desc: "#170a80 (0% transparent) → #170a80 (100%)" }
     ],
     typography: {
       primaryFont: "Kantumruy Pro",
