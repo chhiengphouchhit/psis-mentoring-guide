@@ -1,10 +1,9 @@
-// PSIS Content Mentoring Dashboard - Core Application Logic
-// Handles rendering, search, filtering, bookmarks, modals, interactive checklist, and script generator
+// PSIS Content Mentoring & Video OS - Core Application Logic
+// Enterprise Edition with 4-phase checklist, Idea Generator, Do's/Don'ts, and Studio Builder
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Check that PSIS_DATA is loaded
   if (typeof PSIS_DATA === "undefined") {
-    console.error("PSIS_DATA not found!");
+    console.error("PSIS_DATA not loaded!");
     return;
   }
 
@@ -13,25 +12,29 @@ document.addEventListener("DOMContentLoaded", () => {
     currentCategory: "all",
     searchQuery: "",
     starredLessons: JSON.parse(localStorage.getItem("psis_starred_lessons") || "[]"),
-    checkedItems: JSON.parse(localStorage.getItem("psis_checklist_state") || "{}"),
+    checkedChecklist: JSON.parse(localStorage.getItem("psis_checklist_enterprise") || "{}"),
     activeLessonIndex: 0,
     currentTab: "lessons"
   };
 
-  // DOM Elements
   const $ = selector => document.querySelector(selector);
   const $$ = selector => document.querySelectorAll(selector);
 
   const elements = {
     // Navigation
-    navButtons: $$(".nav-btn"),
-    tabSections: $$(".tab-section"),
+    navButtons: $$(".nav-item-btn"),
+    tabSections: $$(".tab-section-content"),
     
     // Lessons
     lessonsGrid: $("#lessonsGrid"),
     searchInput: $("#searchInput"),
     resultsStats: $("#resultsStats"),
     categoryChips: $("#categoryChips"),
+
+    // Idea Generator
+    btnGenerateIdea: $("#btnGenerateIdea"),
+    ideaOutputCard: $("#ideaOutputCard"),
+    ideaOutputText: $("#ideaOutputText"),
     
     // Frameworks & Brand
     processGrid: $("#processGrid"),
@@ -42,13 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
     programsTags: $("#programsTags"),
     
     // Checklist
-    checklistContainer: $("#checklistContainer"),
+    checklistPhasesContainer: $("#checklistPhasesContainer"),
     progressBarFill: $("#progressBarFill"),
-    progressText: $("#progressText"),
+    progressScoreText: $("#progressScoreText"),
     btnResetChecklist: $("#btnResetChecklist"),
     btnCopyChecklist: $("#btnCopyChecklist"),
     
-    // Script Planner
+    // Script Studio
+    plannerCampus: $("#plannerCampus"),
     plannerTopic: $("#plannerTopic"),
     plannerPersona: $("#plannerPersona"),
     plannerFunnel: $("#plannerFunnel"),
@@ -75,6 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
     modalCore: $("#modalCore"),
     modalLearn: $("#modalLearn"),
     modalAction: $("#modalAction"),
+    modalDosList: $("#modalDosList"),
+    modalDontsList: $("#modalDontsList"),
     modalExample: $("#modalExample"),
     modalTags: $("#modalTags"),
     
@@ -83,11 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
     toastMsg: $("#toastMsg"),
     
     // Global Actions
-    btnPrintDoc: $("#btnPrintDoc")
+    btnPrintDoc: $("#btnPrintDoc"),
+    btnHeaderPlanner: $("#btnHeaderPlanner")
   };
 
   // ==========================================
-  // Toast Helper
+  // Toast Notification
   // ==========================================
   function showToast(message) {
     if (!elements.toast) return;
@@ -99,19 +106,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
-  // Category Chips Setup
+  // Category Segmented Chips
   // ==========================================
+  const categories = [
+    { id: "all", label: "មេរៀនទាំងអស់ (33)", icon: "📚" },
+    { id: "foundation", label: "មូលដ្ឋានគ្រឹះ & Client", icon: "🏛️" },
+    { id: "audience", label: "Audience & Persona", icon: "🎯" },
+    { id: "strategy", label: "Strategy & Funnel", icon: "📈" },
+    { id: "storytelling", label: "Hook & Storytelling", icon: "🎬" },
+    { id: "trust", label: "Trust, Value & Teacher", icon: "🤝" },
+    { id: "optimization", label: "Review & Optimize", icon: "⚙️" },
+    { id: "starred", label: "បានចំណាំទុក ★", icon: "⭐" }
+  ];
+
   function initCategories() {
     if (!elements.categoryChips) return;
     elements.categoryChips.innerHTML = "";
     
-    PSIS_DATA.categories.forEach(cat => {
+    categories.forEach(cat => {
       const btn = document.createElement("button");
-      btn.className = `chip-btn ${cat.id === state.currentCategory ? "active" : ""}`;
+      btn.className = `category-segment-btn ${cat.id === state.currentCategory ? "active" : ""}`;
       btn.innerHTML = `<span>${cat.icon}</span> <span>${cat.label}</span>`;
       btn.addEventListener("click", () => {
         state.currentCategory = cat.id;
-        $$(".chip-btn").forEach(b => b.classList.remove("active"));
+        $$(".category-segment-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
         renderLessons();
       });
@@ -120,7 +138,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
-  // Render Lessons Grid
+  // Category Meta Mapping
+  // ==========================================
+  const categoryMeta = {
+    foundation: { label: "មូលដ្ឋានគ្រឹះ", color: "#d97706", bg: "#fef3c7" },
+    audience: { label: "Audience & Pain", color: "#db2777", bg: "#fce7f3" },
+    strategy: { label: "Strategy & Funnel", color: "#2563eb", bg: "#eff6ff" },
+    storytelling: { label: "Hook & Story", color: "#7c3aed", bg: "#f5f3ff" },
+    trust: { label: "Trust & Value", color: "#059669", bg: "#ecfdf5" },
+    optimization: { label: "Optimize & Ads", color: "#0891b2", bg: "#ecfeff" }
+  };
+
+  // ==========================================
+  // Render Lesson Cards Grid
   // ==========================================
   function renderLessons() {
     if (!elements.lessonsGrid) return;
@@ -149,63 +179,51 @@ document.addEventListener("DOMContentLoaded", () => {
       return matchesCategory && matchesSearch;
     });
 
-    // Update Stats
     if (elements.resultsStats) {
       elements.resultsStats.textContent = `${filtered.length} / ${PSIS_DATA.lessons.length} មេរៀន`;
     }
 
     if (filtered.length === 0) {
       elements.lessonsGrid.innerHTML = `
-        <div class="empty-message">
-          <p style="font-size: 24px; margin-bottom: 8px;">🔍</p>
+        <div class="empty-state">
+          <p style="font-size: 28px; margin-bottom: 8px;">🔍</p>
           <h3>រកមិនឃើញមេរៀនដែលត្រូវនឹង "${state.searchQuery}"</h3>
-          <p>សូមសាកល្បងស្វែងរកដោយប្រើពាក្យផ្សេង ដូចជា Hook, Story, Trust, Parent ឬជ្រើសប្រភេទមេរៀនទាំងអស់។</p>
+          <p>សូមសាកល្បងស្វែងរកដោយប្រើពាក្យផ្សេង ដូចជា Hook, Story, Trust, Persona ឬជ្រើសប្រភេទមេរៀនទាំងអស់។</p>
         </div>
       `;
       return;
     }
 
-    const categoryMeta = {
-      foundation: { label: "មូលដ្ឋានគ្រឹះ", color: "#d97706", bg: "#fef3c7" },
-      audience: { label: "Audience", color: "#db2777", bg: "#fce7f3" },
-      strategy: { label: "Strategy", color: "#2563eb", bg: "#eff6ff" },
-      storytelling: { label: "Storytelling", color: "#7c3aed", bg: "#f5f3ff" },
-      trust: { label: "Trust & Value", color: "#059669", bg: "#ecfdf5" },
-      optimization: { label: "Optimize", color: "#0891b2", bg: "#ecfeff" }
-    };
-
     filtered.forEach(lesson => {
       const isStarred = state.starredLessons.includes(lesson.id);
       const cat = categoryMeta[lesson.category] || { label: "PSIS", color: "#2563eb", bg: "#eff6ff" };
       const card = document.createElement("div");
-      card.className = "lesson-card";
-      card.style.borderLeft = `3.5px solid ${cat.color}`;
+      card.className = "enterprise-lesson-card";
+      card.style.borderLeft = `4px solid ${cat.color}`;
       
       card.innerHTML = `
-        <div class="card-header-row card-top">
-          <span class="card-index-badge card-num">LESSON ${String(lesson.id).padStart(2, "0")}</span>
-          <span style="font-size:11px; font-weight:600; color:${cat.color}; background:${cat.bg}; padding:2px 8px; border-radius:12px; margin-left:8px;">${cat.label}</span>
-          <button class="btn-star btn-star-bookmark ${isStarred ? "starred" : ""}" style="margin-left:auto;" title="${isStarred ? "លុបចំណាំ" : "ចំណាំមេរៀន"}" data-id="${lesson.id}">
+        <div class="card-top-status-row">
+          <span class="lesson-index-tag">LESSON ${String(lesson.id).padStart(2, "0")}</span>
+          <span class="category-indicator-pill" style="color:${cat.color}; background:${cat.bg};">${cat.label}</span>
+          <button class="card-bookmark-btn ${isStarred ? "starred" : ""}" title="${isStarred ? "លុបចំណាំ" : "ចំណាំមេរៀន"}" data-id="${lesson.id}">
             ${isStarred ? "★" : "☆"}
           </button>
         </div>
-        <h3 class="card-title-en">${lesson.titleEn}</h3>
-        <div class="card-title-km card-km-title">${lesson.titleKm}</div>
-        <div class="card-core-box card-snippet">${lesson.core}</div>
-        <div class="card-footer-row card-footer">
-          <span class="card-category-tag card-tag">🏷️ ${lesson.tags ? lesson.tags[0] : ""}</span>
-          <span class="card-read-more card-action-text">អានលម្អិត →</span>
+        <h3 class="lesson-title-english">${lesson.titleEn}</h3>
+        <div class="lesson-title-khmer">${lesson.titleKm}</div>
+        <div class="lesson-core-quote">${lesson.core}</div>
+        <div class="card-meta-footer-row">
+          <span class="tag-label-text">🏷️ ${lesson.tags ? lesson.tags[0] : ""}</span>
+          <span class="read-details-link">អានលម្អិត →</span>
         </div>
       `;
 
-      // Click card to open modal (unless clicking star)
       card.addEventListener("click", (e) => {
-        if (e.target.closest(".btn-star")) return;
+        if (e.target.closest(".card-bookmark-btn")) return;
         openModal(lesson.id - 1);
       });
 
-      // Click star to toggle bookmark
-      const starBtn = card.querySelector(".btn-star");
+      const starBtn = card.querySelector(".card-bookmark-btn");
       starBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         toggleStar(lesson.id);
@@ -229,6 +247,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
+  // Creative Reel Idea Generator
+  // ==========================================
+  function generateRandomReelIdea() {
+    const bank = PSIS_DATA.ideaBank;
+    const prog = bank.programs[Math.floor(Math.random() * bank.programs.length)];
+    const angle = bank.angles[Math.floor(Math.random() * bank.angles.length)];
+    const pain = bank.painPoints[Math.floor(Math.random() * bank.painPoints.length)];
+
+    const ideaText = `💡 គំនិតវីដេអូ Reel ថ្មី៖
+• កម្មវិធីសិក្សា៖ ${prog}
+• មុំសាច់រឿង (Angle)៖ ${angle}
+• ដោះស្រាយកង្វល់ (Pain Point)៖ «${pain}»
+• គន្លឹះថត៖ ចាប់ផ្តើមដោយសំណួរចាក់ដោត ឬទឹកមុខសិស្សកំពុងផ្ចង់គិត រួចបង្ហាញសកម្មភាពអនុវត្តជាក់ស្តែងក្នុងថ្នាក់ ${prog} និងបញ្ចប់ដោយសាររំលឹកពីតម្លៃសម្រាប់អនាគតកូន។`;
+
+    if (elements.ideaOutputText) {
+      elements.ideaOutputText.textContent = ideaText;
+    }
+    if (elements.ideaOutputCard) {
+      elements.ideaOutputCard.classList.add("active");
+    }
+    showToast("🎲 បានបង្កើតគំនិតវីដេអូ Reel ថ្មី!");
+  }
+
+  if (elements.btnGenerateIdea) {
+    elements.btnGenerateIdea.addEventListener("click", generateRandomReelIdea);
+  }
+
+  // ==========================================
   // Lesson Detail Modal
   // ==========================================
   function openModal(index) {
@@ -244,13 +290,30 @@ document.addEventListener("DOMContentLoaded", () => {
     elements.modalAction.textContent = lesson.action;
     elements.modalExample.textContent = lesson.example;
 
+    // Do's & Don'ts
+    if (elements.modalDosList && elements.modalDontsList) {
+      elements.modalDosList.innerHTML = "";
+      (lesson.dos || ["អនុវត្តតាមជំហានដែលបានណែនាំ"]).forEach(d => {
+        const li = document.createElement("li");
+        li.textContent = d;
+        elements.modalDosList.appendChild(li);
+      });
+
+      elements.modalDontsList.innerHTML = "";
+      (lesson.donts || ["ចៀសវាងការខ្វះផែនការ"]).forEach(d => {
+        const li = document.createElement("li");
+        li.textContent = d;
+        elements.modalDontsList.appendChild(li);
+      });
+    }
+
     // Tags
     if (elements.modalTags) {
       elements.modalTags.innerHTML = "";
       if (lesson.tags) {
         lesson.tags.forEach(t => {
           const sp = document.createElement("span");
-          sp.className = "tag-item";
+          sp.className = "tag-badge-item";
           sp.textContent = `#${t}`;
           elements.modalTags.appendChild(sp);
         });
@@ -272,10 +335,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentLesson = PSIS_DATA.lessons[state.activeLessonIndex];
     if (!currentLesson || !elements.btnModalStar) return;
     const isStarred = state.starredLessons.includes(currentLesson.id);
-    elements.btnModalStar.textContent = isStarred ? "★ បានចំណាំ" : "☆ ចំណាំមេរៀន";
+    elements.btnModalStar.textContent = isStarred ? "★ បានចំណាំទុក" : "☆ ចំណាំមេរៀន";
   }
 
-  // Modal Event Listeners
   if (elements.btnCloseModal) {
     elements.btnCloseModal.addEventListener("click", () => elements.lessonModal.close());
   }
@@ -298,18 +360,17 @@ document.addEventListener("DOMContentLoaded", () => {
   if (elements.btnModalCopy) {
     elements.btnModalCopy.addEventListener("click", () => {
       const l = PSIS_DATA.lessons[state.activeLessonIndex];
-      const text = `[PSIS Mentoring - Lesson ${l.id}] ${l.titleEn} (${l.titleKm})\n\n` +
+      const text = `[PSIS Content Playbook - Lesson ${l.id}] ${l.titleEn} (${l.titleKm})\n\n` +
         `• គំនិតស្នូល: ${l.core}\n\n` +
         `• អ្វីដែលត្រូវយល់: ${l.learn}\n\n` +
         `• យកទៅអនុវត្ត: ${l.action}\n\n` +
-        `• ឧទាហរណ៍: ${l.example}`;
+        `• ឧទាហរណ៍ជាក់ស្តែង: ${l.example}`;
       navigator.clipboard.writeText(text).then(() => {
-        showToast("📋 បានចម្លងមេរៀននេះទៅកាន់ Clipboard រួចរាល់!");
+        showToast("📋 បានចម្លងមេរៀននេះទៅ Clipboard រួចរាល់!");
       });
     });
   }
 
-  // Backdrop click to close
   if (elements.lessonModal) {
     elements.lessonModal.addEventListener("click", (e) => {
       if (e.target === elements.lessonModal) {
@@ -318,9 +379,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Keyboard navigation
+  // Keyboard Navigation & Shortcuts
   window.addEventListener("keydown", (e) => {
-    // Ctrl+K or Cmd+K to search
+    // Ctrl+K / Cmd+K search shortcut
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
       const lessonsNav = $(`[data-view="lessons"]`);
@@ -341,7 +402,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Search input with debounce
   if (elements.searchInput) {
     elements.searchInput.addEventListener("input", (e) => {
       state.searchQuery = e.target.value;
@@ -350,19 +410,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
-  // Render Frameworks & Brand Guidelines
+  // Render Frameworks & Brand Panels
   // ==========================================
   function renderFrameworksAndBrand() {
-    // 15-step process
+    // 15-Step Content Process
     if (elements.processGrid) {
       elements.processGrid.innerHTML = "";
       PSIS_DATA.frameworks.processSteps.forEach(s => {
         const div = document.createElement("div");
-        div.className = "process-card";
+        div.className = "process-matrix-item";
         div.innerHTML = `
-          <span class="step-num">STEP ${String(s.step).padStart(2, "0")}</span>
-          <div class="step-title">${s.title}</div>
-          <div class="step-desc">${s.desc}</div>
+          <span class="matrix-step-num">STEP ${String(s.step).padStart(2, "0")}</span>
+          <div class="matrix-step-name">${s.title}</div>
+          <div class="matrix-step-desc">${s.desc}</div>
         `;
         elements.processGrid.appendChild(div);
       });
@@ -373,10 +433,10 @@ document.addEventListener("DOMContentLoaded", () => {
       elements.flowContainer.innerHTML = "";
       PSIS_DATA.frameworks.videoStructure.forEach(step => {
         const div = document.createElement("div");
-        div.className = "flow-step-item";
+        div.className = "blueprint-flow-card";
         div.innerHTML = `
-          <div class="flow-step-badge">${step.stage} (${step.km})</div>
-          <div class="flow-step-content">
+          <div class="flow-stage-badge">${step.stage} (${step.time})</div>
+          <div class="flow-stage-details">
             <b>${step.km}</b>
             <p>${step.desc}</p>
           </div>
@@ -390,34 +450,34 @@ document.addEventListener("DOMContentLoaded", () => {
       elements.funnelGrid.innerHTML = "";
       PSIS_DATA.frameworks.funnelStages.forEach(f => {
         const div = document.createElement("div");
-        div.className = "funnel-col";
+        div.className = "funnel-stage-box";
         div.innerHTML = `
           <h4>${f.stage}</h4>
-          <div class="stage-km">${f.km}</div>
+          <div class="stage-khmer-title">${f.km}</div>
           <p><b>គោលដៅ៖</b> ${f.objective}</p>
-          <div class="format-box"><b>ទម្រង់៖</b> ${f.formats}</div>
+          <div class="format-tags-wrapper"><b>ទម្រង់៖</b> ${f.formats}</div>
         `;
         elements.funnelGrid.appendChild(div);
       });
     }
 
-    // Brand Colors
+    // Color Swatches
     if (elements.colorPaletteGrid) {
       elements.colorPaletteGrid.innerHTML = "";
       PSIS_DATA.brand.colors.forEach(c => {
         const div = document.createElement("div");
-        div.className = "color-card";
+        div.className = "swatch-item-card";
         div.innerHTML = `
-          <div class="color-swatch" style="background-color: ${c.hex};">
-            <button class="color-copy-btn" data-hex="${c.hex}">Copy ${c.hex}</button>
+          <div class="color-preview-block" style="background-color: ${c.hex};">
+            <button class="btn-copy-hex" data-hex="${c.hex}">Copy ${c.hex}</button>
           </div>
-          <div class="color-meta">
+          <div class="color-info-meta">
             <b>${c.name}</b>
-            <code>${c.hex}</code>
-            <p>${c.desc}</p>
+            <code>${c.hex} • RGB(${c.rgb})</code>
+            <p>${c.role}</p>
           </div>
         `;
-        div.querySelector(".color-copy-btn").addEventListener("click", () => {
+        div.querySelector(".btn-copy-hex").addEventListener("click", () => {
           navigator.clipboard.writeText(c.hex).then(() => {
             showToast(`🎨 បានចម្លងកូដពណ៌ ${c.hex}`);
           });
@@ -431,8 +491,9 @@ document.addEventListener("DOMContentLoaded", () => {
       elements.facilitiesTags.innerHTML = "";
       PSIS_DATA.brand.facilities.forEach(fac => {
         const tag = document.createElement("span");
-        tag.className = "tag-item";
-        tag.textContent = `📍 ${fac}`;
+        tag.className = "tag-badge-item";
+        tag.textContent = `📍 ${fac.name}`;
+        tag.title = fac.desc;
         elements.facilitiesTags.appendChild(tag);
       });
     }
@@ -441,116 +502,145 @@ document.addEventListener("DOMContentLoaded", () => {
       elements.programsTags.innerHTML = "";
       PSIS_DATA.brand.programs.forEach(prog => {
         const tag = document.createElement("span");
-        tag.className = "tag-item";
-        tag.textContent = `🎓 ${prog}`;
+        tag.className = "tag-badge-item";
+        tag.textContent = `🎓 ${prog.name}`;
+        tag.title = prog.desc;
         elements.programsTags.appendChild(tag);
       });
     }
   }
 
   // ==========================================
-  // Interactive Checklist Logic
+  // 4-Phase Quality Checklist Logic
   // ==========================================
-  function renderChecklist() {
-    if (!elements.checklistContainer) return;
-    elements.checklistContainer.innerHTML = "";
+  function renderChecklistPhases() {
+    if (!elements.checklistPhasesContainer) return;
+    elements.checklistPhasesContainer.innerHTML = "";
 
-    PSIS_DATA.checklist.forEach((item, index) => {
-      const isChecked = !!state.checkedItems[index];
-      const row = document.createElement("label");
-      row.className = `check-row ${isChecked ? "completed" : ""}`;
-      
-      row.innerHTML = `
-        <input type="checkbox" data-index="${index}" ${isChecked ? "checked" : ""}>
-        <span>${index + 1}. ${item}</span>
-      `;
+    let totalItems = 0;
+    let checkedItems = 0;
 
-      const checkbox = row.querySelector("input");
-      checkbox.addEventListener("change", (e) => {
-        state.checkedItems[index] = e.target.checked;
-        if (e.target.checked) {
-          row.classList.add("completed");
-        } else {
-          row.classList.remove("completed");
-        }
-        localStorage.setItem("psis_checklist_state", JSON.stringify(state.checkedItems));
-        updateChecklistProgress();
+    PSIS_DATA.checklistPhases.forEach((phaseGroup, phaseIndex) => {
+      const groupDiv = document.createElement("div");
+      groupDiv.className = "phase-group-container";
+
+      const title = document.createElement("div");
+      title.className = "phase-group-title";
+      title.textContent = phaseGroup.phase;
+      groupDiv.appendChild(title);
+
+      phaseGroup.items.forEach((item, itemIndex) => {
+        const key = `p${phaseIndex}_i${itemIndex}`;
+        const isChecked = !!state.checkedChecklist[key];
+        totalItems++;
+        if (isChecked) checkedItems++;
+
+        const row = document.createElement("label");
+        row.className = `checkbox-row-label ${isChecked ? "completed" : ""}`;
+        row.innerHTML = `
+          <input type="checkbox" data-key="${key}" ${isChecked ? "checked" : ""}>
+          <span>${itemIndex + 1}. ${item}</span>
+        `;
+
+        row.querySelector("input").addEventListener("change", (e) => {
+          state.checkedChecklist[key] = e.target.checked;
+          if (e.target.checked) {
+            row.classList.add("completed");
+          } else {
+            row.classList.remove("completed");
+          }
+          localStorage.setItem("psis_checklist_enterprise", JSON.stringify(state.checkedChecklist));
+          updateChecklistScore();
+        });
+
+        groupDiv.appendChild(row);
       });
 
-      elements.checklistContainer.appendChild(row);
+      elements.checklistPhasesContainer.appendChild(groupDiv);
     });
 
-    updateChecklistProgress();
+    updateChecklistScore();
   }
 
-  function updateChecklistProgress() {
-    const total = PSIS_DATA.checklist.length;
-    const checkedCount = Object.values(state.checkedItems).filter(Boolean).length;
-    const percentage = Math.round((checkedCount / total) * 100);
+  function updateChecklistScore() {
+    let total = 0;
+    let checked = 0;
+    PSIS_DATA.checklistPhases.forEach((p, pi) => {
+      p.items.forEach((_, ii) => {
+        total++;
+        if (state.checkedChecklist[`p${pi}_i${ii}`]) checked++;
+      });
+    });
 
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
     if (elements.progressBarFill) {
-      elements.progressBarFill.style.width = `${percentage}%`;
+      elements.progressBarFill.style.width = `${pct}%`;
     }
-    if (elements.progressText) {
-      elements.progressText.textContent = `${checkedCount} / ${total} បានរួចរាល់ (${percentage}%)`;
+    if (elements.progressScoreText) {
+      elements.progressScoreText.textContent = `${checked} / ${total} បានរួចរាល់ (${pct}%)`;
     }
   }
 
   if (elements.btnResetChecklist) {
     elements.btnResetChecklist.addEventListener("click", () => {
-      if (confirm("តើអ្នកពិតជាចង់កំណត់ Checklist ឡើងវិញទាំងអស់មែនទេ?")) {
-        state.checkedItems = {};
-        localStorage.removeItem("psis_checklist_state");
-        renderChecklist();
-        showToast("🔄 បានកំណត់ Checklist ឡើងវិញ");
+      if (confirm("តើអ្នកពិតជាចង់ Reset Checklist ឡើងវិញទាំងអស់មែនទេ?")) {
+        state.checkedChecklist = {};
+        localStorage.removeItem("psis_checklist_enterprise");
+        renderChecklistPhases();
+        showToast("🔄 បាន Reset Checklist ជោគជ័យ");
       }
     });
   }
 
   if (elements.btnCopyChecklist) {
     elements.btnCopyChecklist.addEventListener("click", () => {
-      const lines = PSIS_DATA.checklist.map((item, i) => {
-        const mark = state.checkedItems[i] ? "[x]" : "[ ]";
-        return `${mark} ${i + 1}. ${item}`;
+      let output = `📋 PSIS PRODUCTION QUALITY CHECKLIST\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+      PSIS_DATA.checklistPhases.forEach((phaseGroup, pi) => {
+        output += `\n【${phaseGroup.phase}】\n`;
+        phaseGroup.items.forEach((item, ii) => {
+          const mark = state.checkedChecklist[`p${pi}_i${ii}`] ? "[✓]" : "[ ]";
+          output += `${mark} ${ii + 1}. ${item}\n`;
+        });
       });
-      const text = `📋 PSIS PRE-PRODUCTION CHECKLIST\n\n` + lines.join("\n");
-      navigator.clipboard.writeText(text).then(() => {
-        showToast("📋 បានចម្លងបញ្ជី Checklist ទៅ Clipboard");
+      navigator.clipboard.writeText(output).then(() => {
+        showToast("📋 បានចម្លងបញ្ជី Checklist ទៅ Clipboard រួចរាល់!");
       });
     });
   }
 
   // ==========================================
-  // Interactive Script & Idea Generator
+  // Interactive Script Studio Planner
   // ==========================================
-  function updateGeneratedScript() {
+  function updateScriptStudio() {
     if (!elements.scriptOutput) return;
 
-    const topic = elements.plannerTopic.value.trim() || "រៀនគិតជាប្រព័ន្ធតាមរយៈ Coding & Robotics";
-    const persona = elements.plannerPersona.value || "ម៉ាក់ប៉ារវល់ការងារការិយាល័យ ចង់ឱ្យកូនក្លាហាន និងមានជំនាញបច្ចេកវិទ្យា";
-    const funnel = elements.plannerFunnel.value || "Trust (កសាងទំនុកចិត្ត)";
-    const painPoint = elements.plannerPainPoint.value.trim() || "កូនរៀនតែទ្រឹស្តី មិនចេះអនុវត្តដោះស្រាយបញ្ហាពិត";
-    const hookType = elements.plannerHookType.value || "THINK (ធ្វើឱ្យគិត)";
-    const hookText = elements.plannerHookText.value.trim() || "«រៀនបានពិន្ទុល្អ… តែបើជួបបញ្ហាជាក់ស្តែង គាត់ចេះដោះស្រាយដោយរបៀបណា?»";
-    const action = elements.plannerAction.value.trim() || "សិស្សអង្គុយសាកល្បងសរសេរ Code លើ CodeMonkey ខុសហើយកែឡើងវិញ ដោយមានគ្រូនៅក្បែរជួយលើកទឹកចិត្ត";
-    const proof = elements.plannerProof.value.trim() || "ស្នាមញញឹមពេល Robot ដើរត្រូវទិសដៅ និងការទះដៃអបអរជាមួយមិត្តភក្តិ";
-    const meaning = elements.plannerMeaning.value.trim() || "នៅ PSIS ការរៀនបច្ចេកវិទ្យាមិនមែនគ្រាន់តែមើលអេក្រង់ទេ គឺការហាត់គិតដោះស្រាយបញ្ហាសម្រាប់អនាគត";
-    const cta = elements.plannerCTA.value.trim() || "ស្វែងយល់បន្ថែមអំពីកម្មវិធីសិក្សាអន្តរជាតិនៅ PSIS តាមរយៈ Message ឬទស្សនាសាលាផ្ទាល់។";
+    const campus = elements.plannerCampus ? elements.plannerCampus.value : "Toul Kork (TK)";
+    const topic = elements.plannerTopic ? elements.plannerTopic.value.trim() : "រៀនគិតជាប្រព័ន្ធតាមរយៈ Coding & Robotics";
+    const persona = elements.plannerPersona ? elements.plannerPersona.value : "ប៉ា ពីទូ (រវល់ការងារការិយាល័យ ចង់ឱ្យកូនក្លាហាន និងមានជំនាញបច្ចេកវិទ្យា)";
+    const funnel = elements.plannerFunnel ? elements.plannerFunnel.value : "Trust (កសាងទំនុកចិត្តលើការថែទាំ)";
+    const painPoint = elements.plannerPainPoint ? elements.plannerPainPoint.value.trim() : "កូនរៀនតែទ្រឹស្តី មិនចេះអនុវត្តដោះស្រាយបញ្ហាពិត";
+    const hookType = elements.plannerHookType ? elements.plannerHookType.value : "THINK (ធ្វើឱ្យគិត)";
+    const hookText = elements.plannerHookText ? elements.plannerHookText.value.trim() : "«រៀនបានពិន្ទុល្អ… តែបើជួបបញ្ហាជាក់ស្តែង គាត់ចេះដោះស្រាយដោយរបៀបណា?»";
+    const action = elements.plannerAction ? elements.plannerAction.value.trim() : "សិស្សអង្គុយសាកល្បងសរសេរ Code លើ CodeMonkey ខុសហើយកែឡើងវិញ ដោយមានគ្រូនៅក្បែរជួយលើកទឹកចិត្ត";
+    const proof = elements.plannerProof ? elements.plannerProof.value.trim() : "ស្នាមញញឹមពេល Robot ដើរត្រូវទិសដៅ និងការទះដៃអបអរជាមួយមិត្តភក្តិ";
+    const meaning = elements.plannerMeaning ? elements.plannerMeaning.value.trim() : "នៅ PSIS ការរៀនបច្ចេកវិទ្យាមិនមែនគ្រាន់តែមើលអេក្រង់ទេ គឺការហាត់គិតដោះស្រាយបញ្ហាសម្រាប់អនាគត";
+    const cta = elements.plannerCTA ? elements.plannerCTA.value.trim() : "ស្វែងយល់បន្ថែមអំពីកម្មវិធីសិក្សាអន្តរជាតិនៅ PSIS តាមរយៈ Message ឬទស្សនាសាលាផ្ទាល់។";
 
-    const script = `🎬 [PSIS VIDEO SCRIPT BRIEF]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    const script = `🎬 [PSIS VIDEO SCRIPT BRIEF & STORYBOARD]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🏫 ទីតាំង Campus: ${campus}
 📌 ប្រធានបទ (Topic): ${topic}
 🎯 ទស្សនិកជនគោលដៅ (Persona): ${persona}
 📊 ដំណាក់កាល Funnel: ${funnel}
 ⚠️ កង្វល់មាតាបិតា (Pain Point): ${painPoint}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ⏱️ 00:00 - 00:03 | 1. THE HOOK (${hookType})
-   [Visual]: កាត់តរូបភាពប្លែក ឬទឹកមុខសិស្សកំពុងផ្ចង់គិត
+   [Visual]: កាត់តរូបភាពប្លែក ឬទឹកមុខសិស្សកំពុងផ្ចង់គិត (Close-up shot)
    [Audio / Text on Screen]: ${hookText}
 
-⏱️ 00:03 - 00:10 | 2. CONTEXT (បរិបទ)
-   [Visual]: បរិយាកាសក្នុងបន្ទប់ពិសោធន៍ ឬបន្ទប់ ICT នៅ PSIS
+⏱️ 00:03 - 00:10 | 2. CONTEXT (បរិបទថ្នាក់រៀន)
+   [Visual]: បរិយាកាសក្នុងថ្នាក់រៀននៅ PSIS Campus ${campus}
    [Voice/Subtitle]: នៅក្នុងថ្នាក់រៀន ${topic}...
 
 ⏱️ 00:10 - 00:28 | 3. ACTION / STORY (សកម្មភាពពិត)
@@ -567,22 +657,21 @@ document.addEventListener("DOMContentLoaded", () => {
 ⏱️ 00:52 - 01:00 | 6. CALL TO ACTION (CTA)
    [Audio / End Screen]: ${cta}
    [Branding]: Logo PSIS + Font Kantumruy Pro + Theme Navy & Gold
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
     elements.scriptOutput.textContent = script;
   }
 
-  // Attach input listeners to generator
-  const plannerInputs = [
-    elements.plannerTopic, elements.plannerPersona, elements.plannerFunnel,
+  const studioInputs = [
+    elements.plannerCampus, elements.plannerTopic, elements.plannerPersona, elements.plannerFunnel,
     elements.plannerPainPoint, elements.plannerHookType, elements.plannerHookText,
     elements.plannerAction, elements.plannerProof, elements.plannerMeaning, elements.plannerCTA
   ];
 
-  plannerInputs.forEach(input => {
-    if (input) {
-      input.addEventListener("input", updateGeneratedScript);
-      input.addEventListener("change", updateGeneratedScript);
+  studioInputs.forEach(inp => {
+    if (inp) {
+      inp.addEventListener("input", updateScriptStudio);
+      inp.addEventListener("change", updateScriptStudio);
     }
   });
 
@@ -597,7 +686,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
-  // Sidebar Navigation Tabs
+  // Sidebar Tab Navigation
   // ==========================================
   elements.navButtons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -616,26 +705,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Print button
   if (elements.btnPrintDoc) {
-    elements.btnPrintDoc.addEventListener("click", () => {
-      window.print();
-    });
+    elements.btnPrintDoc.addEventListener("click", () => window.print());
   }
 
-  // Quick action from header to go to planner
-  const btnHeaderPlanner = $("#btnHeaderPlanner");
-  if (btnHeaderPlanner) {
-    btnHeaderPlanner.addEventListener("click", () => {
+  if (elements.btnHeaderPlanner) {
+    elements.btnHeaderPlanner.addEventListener("click", () => {
       const plannerNav = $(`[data-view="planner"]`);
       if (plannerNav) plannerNav.click();
     });
   }
 
-  // Initialize
+  // Init
   initCategories();
   renderLessons();
   renderFrameworksAndBrand();
-  renderChecklist();
-  updateGeneratedScript();
+  renderChecklistPhases();
+  updateScriptStudio();
 });

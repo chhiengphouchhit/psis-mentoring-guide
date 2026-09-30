@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PSIS Guideline & Content Mentoring System</title>
+  <title>PSIS Guideline & Content Mentoring OS</title>
   
   <!-- Kantumruy Pro Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,75 +15,78 @@
 <body>
 
   <!-- ==========================================
-       Sidebar Navigation
+       Sidebar Navigation (Obsidian Professional)
        ========================================== -->
-  <aside>
-    <div class="brand-badge">PSIS SYSTEM</div>
-    <div class="brand-header">
-      <h2>PSIS GUIDELINE</h2>
-      <span>CONTENT MENTORING / CHHIT</span>
+  <aside class="app-sidebar">
+    <div class="sidebar-brand-box">
+      <div class="brand-badge-row">
+        <span class="version-pill">SYSTEM V2.0 PRO</span>
+        <span class="institution-tag">PSIS MENTORING</span>
+      </div>
+      <h2 class="brand-main-title">PSIS GUIDELINE</h2>
+      <div class="brand-subtitle-text">CONTENT &amp; VIDEO OS / CHHIT</div>
     </div>
 
-    <div class="nav-divider"></div>
+    <div class="sidebar-separator"></div>
 
-    <div class="nav-group-title">ម៉ឺនុយមេរៀន & ឯកសារ</div>
-    <nav>
-      <button class="nav-btn active" data-view="lessons">
-        <span class="icon">📚</span>
+    <div class="nav-section-title">មឺនុយមេរៀន &amp; ឧបករណ៍</div>
+    <nav class="sidebar-navigation">
+      <button class="nav-item-btn active" data-view="lessons">
+        <svg class="nav-svg-icon" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
         <span>មេរៀនទាំងអស់</span>
-        <span class="badge-pill">33</span>
+        <span class="nav-pill-count">33</span>
       </button>
 
-      <button class="nav-btn" data-view="framework">
-        <span class="icon">📐</span>
-        <span>Framework & Process</span>
+      <button class="nav-item-btn" data-view="framework">
+        <svg class="nav-svg-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        <span>Framework &amp; Process</span>
       </button>
 
-      <button class="nav-btn" data-view="brand">
-        <span class="icon">🎨</span>
+      <button class="nav-item-btn" data-view="brand">
+        <svg class="nav-svg-icon" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.59 10.57 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
         <span>Brand Guidelines</span>
       </button>
 
-      <button class="nav-btn" data-view="checklist">
-        <span class="icon">📋</span>
-        <span>Checklist មុនផលិត</span>
+      <button class="nav-item-btn" data-view="checklist">
+        <svg class="nav-svg-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <span>Checklist ៤ ដំណាក់កាល</span>
       </button>
 
-      <button class="nav-btn" data-view="planner">
-        <span class="icon">✍️</span>
-        <span>Script Planner Tool</span>
+      <button class="nav-item-btn" data-view="planner">
+        <svg class="nav-svg-icon" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        <span>Video Script Studio</span>
       </button>
 
-      <button class="nav-btn" data-view="persona">
-        <span class="icon">👥</span>
-        <span>Persona & Drive Hub</span>
+      <button class="nav-item-btn" data-view="persona">
+        <svg class="nav-svg-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        <span>Persona &amp; Drive Vault</span>
       </button>
     </nav>
 
-    <div class="aside-footer">
+    <div class="sidebar-footer-card">
       <b>យល់ → អនុវត្ត → កែលម្អ</b><br>
       PSIS Content Mentoring 33 Lessons<br>
-      ផ្ទៀងផ្ទាត់ និងចងក្រងសម្រាប់ឯកសារយោង
+      ប្រព័ន្ធឯកសារយុទ្ធសាស្ត្រផ្លូវការ
     </div>
   </aside>
 
   <!-- ==========================================
        Main Workspace
        ========================================== -->
-  <main>
+  <main class="app-workspace">
 
-    <!-- Top Banner -->
-    <header class="hero-header top-banner">
-      <div class="hero-text top-banner-title">
-        <span class="hero-badge">✨ PSIS CONTENT PLAYBOOK & MENTORING</span>
-        <h1>PSIS GUIDELINE & MENTORING</h1>
-        <p>ប្រព័ន្ធរំលឹកមេរៀន និងឯកសារណែនាំយុទ្ធសាស្ត្រផលិត Content & Video ប្រកបដោយអត្ថន័យ និងកសាងទំនុកចិត្តមាតាបិតា</p>
+    <!-- Top Hero Banner -->
+    <header class="enterprise-hero-card">
+      <div class="hero-main-details">
+        <span class="hero-tag-badge">✨ PSIS CONTENT PLAYBOOK &amp; MENTORING OS</span>
+        <h1>PSIS GUIDELINE &amp; CONTENT SYSTEM</h1>
+        <p>ប្រព័ន្ធរំលឹកមេរៀន និងឯកសារណែនាំយុទ្ធសាស្ត្រផលិត Content &amp; Video ប្រកបដោយអត្ថន័យ និងកសាងទំនុកចិត្តមាតាបិតា</p>
       </div>
-      <div class="hero-actions top-actions">
-        <button id="btnPrintDoc" class="btn-hero btn-banner" title="បោះពុម្ព ឬរក្សាទុកជា PDF">
+      <div class="hero-cta-actions">
+        <button id="btnPrintDoc" class="btn-enterprise-action" title="បោះពុម្ព ឬរក្សាទុកជា PDF">
           <span>🖨️</span> Print / PDF
         </button>
-        <button id="btnHeaderPlanner" class="btn-hero btn-hero-primary btn-banner btn-banner-gold">
+        <button id="btnHeaderPlanner" class="btn-enterprise-action primary">
           <span>✍️</span> បង្កើត Script
         </button>
       </div>
@@ -92,94 +95,119 @@
     <!-- ==========================================
          SECTION 1: LESSONS (មេរៀនទាំងអស់ ៣៣)
          ========================================== -->
-    <section id="lessons" class="tab-section active">
+    <section id="lessons" class="tab-section-content active">
       
-      <!-- Highlights Overview -->
-      <div class="highlights-container hero-highlights">
-        <div class="highlight-card dark-theme highlight-box dark">
-          <span class="card-tag-pill tag-pill">💡 គំនិតស្នូលចម្បង (CORE PURPOSE)</span>
+      <!-- Philosophy Grid Overview -->
+      <div class="philosophy-grid">
+        <div class="philosophy-card dark-card">
+          <span class="philosophy-pill">💡 គំនិតស្នូលចម្បង (CORE PURPOSE)</span>
           <h3>បង្ហាញថា អ្វីដែល PSIS ធ្វើ<br>មានន័យអ្វីសម្រាប់កូន និងអនាគតរបស់កូន។</h3>
-          <p class="subtitle-hint">Activity → Skill → Benefit → Future | Beyond Memorization → Understanding → Character</p>
+          <p class="quote-meta">Activity → Skill → Benefit → Future | Beyond Memorization → Understanding → Character</p>
         </div>
 
-        <div class="highlight-card highlight-box">
-          <span class="card-tag-pill tag-pill" style="color:var(--brand-blue); background:var(--brand-blue-light);">មុនចាប់ផ្តើមផលិតវីដេអូនីមួយៗ</span>
-          <h3 style="font-size: 16.5px; margin-bottom: 6px;">សួរខ្លួនឯងនូវ ៣ សំណួរគន្លឹះ៖</h3>
-          <ul class="questions-list">
-            <li class="question-item">
-              <span class="question-num">1</span>
-              <div><b>តើយើងកំពុងនិយាយទៅកាន់អ្នកណា?</b> <span style="color:var(--slate-500);">(Audience Persona)</span></div>
+        <div class="philosophy-card">
+          <span class="philosophy-pill" style="color:var(--accent-blue); background:var(--accent-blue-soft);">មុនចាប់ផ្តើមផលិតវីដេអូនីមួយៗ</span>
+          <h3 style="font-size: 16px; margin-bottom: 6px;">សួរខ្លួនឯងនូវ ៣ សំណួរគន្លឹះ៖</h3>
+          <ul class="questions-container-list">
+            <li class="question-row-item">
+              <span class="question-circle-num">1</span>
+              <div><b>តើយើងកំពុងនិយាយទៅកាន់អ្នកណា?</b> <span style="color:var(--text-muted);">(Audience Persona)</span></div>
             </li>
-            <li class="question-item">
-              <span class="question-num">2</span>
-              <div><b>ចង់ឲ្យគេយល់ ឬមានអារម្មណ៍អ្វី?</b> <span style="color:var(--slate-500);">(Core Emotion / Message)</span></div>
+            <li class="question-row-item">
+              <span class="question-circle-num">2</span>
+              <div><b>ចង់ឲ្យគេយល់ ឬមានអារម្មណ៍អ្វី?</b> <span style="color:var(--text-muted);">(Core Emotion / Message)</span></div>
             </li>
-            <li class="question-item">
-              <span class="question-num">3</span>
-              <div><b>មានរូបភាពពិតអ្វីបញ្ជាក់?</b> <span style="color:var(--slate-500);">(Visual Proof)</span></div>
+            <li class="question-row-item">
+              <span class="question-circle-num">3</span>
+              <div><b>មានរូបភាពពិតអ្វីបញ្ជាក់?</b> <span style="color:var(--text-muted);">(Visual Proof)</span></div>
             </li>
           </ul>
         </div>
       </div>
 
-      <!-- Toolbar: Search & Filter -->
-      <div class="toolbar-container toolbar-wrap">
-        <div class="search-row search-bar-row">
-          <div class="search-box search-input-wrapper">
-            <span class="search-icon-left search-icon">🔍</span>
+      <!-- Creative Reel Idea Engine Banner -->
+      <div class="idea-generator-banner">
+        <div class="idea-generator-info">
+          <b>🎲 Creative Reel Idea Engine (ម៉ាស៊ីនបង្កើតគំនិតប្លែកៗ)</b>
+          <p>ចុចប៊ូតុងខាងស្តាំដើម្បីបង្កើតមុំគំនិតវីដេអូ ឬ Hook ប្លែកៗដែលទាក់ទាញអារម្មណ៍មាតាបិតាភ្លាមៗ៖</p>
+        </div>
+        <button id="btnGenerateIdea" class="btn-generate-idea">
+          <span>🎲</span> បង្កើតគំនិត Reel ថ្មី
+        </button>
+      </div>
+
+      <div id="ideaOutputCard" class="generated-idea-output-card">
+        <div id="ideaOutputText"></div>
+      </div>
+
+      <!-- Command Search Toolbar & Categories -->
+      <div class="command-toolbar-wrapper">
+        <div class="command-search-row">
+          <div class="command-input-container">
+            <span class="command-search-icon">🔍</span>
             <input type="search" id="searchInput" placeholder="ស្វែងរកមេរៀន… Hook, Story, Trust, Persona, Future, Funnel, Paid Ads...">
-            <span class="search-shortcut-hint">Ctrl + K</span>
+            <span class="command-kbd-badge">Ctrl + K</span>
           </div>
-          <span id="resultsStats" class="results-counter results-stats">33 / 33 មេរៀន</span>
+          <span id="resultsStats" class="command-counter-text">33 / 33 មេរៀន</span>
         </div>
 
-        <!-- Category Chips -->
-        <div class="category-filter-bar category-chips" id="categoryChips"></div>
+        <!-- Segmented Category Chips -->
+        <div class="segmented-category-bar" id="categoryChips"></div>
       </div>
 
       <!-- Grid of 33 Lesson Cards -->
-      <div class="lessons-grid" id="lessonsGrid"></div>
+      <div class="enterprise-cards-grid" id="lessonsGrid"></div>
 
     </section>
 
     <!-- ==========================================
          SECTION 2: FRAMEWORK & PROCESS
          ========================================== -->
-    <section id="framework" class="tab-section">
-      <div class="panel">
-        <h2><span>⚡</span> ដំណើរការមាតិកា ១៥ ជំហាន (15-Step Content Process)</h2>
-        <p style="color:var(--ink-secondary); margin-bottom: 12px;">ចាប់ពីការស្គាល់ខ្លួនឯង រហូតដល់ការវាស់វែង និងកែលម្អឥតឈប់ឈរ៖</p>
-        <div class="process-grid" id="processGrid"></div>
+    <section id="framework" class="tab-section-content">
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>⚡</span> ដំណើរការមាតិកា ១៥ ជំហាន (15-Step Content Process)</h2>
+        <p class="panel-lead">ចាប់ពីការស្គាល់ខ្លួនឯង រហូតដល់ការវាស់វែង និងកែលម្អឥតឈប់ឈរ៖</p>
+        <div class="process-matrix-grid" id="processGrid"></div>
       </div>
 
-      <div class="panel">
-        <h2><span>🎬</span> រចនាសម្ព័ន្ធវីដេអូស្តង់ដារ (Video Blueprint Flow)</h2>
-        <p style="color:var(--ink-secondary); margin-bottom: 14px;"><b>Hook → Context → Action / Story → Result / Proof → Meaning → CTA</b></p>
-        <div class="flow-steps" id="flowContainer"></div>
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>🎬</span> រចនាសម្ព័ន្ធវីដេអូស្តង់ដារ (Video Blueprint Flow)</h2>
+        <p class="panel-lead"><b>Hook → Context → Action / Story → Result / Proof → Meaning → CTA</b></p>
+        <div class="blueprint-flow-steps" id="flowContainer"></div>
       </div>
 
-      <div class="panel">
-        <h2><span>📊</span> Marketing Funnel សម្រាប់សាលារៀន (School Marketing Funnel)</h2>
-        <div class="funnel-grid" id="funnelGrid"></div>
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>📊</span> Marketing Funnel សម្រាប់សាលារៀន (School Marketing Funnel)</h2>
+        <p class="panel-lead">យុទ្ធសាស្ត្របំលែងពីមនុស្សមិនស្គាល់សាលា ទៅជាមាតាបិតាដែលទុកចិត្ត និងចុះឈ្មោះកូនរៀន៖</p>
+        <div class="funnel-quadrant-grid" id="funnelGrid"></div>
       </div>
 
-      <div class="panel">
-        <h2><span>💡</span> រូបមន្តបង្កើតគំនិត និងរឿងនិទាន (Formulas & Story Arc)</h2>
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>💡</span> រូបមន្តបង្កើតគំនិត និងរឿងនិទាន (Formulas &amp; Story Arc)</h2>
         <div style="display:flex; flex-direction:column; gap:14px; margin-top: 14px;">
-          <div class="process-card">
-            <b>រូបមន្ត A (Pain Point to Solution):</b><br>
-            <code>Pain Point → Question → Hook → Proof → Solution</code>
-            <p style="font-size:13px; color:var(--muted); margin-top:4px;">ចាប់ផ្តើមពីកង្វល់ជាក់លាក់របស់មាតាបិតា → បង្កើតជាសំណួរ Hook → បង្ហាញសកម្មភាពក្នុងថ្នាក់រៀនជាភស្តុតាង → ផ្តល់ដំណោះស្រាយ។</p>
+          <div class="blueprint-flow-card">
+            <div class="flow-stage-badge" style="background:#2563eb; color:#ffffff;">Formula A</div>
+            <div class="flow-stage-details">
+              <b>Pain Point to Solution Flow:</b><br>
+              <code>Pain Point → Question → Hook → Proof → Solution</code>
+              <p>ចាប់ផ្តើមពីកង្វល់ជាក់លាក់របស់មាតាបិតា → បង្កើតជាសំណួរ Hook → បង្ហាញសកម្មភាពក្នុងថ្នាក់រៀនជាភស្តុតាង → ផ្តល់ដំណោះស្រាយ។</p>
+            </div>
           </div>
-          <div class="process-card">
-            <b>រូបមន្ត B (Character Transformation in Classroom):</b><br>
-            <code>Character → Want → Problem → Action → Change → Meaning</code>
-            <p style="font-size:13px; color:var(--muted); margin-top:4px;">តួអង្គ (សិស្ស/គ្រូ) → បំណងប្រាថ្នា → ឧបសគ្គ/ភាពភ័យខ្លាច → សកម្មភាពអនុវត្ត → ការផ្លាស់ប្តូរ → អត្ថន័យសម្រាប់អនាគត។</p>
+          <div class="blueprint-flow-card">
+            <div class="flow-stage-badge" style="background:#7c3aed; color:#ffffff;">Formula B</div>
+            <div class="flow-stage-details">
+              <b>Character Transformation in Classroom:</b><br>
+              <code>Character → Want → Problem → Action → Change → Meaning</code>
+              <p>តួអង្គ (សិស្ស/គ្រូ) → បំណងប្រាថ្នា → ឧបសគ្គ/ភាពភ័យខ្លាច → សកម្មភាពអនុវត្ត → ការផ្លាស់ប្តូរ → អត្ថន័យសម្រាប់អនាគត។</p>
+            </div>
           </div>
-          <div class="process-card">
-            <b>រូបមន្ត C (Continuous Improvement Cycle):</b><br>
-            <code>Create → Measure → Review → Improve → Repeat</code>
-            <p style="font-size:13px; color:var(--muted); margin-top:4px;">ផលិត → វាស់ទិន្នន័យ (Retention, Shares, Inquiries) → ពិនិត្យ Feedback → កែលម្អ Hook/Pacing ក្នុងវីដេអូបន្ទាប់។</p>
+          <div class="blueprint-flow-card">
+            <div class="flow-stage-badge" style="background:#059669; color:#ffffff;">Formula C</div>
+            <div class="flow-stage-details">
+              <b>Continuous Improvement Cycle:</b><br>
+              <code>Create → Measure → Review → Improve → Repeat</code>
+              <p>ផលិត → វាស់ទិន្នន័យ (Retention, Shares, Inquiries) → ពិនិត្យ Feedback → កែលម្អ Hook/Pacing ក្នុងវីដេអូបន្ទាប់។</p>
+            </div>
           </div>
         </div>
       </div>
@@ -188,47 +216,47 @@
     <!-- ==========================================
          SECTION 3: BRAND GUIDELINES
          ========================================== -->
-    <section id="brand" class="tab-section">
-      <div class="panel">
-        <h2><span>🎨</span> PSIS Colors Palette (កូដពណ៌ម៉ាកសញ្ញា)</h2>
-        <p style="color:var(--muted); font-size:14px;">ចុចលើប៊ូតុង "Copy" ដើម្បីចម្លងកូដ HEX យកទៅប្រើប្រាស់ក្នុង Premiere, Photoshop, Canva, ឬ CapCut៖</p>
-        <div class="color-palette-grid" id="colorPaletteGrid"></div>
+    <section id="brand" class="tab-section-content">
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>🎨</span> PSIS Colors Palette (កូដពណ៌ម៉ាកសញ្ញា)</h2>
+        <p class="panel-lead">ចុចលើប៊ូតុង "Copy" ដើម្បីចម្លងកូដ HEX យកទៅប្រើប្រាស់ក្នុង Premiere, Photoshop, Canva, ឬ CapCut៖</p>
+        <div class="color-swatches-grid" id="colorPaletteGrid"></div>
       </div>
 
-      <div class="panel">
-        <h2><span>🏫</span> បរិក្ខារ និងទីកន្លែងក្នុង Campus (Facilities)</h2>
-        <p style="color:var(--muted); font-size:14px;">ត្រូវផ្ទៀងផ្ទាត់វត្តមានពិតប្រាកដតាម Campus នីមួយៗ មុនពេលរៀបចំផែនការថត៖</p>
-        <div class="tag-collection" id="facilitiesTags"></div>
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>🏫</span> បរិក្ខារ និងទីកន្លែងក្នុង Campus (Facilities)</h2>
+        <p class="panel-lead">ត្រូវផ្ទៀងផ្ទាត់វត្តមានពិតប្រាកដតាម Campus នីមួយៗ មុនពេលរៀបចំផែនការថត៖</p>
+        <div class="pill-collection-wrap" id="facilitiesTags"></div>
       </div>
 
-      <div class="panel">
-        <h2><span>🎓</span> កម្មវិធីសិក្សា និងសកម្មភាពបន្ថែម (Curriculum & Programs)</h2>
-        <p style="color:var(--muted); font-size:14px;">កម្មវិធីសិក្សាទាំងជាតិ និងអន្តរជាតិដែលសាលាផ្តល់ជូន៖</p>
-        <div class="tag-collection" id="programsTags"></div>
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>🎓</span> កម្មវិធីសិក្សា និងសកម្មភាពបន្ថែម (Curriculum &amp; Programs)</h2>
+        <p class="panel-lead">កម្មវិធីសិក្សាទាំងជាតិ និងអន្តរជាតិដែលសាលាផ្តល់ជូន៖</p>
+        <div class="pill-collection-wrap" id="programsTags"></div>
       </div>
 
-      <div class="panel">
-        <h2><span>📢</span> គោលការណ៍ទំនាក់ទំនង & Tone of Voice</h2>
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>📢</span> គោលការណ៍ទំនាក់ទំនង &amp; Tone of Voice</h2>
         <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
-          <div class="flow-step-item">
-            <div class="flow-step-badge">Show Value</div>
-            <div class="flow-step-content">
+          <div class="blueprint-flow-card">
+            <div class="flow-stage-badge">Show Value</div>
+            <div class="flow-stage-details">
               <b>បង្ហាញតម្លៃនៅពីក្រោយសកម្មភាព</b>
               <p>កុំគ្រាន់តែថតសិស្សអង្គុយរៀន ឬលេង ត្រូវពន្យល់ថាពួកគេកំពុងហាត់ជំនាញអ្វី និងផ្តល់ប្រយោជន៍អ្វីសម្រាប់ជីវិត។</p>
             </div>
           </div>
-          <div class="flow-step-item">
-            <div class="flow-step-badge">Show Don't Claim</div>
-            <div class="flow-step-content">
+          <div class="blueprint-flow-card">
+            <div class="flow-stage-badge">Show Don't Claim</div>
+            <div class="flow-stage-details">
               <b>បង្ហាញសកម្មភាពពិត ចៀសវាងការអួតអាង</b>
               <p>បង្ហាញភាពកក់ក្តៅរបស់គ្រូតាមរយៈកាយវិការជួយសិស្សពិតៗ ជាជាងការសរសេរ Caption វែងៗថាយកចិត្តទុកដាក់។</p>
             </div>
           </div>
-          <div class="flow-step-item">
-            <div class="flow-step-badge">Brand Consistency</div>
-            <div class="flow-step-content">
+          <div class="blueprint-flow-card">
+            <div class="flow-stage-badge">Brand Consistency</div>
+            <div class="flow-stage-details">
               <b>រក្សាភាពស៊ីសង្វាក់នៃម៉ាកសញ្ញា</b>
-              <p>ប្រើ Font Kantumruy Pro, រក្សាកូដពណ៌ Navy & Gold, និងបែងចែកឱ្យដាច់រវាង PSIS និង AYLA។</p>
+              <p>ប្រើ Font Kantumruy Pro, រក្សាកូដពណ៌ Navy &amp; Gold, និងបែងចែកឱ្យដាច់រវាង PSIS និង AYLA។</p>
             </div>
           </div>
         </div>
@@ -238,53 +266,65 @@
     <!-- ==========================================
          SECTION 4: PRE-PRODUCTION CHECKLIST
          ========================================== -->
-    <section id="checklist" class="tab-section">
-      <div class="panel">
-        <h2><span>📋</span> Checklist មុនផលិតវីដេអូ ឬចេញផ្សាយ Content</h2>
-        <p style="color:var(--muted); font-size:14px; margin-bottom: 20px;">
-          ប្រើសម្រាប់ផ្ទៀងផ្ទាត់រាល់វីដេអូនីមួយៗ។ ប្រព័ន្ធនឹងរក្សាទុកស្ថានភាពធីករបស់អ្នកដោយស្វ័យប្រវត្តិក្នុង Browser។
+    <section id="checklist" class="tab-section-content">
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>📋</span> Checklist ៤ ដំណាក់កាលមុនផលិត និងចេញផ្សាយ (Enterprise 4-Phase Checklist)</h2>
+        <p class="panel-lead">
+          ផ្ទៀងផ្ទាត់រាល់ដំណាក់កាល៖ មុនថត (Pre-Shoot) → ពេលថត (Shoot Day) → កាត់ត (Edit) → ចេញផ្សាយ (Launch)។ រក្សាទុកដោយស្វ័យប្រវត្តិ។
         </p>
 
-        <div class="checklist-head-bar">
-          <div class="progress-container">
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" id="progressBarFill"></div>
+        <div class="checklist-score-header">
+          <div class="progress-indicator-track">
+            <div class="progress-rail">
+              <div class="progress-fill" id="progressBarFill"></div>
             </div>
-            <span class="progress-text" id="progressText">0 / 10 បានរួចរាល់ (0%)</span>
+            <span class="progress-score-text" id="progressScoreText">0 / 10 បានរួចរាល់ (0%)</span>
           </div>
 
           <div style="display:flex; gap:10px;">
-            <button id="btnCopyChecklist" class="btn-secondary">📋 Copy Checklist</button>
-            <button id="btnResetChecklist" class="btn-secondary">🔄 Reset ទាំងអស់</button>
+            <button id="btnCopyChecklist" class="btn-utility">📋 Copy Checklist</button>
+            <button id="btnResetChecklist" class="btn-utility">🔄 Reset ទាំងអស់</button>
           </div>
         </div>
 
-        <div class="checklist-items" id="checklistContainer"></div>
+        <div id="checklistPhasesContainer"></div>
       </div>
     </section>
 
     <!-- ==========================================
          SECTION 5: SCRIPT & IDEA PLANNER TOOL
          ========================================== -->
-    <section id="planner" class="tab-section">
-      <div class="panel">
-        <h2><span>✍️</span> ឧបករណ៍បង្កើត Script Brief & Outline វីដេអូ</h2>
-        <p style="color:var(--muted); font-size:14px; margin-bottom: 22px;">
+    <section id="planner" class="tab-section-content">
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>✍️</span> ឧបករណ៍បង្កើត Video Script Studio &amp; Brief</h2>
+        <p class="panel-lead">
           បញ្ចូលទិន្នន័យនៃគំនិតវីដេអូរបស់អ្នក ដើម្បីបង្កើត Video Script Brief ស្តង់ដារភ្លាមៗសម្រាប់យកទៅថត ឬកាត់ត៖
         </p>
 
-        <div class="planner-form-grid">
-          <div class="form-group">
+        <div class="studio-input-grid">
+          <div class="field-group-cell">
+            <label for="plannerCampus">🏫 Campus (ទីតាំងសាខា)</label>
+            <select id="plannerCampus">
+              <option value="CAP (Chbar Ampov)" selected>CAP (Chbar Ampov)</option>
+              <option value="TK (Toul Kork)">TK (Toul Kork)</option>
+              <option value="TTP (Toul Tom Poung)">TTP (Toul Tom Poung)</option>
+              <option value="RSK (Russei Keo)">RSK (Russei Keo)</option>
+              <option value="NR3 (National Road 3)">NR3 (National Road 3)</option>
+              <option value="BTB (Battambang)">BTB (Battambang)</option>
+            </select>
+          </div>
+
+          <div class="field-group-cell">
             <label for="plannerTopic">📌 ប្រធានបទវីដេអូ (Topic)</label>
-            <input type="text" id="plannerTopic" value="រៀនគិតជាប្រព័ន្ធតាមរយៈ Coding & Robotics">
+            <input type="text" id="plannerTopic" value="រៀនគិតជាប្រព័ន្ធតាមរយៈ Coding &amp; Robotics">
           </div>
 
-          <div class="form-group">
+          <div class="field-group-cell">
             <label for="plannerPersona">🎯 ទស្សនិកជនគោលដៅ (Target Persona)</label>
-            <input type="text" id="plannerPersona" value="ម៉ាក់ប៉ារវល់ការងារការិយាល័យ ចង់ឱ្យកូនក្លាហាន និងមានជំនាញបច្ចេកវិទ្យា">
+            <input type="text" id="plannerPersona" value="ប៉ា ពីទូ (រវល់ការងារការិយាល័យ ចង់ឱ្យកូនក្លាហាន និងមានជំនាញបច្ចេកវិទ្យា)">
           </div>
 
-          <div class="form-group">
+          <div class="field-group-cell">
             <label for="plannerFunnel">📊 ដំណាក់កាល Funnel</label>
             <select id="plannerFunnel">
               <option value="Awareness (ឱ្យគេស្គាល់សាលា)">Awareness (ឱ្យគេស្គាល់សាលា)</option>
@@ -294,12 +334,12 @@
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="field-group-cell">
             <label for="plannerPainPoint">⚠️ កង្វល់ ឬបញ្ហារបស់មាតាបិតា (Pain Point)</label>
             <input type="text" id="plannerPainPoint" value="កូនរៀនតែទ្រឹស្តី មិនចេះអនុវត្តដោះស្រាយបញ្ហាពិត">
           </div>
 
-          <div class="form-group">
+          <div class="field-group-cell">
             <label for="plannerHookType">⏱️ ប្រភេទ Hook (First 3 Seconds)</label>
             <select id="plannerHookType">
               <option value="THINK (ធ្វើឱ្យគិត)" selected>THINK (ធ្វើឱ្យគិត)</option>
@@ -308,166 +348,166 @@
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="field-group-cell span-two">
             <label for="plannerHookText">💬 សារបើកឆាក (Hook Text on Screen / Audio)</label>
             <input type="text" id="plannerHookText" value="«រៀនបានពិន្ទុល្អ… តែបើជួបបញ្ហាជាក់ស្តែង គាត់ចេះដោះស្រាយដោយរបៀបណា?»">
           </div>
 
-          <div class="form-group full">
+          <div class="field-group-cell span-two">
             <label for="plannerAction">🎬 សកម្មភាពពិតក្នុងថ្នាក់រៀន (Action / Story Footage)</label>
             <textarea id="plannerAction" rows="2">សិស្សអង្គុយសាកល្បងសរសេរ Code លើ CodeMonkey ខុសហើយកែឡើងវិញ ដោយមានគ្រូនៅក្បែរជួយលើកទឹកចិត្ត</textarea>
           </div>
 
-          <div class="form-group full">
+          <div class="field-group-cell span-two">
             <label for="plannerProof">🏆 ភស្តុតាង និងលទ្ធផល (Visual Proof)</label>
             <textarea id="plannerProof" rows="2">ស្នាមញញឹមពេល Robot ដើរត្រូវទិសដៅ និងការទះដៃអបអរជាមួយមិត្តភក្តិ</textarea>
           </div>
 
-          <div class="form-group full">
-            <label for="plannerMeaning">🌱 អត្ថន័យ និងផលប្រយោជន៍ថ្ងៃមុខ (Meaning & Future Benefit)</label>
+          <div class="field-group-cell span-two">
+            <label for="plannerMeaning">🌱 អត្ថន័យ និងផលប្រយោជន៍ថ្ងៃមុខ (Meaning &amp; Future Benefit)</label>
             <textarea id="plannerMeaning" rows="2">នៅ PSIS ការរៀនបច្ចេកវិទ្យាមិនមែនគ្រាន់តែមើលអេក្រង់ទេ គឺការហាត់គិតដោះស្រាយបញ្ហាសម្រាប់អនាគត</textarea>
           </div>
 
-          <div class="form-group full">
+          <div class="field-group-cell span-two">
             <label for="plannerCTA">📣 Call to Action (CTA ស្រាលស្រទន់)</label>
             <input type="text" id="plannerCTA" value="ស្វែងយល់បន្ថែមអំពីកម្មវិធីសិក្សាអន្តរជាតិនៅ PSIS តាមរយៈ Message ឬទស្សនាសាលាផ្ទាល់។">
           </div>
         </div>
 
         <div style="display:flex; justify-content:space-between; align-items:center; margin: 18px 0 8px;">
-          <h3 style="margin:0;">📄 សេចក្តីព្រាង Script Brief (Auto-generated)</h3>
-          <button id="btnCopyScript" class="btn-banner btn-banner-gold" style="color:var(--navy-dark);">
-            📋 ចម្លង Script Brief នេះ
+          <h3 style="margin:0; font-size:16px;">📄 សេចក្តីព្រាង Script Studio Output (Auto-Generated)</h3>
+          <button id="btnCopyScript" class="btn-enterprise-action primary" style="padding: 8px 16px;">
+            📋 ចម្លង Script Studio Brief
           </button>
         </div>
 
-        <div class="script-preview-box" id="scriptOutput"></div>
+        <pre class="script-output-console" id="scriptOutput"></pre>
       </div>
     </section>
 
     <!-- ==========================================
          SECTION 6: PERSONA & DRIVE RESOURCE HUB
          ========================================== -->
-    <section id="persona" class="tab-section">
-      <!-- Drive Hub Panel -->
-      <div class="panel">
-        <h2><span>📁</span> Google Drive Resource Hub (ឯកសារដើមរបស់ PSIS)</h2>
-        <p style="color:var(--muted); font-size:14px; margin-bottom: 16px;">
+    <section id="persona" class="tab-section-content">
+      <!-- Drive Vault Panel -->
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>📁</span> Google Drive Resource Vault (ឯកសារផ្លូវការរបស់ PSIS)</h2>
+        <p class="panel-lead">
           តំណភ្ជាប់ផ្ទាល់ទៅកាន់ Folder និង Slides/Docs ផ្លូវការរបស់ PSIS ក្នុង Google Drive៖
         </p>
-        <div class="drive-resources-grid">
-          <a href="https://drive.google.com/drive/folders/1Uuv_nQz7-mxvE41fhSrYyJN7Vv0kfGg7" target="_blank" rel="noopener" class="resource-card">
-            <div class="resource-card-left">
-              <span class="res-icon">📁</span>
+        <div class="drive-vault-grid">
+          <a href="https://drive.google.com/drive/folders/1Uuv_nQz7-mxvE41fhSrYyJN7Vv0kfGg7" target="_blank" rel="noopener" class="vault-item-link">
+            <div class="vault-left">
+              <span class="vault-icon">📁</span>
               <div>
-                <div class="res-title">PSIS Main Drive Folder</div>
-                <small style="color:var(--muted)">Google Drive Root</small>
+                <div class="vault-title">PSIS Main Drive Folder</div>
+                <small style="color:var(--text-muted)">Google Drive Root</small>
               </div>
             </div>
-            <span class="res-arrow">↗</span>
+            <span class="vault-arrow">↗</span>
           </a>
 
-          <a href="https://docs.google.com/presentation/d/1aedFWEff8Q-RkVk-71DvCMSyQKE7cD9rdCehYAifS6k" target="_blank" rel="noopener" class="resource-card">
-            <div class="resource-card-left">
-              <span class="res-icon">👥</span>
+          <a href="https://docs.google.com/presentation/d/1aedFWEff8Q-RkVk-71DvCMSyQKE7cD9rdCehYAifS6k" target="_blank" rel="noopener" class="vault-item-link">
+            <div class="vault-left">
+              <span class="vault-icon">👥</span>
               <div>
-                <div class="res-title">Target Audience: Persona Pitou</div>
-                <small style="color:var(--muted)">Google Slides</small>
+                <div class="vault-title">Target Audience: Persona Pitou</div>
+                <small style="color:var(--text-muted)">Google Slides</small>
               </div>
             </div>
-            <span class="res-arrow">↗</span>
+            <span class="vault-arrow">↗</span>
           </a>
 
-          <a href="https://docs.google.com/presentation/d/1TY6YoNqHYYZPzobYSnUIf3u0NTrrnGyIyuWmrggr2uQ" target="_blank" rel="noopener" class="resource-card">
-            <div class="resource-card-left">
-              <span class="res-icon">📊</span>
+          <a href="https://docs.google.com/presentation/d/1TY6YoNqHYYZPzobYSnUIf3u0NTrrnGyIyuWmrggr2uQ" target="_blank" rel="noopener" class="vault-item-link">
+            <div class="vault-left">
+              <span class="vault-icon">📊</span>
               <div>
-                <div class="res-title">The Marketing Funnel</div>
-                <small style="color:var(--muted)">Google Slides</small>
+                <div class="vault-title">The Marketing Funnel</div>
+                <small style="color:var(--text-muted)">Google Slides</small>
               </div>
             </div>
-            <span class="res-arrow">↗</span>
+            <span class="vault-arrow">↗</span>
           </a>
 
-          <a href="https://docs.google.com/document/d/13seqCxWWa8oc1SV-YRUQe3ZgrHdxyvwxhzTBITjo7xg" target="_blank" rel="noopener" class="resource-card">
-            <div class="resource-card-left">
-              <span class="res-icon">📄</span>
+          <a href="https://docs.google.com/document/d/13seqCxWWa8oc1SV-YRUQe3ZgrHdxyvwxhzTBITjo7xg" target="_blank" rel="noopener" class="vault-item-link">
+            <div class="vault-left">
+              <span class="vault-icon">📄</span>
               <div>
-                <div class="res-title">Understanding the Client</div>
-                <small style="color:var(--muted)">Master Document (24k chars)</small>
+                <div class="vault-title">Understanding the Client</div>
+                <small style="color:var(--text-muted)">Master Document (24k chars)</small>
               </div>
             </div>
-            <span class="res-arrow">↗</span>
+            <span class="vault-arrow">↗</span>
           </a>
 
-          <a href="https://docs.google.com/spreadsheets/d/1sF4AtOKXRzhz6Ln1U6a3hVlxT7PZ7X9oOVL8jHgDEf8" target="_blank" rel="noopener" class="resource-card">
-            <div class="resource-card-left">
-              <span class="res-icon">📑</span>
+          <a href="https://docs.google.com/spreadsheets/d/1sF4AtOKXRzhz6Ln1U6a3hVlxT7PZ7X9oOVL8jHgDEf8" target="_blank" rel="noopener" class="vault-item-link">
+            <div class="vault-left">
+              <span class="vault-icon">📑</span>
               <div>
-                <div class="res-title">Media Mentoring Syllabus</div>
-                <small style="color:var(--muted)">Google Spreadsheet (9 Weeks)</small>
+                <div class="vault-title">Media Mentoring Syllabus</div>
+                <small style="color:var(--text-muted)">Google Spreadsheet (9 Weeks)</small>
               </div>
             </div>
-            <span class="res-arrow">↗</span>
+            <span class="vault-arrow">↗</span>
           </a>
 
-          <a href="https://docs.google.com/document/d/1fUZAQ5Q_a964ozCQwcMNUjrB3DRMS-UUEQa4BLdBI2Y" target="_blank" rel="noopener" class="resource-card">
-            <div class="resource-card-left">
-              <span class="res-icon">🎯</span>
+          <a href="https://docs.google.com/document/d/1fUZAQ5Q_a964ozCQwcMNUjrB3DRMS-UUEQa4BLdBI2Y" target="_blank" rel="noopener" class="vault-item-link">
+            <div class="vault-left">
+              <span class="vault-icon">🎯</span>
               <div>
-                <div class="res-title">Mentoring Goals & Profile</div>
-                <small style="color:var(--muted)">Chhit & Sievling Profile</small>
+                <div class="vault-title">Mentoring Goals &amp; Profile</div>
+                <small style="color:var(--text-muted)">Chhit &amp; Sievling Profile</small>
               </div>
             </div>
-            <span class="res-arrow">↗</span>
+            <span class="vault-arrow">↗</span>
           </a>
         </div>
       </div>
 
       <!-- Persona Dossier Panel -->
-      <div class="panel">
-        <h2><span>🎯</span> Audience Persona Dossier (ទម្រង់ទស្សនិកជនគោលដៅពិត)</h2>
-        <p style="color:var(--muted); font-size:14px; margin-bottom: 16px;">
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>🎯</span> Audience Persona Dossier (ទម្រង់ទស្សនិកជនគោលដៅពិត)</h2>
+        <p class="panel-lead">
           ទិន្នន័យស្រាវជ្រាវជាក់ស្តែងពីឯកសារ Google Slides របស់ PSIS៖
         </p>
 
-        <div class="persona-card-container">
+        <div class="persona-dossier-layout">
           <!-- Parent Persona -->
-          <div class="persona-box">
-            <div class="persona-header">
-              <div class="persona-avatar">P</div>
-              <div class="persona-meta">
+          <div class="persona-card-panel">
+            <div class="persona-profile-top">
+              <div class="persona-avatar-circle">P</div>
+              <div class="persona-headline-data">
                 <h3>Pitou (ប៉ា ពីទូ) — អាយុ ៣៥ ឆ្នាំ</h3>
                 <span>Director of Operations, Chipmong Group</span>
               </div>
             </div>
 
-            <div class="persona-details-grid">
-              <div class="persona-field">
+            <div class="persona-specs-grid">
+              <div class="spec-entry">
                 <b>ទីលំនៅ (Location)</b>
                 <p>Borey Chipmong Land 271, ភ្នំពេញ</p>
               </div>
-              <div class="persona-field">
-                <b>ចំណូល & សេដ្ឋកិច្ច</b>
+              <div class="spec-entry">
+                <b>ចំណូល &amp; សេដ្ឋកិច្ច</b>
                 <p>Upper-income, Bank ~$50k, ជិះឡានទំនើប</p>
               </div>
-              <div class="persona-field full">
+              <div class="spec-entry full-span">
                 <b>គ្រួសារ (Family)</b>
                 <p>ភរិយា Lida (អាយុ 32), កូនស្រី Vichera (អាយុ 7 រៀននៅ PSIS CAP), កូនប្រុស Virakboth (អាយុ 5)</p>
               </div>
-              <div class="persona-field full">
+              <div class="spec-entry full-span">
                 <b>ទម្លាប់ប្រើប្រាស់បណ្តាញសង្គម (Social Behavior)</b>
                 <p>ប្រើប្រាស់ Facebook ច្រើនរាល់ថ្ងៃ តែមិនសូវ Post រូបខ្លួនឯងទេ (Silent Consumer) — ប្រើសម្រាប់ស្រាវជ្រាវ តាមដានព័ត៌មាន និងការអប់រំកូន។</p>
               </div>
-              <div class="persona-field full">
+              <div class="spec-entry full-span">
                 <b>បំណងប្រាថ្នាចំពោះកូន (Aspirations)</b>
                 <p>ចង់ឱ្យកូនឆ្លាត ក្លាហាន ចេះដោះស្រាយបញ្ហាពិត មានជំនាញអង់គ្លេសស្ទាត់ និងមានឱកាសទៅផ្លាស់ប្តូរការសិក្សានៅប្រទេសអូស្ត្រាលី (Australia Exchange) ថ្ងៃមុខ។</p>
               </div>
-              <div class="persona-field full">
+              <div class="spec-entry full-span">
                 <b>កង្វល់ពិត (Pain Points)</b>
                 <p>បារម្ភថាកូនទន្ទេញចាំតែមេរៀន តែមិនយល់ការអនុវត្ត, ខ្លាចកូនខ្មាស់អៀនមិនហ៊ាននិយាយ, បារម្ភសុវត្ថិភាព និងការថែទាំថ្ងៃត្រង់ពេលខ្លួនរវល់ធ្វើការ។</p>
               </div>
-              <div class="persona-field full">
+              <div class="spec-entry full-span">
                 <b>អ្វីដែលមិនចូលចិត្ត (Dislikes)</b>
                 <p>មិនចូលចិត្តការអួតអាង (Show off), មិនចូលចិត្តការលក់បញ្ចុះតម្លៃខ្លាំងពេក, មិនចូលចិត្តវីដេអូរញ៉េរញ៉ៃគ្មានខ្លឹមសារ។</p>
               </div>
@@ -476,34 +516,34 @@
 
           <!-- Child Persona & Campuses -->
           <div style="display:flex; flex-direction:column; gap:16px;">
-            <div class="persona-box">
-              <div class="persona-header">
-                <div class="persona-avatar" style="background:linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);">V</div>
-                <div class="persona-meta">
+            <div class="persona-card-panel">
+              <div class="persona-profile-top">
+                <div class="persona-avatar-circle" style="background:linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);">V</div>
+                <div class="persona-headline-data">
                   <h3>Vichera Cheata (វិច្ឆិកា)</h3>
                   <span>សិស្សកម្រិតបឋម (អាយុ ៧ ឆ្នាំ)</span>
                 </div>
               </div>
-              <div class="persona-field">
+              <div class="spec-entry">
                 <b>ទីតាំងរៀន</b>
                 <p>PSIS Chbar Ampov Campus (CAP)</p>
               </div>
-              <div class="persona-field" style="margin-top:8px;">
+              <div class="spec-entry" style="margin-top:8px;">
                 <b>ចរិតលក្ខណៈ</b>
                 <p>ចូលចិត្តរៀន English, គូររូប, តុក្កតា, តែពេលខ្លះស្ទាក់ស្ទើរមិនសូវហ៊ានលើកដៃឆ្លើយនៅមុខថ្នាក់។</p>
               </div>
             </div>
 
-            <div class="persona-box">
-              <h3 style="font-size:16px; margin-bottom:10px; color:var(--navy);">🏫 បណ្តាញ Campus ទាំង ៦ & តម្លៃសិក្សា</h3>
-              <p style="font-size:13px; color:var(--ink-secondary); margin-bottom:10px;">តម្លៃសិក្សាជាមធ្យម៖ <b>~$3,500 / ឆ្នាំ</b></p>
+            <div class="persona-card-panel">
+              <h3 style="font-size:15.5px; margin-bottom:10px; color:var(--text-title);">🏫 បណ្តាញ Campus ទាំង ៦ &amp; តម្លៃសិក្សា</h3>
+              <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">តម្លៃសិក្សាជាមធ្យម៖ <b>~$3,500 / ឆ្នាំ</b></p>
               <div style="display:flex; flex-wrap:wrap; gap:6px;">
-                <span class="tag-item">TK (ទួលគោក)</span>
-                <span class="tag-item">TTP (ទួលទំពូង)</span>
-                <span class="tag-item">RSK (ឫស្សីកែវ)</span>
-                <span class="tag-item">CAP (ច្បារអំពៅ)</span>
-                <span class="tag-item">NR3 (ផ្លូវជាតិ ៣)</span>
-                <span class="tag-item">BTB (បាត់ដំបង)</span>
+                <span class="tag-badge-item">TK (ទួលគោក)</span>
+                <span class="tag-badge-item">TTP (ទួលទំពូង)</span>
+                <span class="tag-badge-item">RSK (ឫស្សីកែវ)</span>
+                <span class="tag-badge-item">CAP (ច្បារអំពៅ)</span>
+                <span class="tag-badge-item">NR3 (ផ្លូវជាតិ ៣)</span>
+                <span class="tag-badge-item">BTB (បាត់ដំបង)</span>
               </div>
             </div>
           </div>
@@ -511,20 +551,20 @@
       </div>
 
       <!-- Roadmap Table Panel -->
-      <div class="panel">
-        <h2><span>📅</span> ផែនទីបង្ហាញផ្លូវ Media Mentoring (9-Week Mentoring Roadmap)</h2>
-        <p style="color:var(--muted); font-size:14px;">
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>📅</span> ផែនទីបង្ហាញផ្លូវ Media Mentoring (9-Week Mentoring Roadmap)</h2>
+        <p class="panel-lead">
           ផ្អែកលើកាលវិភាគបណ្តុះបណ្តាលផ្លូវការក្នុង Google Sheet រវាង Chit និង Sievling៖
         </p>
 
-        <div class="roadmap-table-wrap">
-          <table class="roadmap-table">
+        <div class="table-scroll-frame">
+          <table class="enterprise-data-table">
             <thead>
               <tr>
                 <th>សប្តាហ៍</th>
                 <th>កាលបរិច្ឆេទ</th>
                 <th>ខ្លឹមសារមេរៀន (Session Content)</th>
-                <th>កិច្ចការ & គោលដៅ (Tasks & Milestones)</th>
+                <th>កិច្ចការ &amp; គោលដៅ (Tasks &amp; Milestones)</th>
               </tr>
             </thead>
             <tbody>
@@ -532,19 +572,19 @@
                 <td><b>Week 1</b></td>
                 <td>28/07 - 31/07</td>
                 <td>Understanding where they are at • Intro to Marketing • Understanding the Client</td>
-                <td>Brand Guides, Content Plans & Campus Facilities preparation</td>
+                <td>Brand Guides, Content Plans &amp; Campus Facilities preparation</td>
               </tr>
               <tr>
                 <td><b>Week 2</b></td>
                 <td>04/08 - 07/08</td>
-                <td>Understanding Target Audience & Psychographics</td>
-                <td>Client Goals Document & Parent Research</td>
+                <td>Understanding Target Audience &amp; Psychographics</td>
+                <td>Client Goals Document &amp; Parent Research</td>
               </tr>
               <tr>
                 <td><b>Week 3</b></td>
                 <td>11/08 - 14/08</td>
                 <td>Effective Content (6 Content Pillars) • Effective Marketing</td>
-                <td>Client Goals Document & Content Mix Balance</td>
+                <td>Client Goals Document &amp; Content Mix Balance</td>
               </tr>
               <tr>
                 <td><b>Week 4</b></td>
@@ -567,14 +607,14 @@
               <tr>
                 <td><b>Week 7</b></td>
                 <td>08/09</td>
-                <td>Monthly Goals Review • Video Feedback & Quality Advice</td>
-                <td>Retention optimization & Reviewing Reel performance</td>
+                <td>Monthly Goals Review • Video Feedback &amp; Quality Advice</td>
+                <td>Retention optimization &amp; Reviewing Reel performance</td>
               </tr>
               <tr>
                 <td><b>Week 8</b></td>
                 <td>16/09 - 18/09</td>
-                <td>Review videos & Shoot Video with powerful hooks • Intro to Storytelling</td>
-                <td>Micro-moments in classrooms (Teacher & Student)</td>
+                <td>Review videos &amp; Shoot Video with powerful hooks • Intro to Storytelling</td>
+                <td>Micro-moments in classrooms (Teacher &amp; Student)</td>
               </tr>
               <tr>
                 <td><b>Week 9</b></td>
@@ -591,49 +631,60 @@
   </main>
 
   <!-- ==========================================
-       Lesson Detail Modal Dialog
+       Lesson Detail Floating Sheet Modal Dialog
        ========================================== -->
   <dialog id="lessonModal">
-    <div class="modal-header">
+    <div class="sheet-header">
       <div>
-        <span class="modal-badge" id="modalBadge">LESSON 01 / 33</span>
+        <span class="sheet-index-pill" id="modalBadge">LESSON 01 / 33</span>
         <h2 id="modalTitle">Understanding Where You Are</h2>
-        <div class="modal-km-title" id="modalKmTitle">ស្គាល់ចំណុចខ្លាំង និងអ្វីដែលត្រូវកែលម្អ</div>
+        <div class="sheet-khmer-title" id="modalKmTitle">ស្គាល់ចំណុចខ្លាំង និងអ្វីដែលត្រូវកែលម្អ</div>
       </div>
-      <button class="btn-close-modal" id="btnCloseModal" aria-label="បិទ">×</button>
+      <button class="btn-sheet-close" id="btnCloseModal" aria-label="បិទ">×</button>
     </div>
 
-    <div class="modal-body">
-      <div class="modal-core-box" id="modalCore"></div>
+    <div class="sheet-content-scroll">
+      <div class="sheet-core-banner" id="modalCore"></div>
 
-      <div class="modal-section-title"><span>📖</span> អ្វីដែលត្រូវយល់ដឹង (What to Understand)</div>
-      <p class="modal-text" id="modalLearn"></p>
+      <div class="sheet-section-title"><span>📖</span> អ្វីដែលត្រូវយល់ដឹង (What to Understand)</div>
+      <p class="sheet-paragraph" id="modalLearn"></p>
 
-      <div class="modal-section-title"><span>🚀</span> របៀបយកទៅអនុវត្តជាក់ស្តែង (Actionable Execution)</div>
-      <p class="modal-text" id="modalAction"></p>
+      <div class="sheet-section-title"><span>🚀</span> របៀបយកទៅអនុវត្តជាក់ស្តែង (Actionable Execution)</div>
+      <p class="sheet-paragraph" id="modalAction"></p>
 
-      <div class="modal-section-title"><span>💡</span> ឧទាហរណ៍ជាក់ស្តែង & ចំណុចរំលឹក (Examples & Reminders)</div>
-      <div class="modal-example-box" id="modalExample"></div>
+      <div class="dos-donts-grid">
+        <div class="dos-box">
+          <b>✅ អ្វីដែលគួរធ្វើ (DO'S):</b>
+          <ul id="modalDosList"></ul>
+        </div>
+        <div class="donts-box">
+          <b>❌ អ្វីដែលមិនគួរធ្វើ (DON'TS):</b>
+          <ul id="modalDontsList"></ul>
+        </div>
+      </div>
 
-      <div class="modal-section-title"><span>🏷️</span> Tags</div>
-      <div class="tag-collection" id="modalTags"></div>
+      <div class="sheet-section-title"><span>💡</span> ឧទាហរណ៍ជាក់ស្តែង &amp; ចំណុចរំលឹក (Examples &amp; Reminders)</div>
+      <div class="sheet-example-box" id="modalExample"></div>
+
+      <div class="sheet-section-title"><span>🏷️</span> Tags</div>
+      <div class="pill-collection-wrap" id="modalTags"></div>
     </div>
 
-    <div class="modal-footer">
-      <div class="modal-nav-group">
-        <button id="btnModalPrev" class="btn-secondary">← មេរៀនមុន</button>
-        <button id="btnModalNext" class="btn-secondary">មេរៀនបន្ទាប់ →</button>
+    <div class="sheet-footer-bar">
+      <div class="sheet-nav-actions">
+        <button id="btnModalPrev" class="btn-utility">← មេរៀនមុន</button>
+        <button id="btnModalNext" class="btn-utility">មេរៀនបន្ទាប់ →</button>
       </div>
 
       <div style="display:flex; gap:10px;">
-        <button id="btnModalCopy" class="btn-secondary">📋 ចម្លងមេរៀន</button>
-        <button id="btnModalStar" class="btn-secondary">☆ ចំណាំមេរៀន</button>
+        <button id="btnModalCopy" class="btn-utility">📋 ចម្លងមេរៀន</button>
+        <button id="btnModalStar" class="btn-utility">☆ ចំណាំមេរៀន</button>
       </div>
     </div>
   </dialog>
 
-  <!-- Toast Notification -->
-  <div class="toast" id="toast">
+  <!-- Enterprise Toast Notification -->
+  <div class="enterprise-toast" id="toast">
     <span>💡</span>
     <span id="toastMsg">សារជូនដំណឹង</span>
   </div>
