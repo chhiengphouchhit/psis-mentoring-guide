@@ -1100,6 +1100,165 @@ dialog::backdrop {
 }
 
 /* ==========================================
+   Persona & Drive Resources Styling
+   ========================================== */
+.persona-card-container {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  margin: 18px 0;
+}
+
+.persona-box {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.persona-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.persona-avatar {
+  width: 58px;
+  height: 58px;
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--blue) 100%);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(6, 19, 75, 0.2);
+}
+
+.persona-meta h3 {
+  font-size: 19px;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+.persona-meta span {
+  font-size: 13.5px;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.persona-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 18px;
+}
+
+.persona-field b {
+  font-size: 12.5px;
+  color: var(--muted);
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.persona-field p {
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.55;
+  margin-top: 2px;
+}
+
+.persona-field.full {
+  grid-column: 1 / -1;
+}
+
+/* Resources Grid */
+.drive-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.resource-card {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: var(--transition);
+}
+
+.resource-card:hover {
+  background: #ffffff;
+  border-color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  color: var(--blue);
+}
+
+.resource-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resource-card .res-icon {
+  font-size: 22px;
+}
+
+.resource-card .res-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.resource-card .res-arrow {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Roadmap Table */
+.roadmap-table-wrap {
+  overflow-x: auto;
+  margin-top: 14px;
+}
+
+.roadmap-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.roadmap-table th {
+  background: var(--navy-dark);
+  color: #ffffff;
+  padding: 12px 16px;
+  font-weight: 600;
+}
+
+.roadmap-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.roadmap-table tr:hover td {
+  background: #f8fbfd;
+}
+
+/* ==========================================
    Responsive Breakpoints
    ========================================== */
 @media (max-width: 1200px) {

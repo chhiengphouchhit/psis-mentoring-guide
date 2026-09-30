@@ -1,12 +1,15 @@
 // PSIS Content Mentoring Full Dataset
-// 33 Complete Lessons, Categories, Frameworks, and Brand Guidelines
+// 33 Complete Lessons, Categories, Frameworks, Brand Guidelines, Audience Dossier & Drive Resources
 
 const PSIS_DATA = {
   brand: {
     title: "PSIS GUIDELINE & CONTENT MENTORING",
     subtitle: "ប្រព័ន្ធរំលឹកមេរៀន និងឯកសារណែនាំយុទ្ធសាស្ត្រផលិត Content & Video",
-    source: "សេចក្តីសង្ខេប Mentoring ៣៣ ចំណុច (Chhit x PSIS)",
+    source: "សេចក្តីសង្ខេប Mentoring ៣៣ ចំណុច (Chhit x PSIS x DG)",
     motto: "បង្ហាញថា អ្វីដែល PSIS ធ្វើ មានន័យអ្វីសម្រាប់កូន និងអនាគតរបស់កូន",
+    threeWords: ["Future-focused (តម្រង់ទិសអនាគត)", "Kindness (មេត្តាករុណា & ក្តីស្រឡាញ់)", "Collaboration (ការសហការ)"],
+    personality: "Modern + Caring + Future-focused + Disciplined + Collaborative + Student-centered",
+    tuition: "~$3,500 / ឆ្នាំ",
     colors: [
       { name: "PSIS Navy Deep", hex: "#06134b", desc: "ពណ៌គោល តំណាងឱ្យភាពច្បាស់លាស់ ទំនុកចិត្ត និងកិត្យានុភាព" },
       { name: "PSIS Royal Blue", hex: "#0d47a1", desc: "ពណ៌រង ប្រើសម្រាប់ Header, Banner, និង Gradient" },
@@ -16,21 +19,59 @@ const PSIS_DATA = {
       { name: "Card Border / Line", hex: "#dde5ec", desc: "បន្ទាត់ព្រំដែន និងខណ្ឌផ្នែក" },
       { name: "Deep Ink Text", hex: "#172e45", desc: "ពណ៌អក្សរចម្បង ងាយស្រួលអាន" }
     ],
+    campuses: [
+      { code: "TK", name: "Toul Kork Campus (ទួលគោក)" },
+      { code: "TTP", name: "Toul Tom Poung Campus (ទួលទំពូង)" },
+      { code: "RSK", name: "Russey Keo Campus (ឫស្សីកែវ)" },
+      { code: "CAP", name: "Chbar Ampov Campus (ច្បារអំពៅ)" },
+      { code: "NR3", name: "National Road 3 Campus (ផ្លូវជាតិលេខ ៣)" },
+      { code: "BTB", name: "Battambang Campus (ខេត្តបាត់ដំបង)" }
+    ],
     facilities: [
-      "ICT Room", "Science Lab", "Art Room", "Library", "Playground", "Canteen",
-      "Event Hall", "School Bus", "Interactive Classroom", "Student Card Security",
-      "Football Court", "Basketball Court", "Meditation Room", "Nap / Rest Area"
+      "ICT Room (Computer Lab)", "Science Lab", "Art Room", "Library", "Playground", "Canteen",
+      "Event Hall", "School Bus", "Interactive Classroom (Infinity Pro Whiteboard)", "Student Card Security (Scan Card)",
+      "Football Pitch", "Basketball Court", "Meditation Room", "Nap / Rest Area"
     ],
     programs: [
-      "English Curriculum", "Khmer Curriculum", "Chinese Language", "Mathematics",
-      "Science", "Art", "ICT & Coding", "Good Morals & Ethics", "ELIF Program",
-      "Taekwondo", "Swimming", "Robotics", "Raz-Kids Reading", "CodeMonkey"
+      "English Curriculum", "Khmer Curriculum", "Chinese Language", "Mathematics (in English)",
+      "Science & Chemistry", "Fine Arts & Music", "ICT & Computer Studies", "Good Morals & Ethics",
+      "ELIF Program", "Taekwondo", "Swimming", "Kubo & Kubit Robotics", "Raz-Kids Reading", "CodeMonkey", "Seamo X"
+    ],
+    driveResources: [
+      { title: "Google Drive Folder មេ (PSIS)", url: "https://drive.google.com/drive/folders/1Uuv_nQz7-mxvE41fhSrYyJN7Vv0kfGg7", type: "folder", icon: "📁" },
+      { title: "The Marketing Funnel Presentation", url: "https://docs.google.com/presentation/d/1TY6YoNqHYYZPzobYSnUIf3u0NTrrnGyIyuWmrggr2uQ", type: "slide", icon: "📊" },
+      { title: "PSIS Target Audience (Persona Pitou)", url: "https://docs.google.com/presentation/d/1aedFWEff8Q-RkVk-71DvCMSyQKE7cD9rdCehYAifS6k", type: "slide", icon: "👥" },
+      { title: "Understanding the Client (Master Doc)", url: "https://docs.google.com/document/d/13seqCxWWa8oc1SV-YRUQe3ZgrHdxyvwxhzTBITjo7xg", type: "doc", icon: "📄" },
+      { title: "Media Mentoring Syllabus (Sheet)", url: "https://docs.google.com/spreadsheets/d/1sF4AtOKXRzhz6Ln1U6a3hVlxT7PZ7X9oOVL8jHgDEf8", type: "sheet", icon: "📑" },
+      { title: "Mentoring Goals & Team Profile", url: "https://docs.google.com/document/d/1fUZAQ5Q_a964ozCQwcMNUjrB3DRMS-UUEQa4BLdBI2Y", type: "doc", icon: "🎯" }
     ],
     coreQuestions: [
       "១. យើងកំពុងនិយាយទៅកាន់អ្នកណា? (Who is the audience?)",
       "២. ចង់ឲ្យគេយល់ ឬមានអារម្មណ៍អ្វី? (What emotion / thought to spark?)",
       "៣. មានរូបភាពពិតអ្វីបញ្ជាក់? (What visual proof is available?)"
     ]
+  },
+
+  persona: {
+    parent: {
+      name: "Pitou (ប៉ា ពីទូ)",
+      age: 35,
+      role: "Director of Operations, Chipmong Group",
+      location: "Borey Chipmong Land 271, Phnom Penh",
+      family: "ភរិយា: Lida (អាយុ 32 ឆ្នាំ), កូនស្រី: Vichera (អាយុ 7 ឆ្នាំ រៀននៅ PSIS CAP), កូនប្រុស: Virakboth (អាយុ 5 ឆ្នាំ)",
+      finances: "ចំណូលគ្រួសារខ្ពស់ (High-income), គណនីធនាគារ ~$50,000, កាបូបលុយ ~$200",
+      lifestyle: "រវល់ការងារការិយាល័យ ចូលចិត្តលេងបាល់ទាត់ ជិះឡានទំនើប ចុងសប្តាហ៍ទៅ Camping ឬលំហែនៅកំពត ញ៉ាំអាហារល្អសម្រាប់សុខភាព និងគ្រឿងសមុទ្រ",
+      socialBehavior: "ប្រើប្រាស់ Facebook ច្រើនរាល់ថ្ងៃ តែមិនសូវ Post រូបខ្លួនឯងទេ (Silent consumer), ប្រើសម្រាប់ស្រាវជ្រាវ តាមដានព័ត៌មាន និងការអប់រំកូន",
+      aspirations: "ចង់ឱ្យកូនឆ្លាត ក្លាហាន មានទំនុកចិត្ត ចេះដោះស្រាយបញ្ហាជីវិតពិត ចេះភាសាអង់គ្លេសស្ទាត់ និងមានឱកាសទៅផ្លាស់ប្តូរការសិក្សានៅអូស្ត្រាលី (Australia Exchange) ថ្ងៃមុខ",
+      painPoints: "បារម្ភថាកូនទន្ទេញចាំតែមេរៀន តែមិនយល់ការអនុវត្ត, ខ្លាចកូនខ្មាស់អៀនមិនហ៊ាននិយាយ, បារម្ភសុវត្ថិភាព និងការថែទាំថ្ងៃត្រង់ពេលខ្លួនរវល់ធ្វើការ",
+      dislikes: "មិនចូលចិត្តការអួតអាង (Show off), មិនចូលចិត្តការលក់បញ្ចុះតម្លៃខ្លាំងពេក, មិនចូលចិត្តវីដេអូរញ៉េរញ៉ៃគ្មានខ្លឹមសារ"
+    },
+    student: {
+      name: "Vichera Cheata (កូនស្រី វិច្ឆិកា)",
+      age: 7,
+      campus: "PSIS Chbar Ampov (CAP)",
+      characteristics: "ចូលចិត្តរៀនភាសាអង់គ្លេស គូររូប តុក្កតា និងលេងជាមួយមិត្តភក្តិ តែពេលខ្លះស្ទាក់ស្ទើរមិនសូវហ៊ានលើកដៃឆ្លើយនៅមុខថ្នាក់"
+    }
   },
 
   categories: [
@@ -99,10 +140,10 @@ const PSIS_DATA = {
       titleKm: "សរសេរដូចនិយាយទៅកាន់មនុស្សម្នាក់",
       subtitle: "បង្កើតរូបតំណាងទស្សនិកជនជាក់លាក់ (Persona)",
       core: "Talk to Someone, Not Everyone: កុំសន្មតព័ត៌មាន Persona ថាជាការពិត បើគ្មានទិន្នន័យគាំទ្រ។",
-      learn: "Persona រួមមានកន្លែងរស់នៅ កូន ការងារ ចំណូល ចំណូលចិត្ត អ្វីមិនចូលចិត្ត ទម្លាប់ប្រើ Facebook និងក្តីរំពឹងចំពោះកូន។ សេចក្តីសង្ខេបបានលើកឈ្មោះ Persona «Pitou»។",
+      learn: "Persona រួមមានកន្លែងរស់នៅ កូន ការងារ ចំណូល ចំណូលចិត្ត អ្វីមិនចូលចិត្ត ទម្លាប់ប្រើ Facebook និងក្តីរំពឹងចំពោះកូន។ ក្នុងឯកសារស្រាវជ្រាវ PSIS បានលើកយក Persona 'ប៉ា ពីទូ (Pitou)' អាយុ ៣៥ ឆ្នាំ ធ្វើការនៅ Chipmong Group រស់នៅបុរី ២៧១។",
       action: "សរសេររូបរាងទស្សនិកជនគោលដៅមួយ រួចអាន Script ដូចកំពុងនិយាយទៅកាន់គាត់ដោយផ្ទាល់។",
-      example: "ស្រមៃមើល 'ម៉ាក់ Pitou' អាយុ ៣២ ឆ្នាំ ជាអ្នកគ្រប់គ្រងក្រុមហ៊ុនឯកជន មានកូនអាយុ ៥ ឆ្នាំ ចង់ឱ្យកូនក្លាហាន និងចេះភាសាអង់គ្លេសស្ទាត់។",
-      tags: ["Persona", "Targeting", "Tone"]
+      example: "ស្រមៃមើល 'ប៉ា Pitou' អាយុ ៣៥ ឆ្នាំ មានកូនស្រីរៀននៅ PSIS ចង់ឱ្យកូនក្លាហាន ចេះដោះស្រាយបញ្ហាពិត និងមានឱកាសទៅសិក្សានៅអូស្ត្រាលី។",
+      tags: ["Persona", "Pitou", "Targeting", "Tone"]
     },
     {
       id: 6,
@@ -442,12 +483,24 @@ const PSIS_DATA = {
     }
   ],
 
+  roadmap: [
+    { week: 1, dates: "28/07 - 31/07", title: "Where They Are At & Intro to Marketing", tasks: "Understanding Client, Brand Guides & Content Planning" },
+    { week: 2, dates: "04/08 - 07/08", title: "Understanding Target Audience", tasks: "Client Goals Document" },
+    { week: 3, dates: "11/08 - 14/08", title: "Effective Content (Types of Content) & Marketing", tasks: "Pillars & Educational Value" },
+    { week: 4, dates: "18/08 - 21/08", title: "Identifying Target Audience & Marketing Funnel", tasks: "Awareness, Interest, Trust, Action mapping" },
+    { week: 5, dates: "25/08 - 28/08", title: "Client Goals & Advertising Without Being Pushy", tasks: "Capture Attention & Impactful Video" },
+    { week: 6, dates: "02/09 - 04/09", title: "Hooks (Think, Shock, Pain Point)", tasks: "Thinking outside the box & Ideation from Pain Points" },
+    { week: 7, dates: "08/09", title: "Goals to Improve & Video Feedback", tasks: "Review & Quality Optimization" },
+    { week: 8, dates: "16/09 - 18/09", title: "Review Videos & Shoot with Powerful Hooks", tasks: "Intro to Storytelling" },
+    { week: 9, dates: "23/09 - 25/09", title: "Impactful Storytelling", tasks: "Constructing a Captivating Story (Character → Change)" }
+  ],
+
   frameworks: {
     processSteps: [
       { step: 1, title: "Know Yourself", desc: "ស្គាល់សមត្ថភាព និងចំណុចខ្លាំងផ្ទាល់ខ្លួន" },
       { step: 2, title: "Know the Client", desc: "យល់ច្បាស់ពីសាលា PSIS និងបរិក្ខារ" },
       { step: 3, title: "Client Goals", desc: "កំណត់គោលដៅជាក់លាក់នៃ Content" },
-      { step: 4, title: "Audience Persona", desc: "ស្គាល់មាតាបិតាដែលកំពុងនិយាយជាមួយ" },
+      { step: 4, title: "Audience Persona", desc: "ស្គាល់មាតាបិតាដែលកំពុងនិយាយជាមួយ (ប៉ា ពីទូ)" },
       { step: 5, title: "Pain Points", desc: "ចាប់ផ្តើមពីកង្វល់ និងតម្រូវការជាក់ស្តែង" },
       { step: 6, title: "Content Purpose", desc: "កំណត់សារចម្បងតែមួយគត់" },
       { step: 7, title: "Funnel Stage", desc: "តម្រឹមតាមដំណាក់កាលសម្រេចចិត្ត" },
@@ -515,7 +568,7 @@ const PSIS_DATA = {
 
   checklist: [
     "កំណត់គោលដៅចម្បង និង Funnel stage ច្បាស់លាស់ (Awareness / Interest / Trust / Action)។",
-    "ដឹងច្បាស់ថាកំពុងនិយាយទៅកាន់ Persona ណា (ម៉ាក់ប៉ារវល់, ចង់បានភាសា, បារម្ភសុវត្ថិភាព)។",
+    "ដឹងច្បាស់ថាកំពុងនិយាយទៅកាន់ Persona ណា (ឧ. ប៉ា ពីទូ: រវល់ការងារ, ចង់បានភាសា និងអនាគត, មិនចូលចិត្តការអួតអាង)។",
     "ជ្រើសកង្វល់ ឬតម្រូវការមួយដែលពាក់ព័ន្ធ និងមានទម្ងន់។",
     "មានសារចម្បង (Single Core Message) តែមួយគត់សម្រាប់វីដេអូនេះ។",
     "មាន Hook (Think / Shock / Pain-point) ដែល Footage និងសាច់រឿងអាចឆ្លើយតបបាន។",

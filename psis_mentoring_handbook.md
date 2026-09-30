@@ -68,7 +68,52 @@
 
 ---
 
-## 📚 ៦. មាតិកាលម្អិតទាំង ៣៣ មេរៀន (All 33 Lessons)
+## 📁 ៦. Google Drive Resource Hub (ឯកសារដើមរបស់ PSIS)
+* 📁 **[PSIS Main Drive Folder](https://drive.google.com/drive/folders/1Uuv_nQz7-mxvE41fhSrYyJN7Vv0kfGg7)** — Google Drive Root Folder
+* 👥 **[PSIS Target Audience Presentation](https://docs.google.com/presentation/d/1aedFWEff8Q-RkVk-71DvCMSyQKE7cD9rdCehYAifS6k)** — Google Slides (Persona Pitou Dossier)
+* 📊 **[The Marketing Funnel Presentation](https://docs.google.com/presentation/d/1TY6YoNqHYYZPzobYSnUIf3u0NTrrnGyIyuWmrggr2uQ)** — Google Slides
+* 📄 **[Understanding the Client Master Document](https://docs.google.com/document/d/13seqCxWWa8oc1SV-YRUQe3ZgrHdxyvwxhzTBITjo7xg)** — Google Doc (Client Details & Competitors)
+* 📑 **[Media Mentoring Syllabus](https://docs.google.com/spreadsheets/d/1sF4AtOKXRzhz6Ln1U6a3hVlxT7PZ7X9oOVL8jHgDEf8)** — Google Spreadsheet (9-Week Schedule)
+* 🎯 **[Mentoring Goals & Team Profile](https://docs.google.com/document/d/1fUZAQ5Q_a964ozCQwcMNUjrB3DRMS-UUEQa4BLdBI2Y)** — Google Doc (Chhit & Sievling Profile)
+
+---
+
+## 🎯 ៧. Audience Persona Dossier (ទម្រង់ទស្សនិកជនគោលដៅពិត)
+
+### ប៉ា ពីទូ (Father Persona: Pitou)
+* **អាយុ:** ៣៥ ឆ្នាំ
+* **មុខងារ & ក្រុមហ៊ុន:** Director of Operations, Chipmong Group
+* **ទីលំនៅ:** បុរី ជីបម៉ុង ២៧១ (Borey Chipmong Land 271, ភ្នំពេញ)
+* **គ្រួសារ:** ភរិយា Lida (អាយុ ៣២), កូនស្រី Vichera (អាយុ ៧ រៀននៅ PSIS CAP), កូនប្រុស Virakboth (អាយុ ៥)
+* **កម្រិតជីវភាព:** Upper-income, ធនាគារ ~$50,000, ជិះឡានទំនើប
+* **ទម្លាប់ប្រើប្រាស់ Facebook:** ប្រើប្រាស់ច្រើនរាល់ថ្ងៃ តែជា *Silent Consumer* (មិនសូវ Post រូបខ្លួនឯងទេ តែចូលចិត្តស្រាវជ្រាវ តាមដានព័ត៌មាន និងការអប់រំកូន)
+* **បំណងប្រាថ្នាចំពោះកូន:** ចង់ឱ្យកូនឆ្លាត ក្លាហាន ចេះដោះស្រាយបញ្ហាពិត មានជំនាញអង់គ្លេសស្ទាត់ និងមានឱកាសទៅផ្លាស់ប្តូរការសិក្សានៅប្រទេសអូស្ត្រាលី (Australia Exchange)
+* **កង្វល់ពិត (Pain Points):** បារម្ភថាកូនទន្ទេញចាំតែមេរៀន តែមិនយល់ការអនុវត្ត, ខ្លាចកូនខ្មាស់អៀនមិនហ៊ាននិយាយ, បារម្ភសុវត្ថិភាព និងការថែទាំថ្ងៃត្រង់ពេលខ្លួនរវល់ធ្វើការ
+* **អ្វីដែលមិនចូលចិត្ត:** ការអួតអាង (Show off), ការលក់បញ្ចុះតម្លៃខ្លាំងពេក, វីដេអូរញ៉េរញ៉ៃគ្មានខ្លឹមសារ
+
+### កូនស្រី វិច្ឆិកា (Student Persona: Vichera Cheata)
+* **អាយុ:** ៧ ឆ្នាំ (សិស្សបឋមសិក្សា នៅ PSIS Chbar Ampov - CAP)
+* **ចរិតលក្ខណៈ:** ចូលចិត្តភាសាអង់គ្លេស គូររូប តុក្កតា តែពេលខ្លះស្ទាក់ស្ទើរមិនសូវហ៊ានលើកដៃឆ្លើយនៅមុខថ្នាក់។
+
+---
+
+## 📅 ៨. កាលវិភាគ Media Mentoring (9-Week Mentoring Roadmap)
+
+| សប្តាហ៍ | កាលបរិច្ឆេទ | ខ្លឹមសារមេរៀន (Session Content) | កិច្ចការ & គោលដៅ (Tasks & Milestones) |
+|---|---|---|---|
+| **Week 1** | 28/07 - 31/07 | Understanding where they are at • Intro to Marketing • Understanding the Client | Brand Guides, Content Plans & Campus Facilities preparation |
+| **Week 2** | 04/08 - 07/08 | Understanding Target Audience & Psychographics | Client Goals Document & Parent Research |
+| **Week 3** | 11/08 - 14/08 | Effective Content (6 Content Pillars) • Effective Marketing | Client Goals Document & Content Mix Balance |
+| **Week 4** | 18/08 - 21/08 | Identifying Target Audience • Marketing Funnel | Awareness → Interest → Trust → Action Mapping |
+| **Week 5** | 25/08 - 28/08 | Advertising that doesn't feel pushy (Value-first) • Impactful Video | How to capture attention without aggressive selling |
+| **Week 6** | 02/09 - 04/09 | Hooks (Think, Shock, Pain Point) • Thinking outside the box | Ideating impactful hooks pertaining to parent pain points |
+| **Week 7** | 08/09 | Monthly Goals Review • Video Feedback & Quality Advice | Retention optimization & Reviewing Reel performance |
+| **Week 8** | 16/09 - 18/09 | Review videos & Shoot Video with powerful hooks • Intro to Storytelling | Micro-moments in classrooms (Teacher & Student) |
+| **Week 9** | 23/09 - 25/09 | Impactful Storytelling: Constructing a Captivating Story | Character → Want → Problem → Action → Change → Meaning |
+
+---
+
+## 📚 ៩. មាតិកាលម្អិតទាំង ៣៣ មេរៀន (All 33 Lessons)
 
 ### មេរៀនទី ០១: Understanding Where You Are (ស្គាល់ចំណុចខ្លាំង និងអ្វីដែលត្រូវកែលម្អ)
 * **គំនិតស្នូល:** Self-awareness + Improvement: ជ្រើសជំនាញមួយហាត់ ហើយប្រៀបធៀបការងារមុន និងក្រោយ។
