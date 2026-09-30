@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSIS Guideline & Content Mentoring System</title>
+  
+  <!-- Kantumruy Pro Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       Sidebar Navigation
+       ========================================== -->
+  <aside>
+    <div class="brand-badge">PSIS SYSTEM</div>
+    <div class="brand-header">
+      <h2>PSIS GUIDELINE</h2>
+      <span>CONTENT MENTORING / CHHIT</span>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="nav-group-title">ម៉ឺនុយមេរៀន & ឯកសារ</div>
+    <nav>
+      <button class="nav-btn active" data-view="lessons">
+        <span class="icon">📚</span>
+        <span>មេរៀនទាំងអស់</span>
+        <span class="badge-pill">33</span>
+      </button>
+
+      <button class="nav-btn" data-view="framework">
+        <span class="icon">📐</span>
+        <span>Framework & Process</span>
+      </button>
+
+      <button class="nav-btn" data-view="brand">
+        <span class="icon">🎨</span>
+        <span>Brand Guidelines</span>
+      </button>
+
+      <button class="nav-btn" data-view="checklist">
+        <span class="icon">📋</span>
+        <span>Checklist មុនផលិត</span>
+      </button>
+
+      <button class="nav-btn" data-view="planner">
+        <span class="icon">✍️</span>
+        <span>Script Planner Tool</span>
+      </button>
+    </nav>
+
+    <div class="aside-footer">
+      <b>យល់ → អនុវត្ត → កែលម្អ</b><br>
+      PSIS Content Mentoring 33 Lessons<br>
+      ផ្ទៀងផ្ទាត់ និងចងក្រងសម្រាប់ឯកសារយោង
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       Main Workspace
+       ========================================== -->
+  <main>
+
+    <!-- Top Banner -->
+    <header class="top-banner">
+      <div class="top-banner-title">
+        <h1>PSIS GUIDELINE & MENTORING</h1>
+        <p>ប្រព័ន្ធរំលឹកមេរៀន និងឯកសារណែនាំយុទ្ធសាស្ត្រផលិត Content & Video ប្រកបដោយអត្ថន័យ និងកសាងទំនុកចិត្តមាតាបិតា</p>
+      </div>
+      <div class="top-actions">
+        <button id="btnPrintDoc" class="btn-banner" title="បោះពុម្ព ឬរក្សាទុកជា PDF">
+          <span>🖨️</span> Print / PDF
+        </button>
+        <button id="btnHeaderPlanner" class="btn-banner btn-banner-gold">
+          <span>✍️</span> បង្កើត Script
+        </button>
+      </div>
+    </header>
+
+    <!-- ==========================================
+         SECTION 1: LESSONS (មេរៀនទាំងអស់ ៣៣)
+         ========================================== -->
+    <section id="lessons" class="tab-section active">
+      
+      <!-- Highlights Overview -->
+      <div class="hero-highlights">
+        <div class="highlight-box dark">
+          <span class="tag-pill">គំនិតស្នូលចម្បង (CORE PURPOSE)</span>
+          <h3>បង្ហាញថា អ្វីដែល PSIS ធ្វើ<br>មានន័យអ្វីសម្រាប់កូន និងអនាគតរបស់កូន។</h3>
+          <p>Activity → Skill → Benefit → Future | Beyond Memorization → Understanding → Character</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="tag-pill" style="color:var(--blue); background:var(--blue-soft);">មុនចាប់ផ្តើមផលិតវីដេអូនីមួយៗ</span>
+          <h3 style="font-size: 17px; margin-bottom: 6px;">សួរខ្លួនឯងនូវ ៣ សំណួរគន្លឹះ៖</h3>
+          <ol>
+            <li><b>តើយើងកំពុងនិយាយទៅកាន់អ្នកណា?</b> (Audience Persona)</li>
+            <li><b>ចង់ឲ្យគេយល់ ឬមានអារម្មណ៍អ្វី?</b> (Core Emotion / Message)</li>
+            <li><b>មានរូបភាពពិតអ្វីបញ្ជាក់?</b> (Visual Proof)</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Toolbar: Search & Filter -->
+      <div class="toolbar-wrap">
+        <div class="search-bar-row">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="search" id="searchInput" placeholder="ស្វែងរកមេរៀន… Hook, Story, Trust, Persona, Future, Funnel, Paid Ads...">
+          </div>
+          <span id="resultsStats" class="results-stats">33 / 33 មេរៀន</span>
+        </div>
+
+        <!-- Category Chips -->
+        <div class="category-chips" id="categoryChips"></div>
+      </div>
+
+      <!-- Grid of 33 Lesson Cards -->
+      <div class="lessons-grid" id="lessonsGrid"></div>
+
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: FRAMEWORK & PROCESS
+         ========================================== -->
+    <section id="framework" class="tab-section">
+      <div class="panel">
+        <h2><span>⚡</span> ដំណើរការមាតិកា ១៥ ជំហាន (15-Step Content Process)</h2>
+        <p style="color:var(--ink-secondary); margin-bottom: 12px;">ចាប់ពីការស្គាល់ខ្លួនឯង រហូតដល់ការវាស់វែង និងកែលម្អឥតឈប់ឈរ៖</p>
+        <div class="process-grid" id="processGrid"></div>
+      </div>
+
+      <div class="panel">
+        <h2><span>🎬</span> រចនាសម្ព័ន្ធវីដេអូស្តង់ដារ (Video Blueprint Flow)</h2>
+        <p style="color:var(--ink-secondary); margin-bottom: 14px;"><b>Hook → Context → Action / Story → Result / Proof → Meaning → CTA</b></p>
+        <div class="flow-steps" id="flowContainer"></div>
+      </div>
+
+      <div class="panel">
+        <h2><span>📊</span> Marketing Funnel សម្រាប់សាលារៀន (School Marketing Funnel)</h2>
+        <div class="funnel-grid" id="funnelGrid"></div>
+      </div>
+
+      <div class="panel">
+        <h2><span>💡</span> រូបមន្តបង្កើតគំនិត និងរឿងនិទាន (Formulas & Story Arc)</h2>
+        <div style="display:flex; flex-direction:column; gap:14px; margin-top: 14px;">
+          <div class="process-card">
+            <b>រូបមន្ត A (Pain Point to Solution):</b><br>
+            <code>Pain Point → Question → Hook → Proof → Solution</code>
+            <p style="font-size:13px; color:var(--muted); margin-top:4px;">ចាប់ផ្តើមពីកង្វល់ជាក់លាក់របស់មាតាបិតា → បង្កើតជាសំណួរ Hook → បង្ហាញសកម្មភាពក្នុងថ្នាក់រៀនជាភស្តុតាង → ផ្តល់ដំណោះស្រាយ។</p>
+          </div>
+          <div class="process-card">
+            <b>រូបមន្ត B (Character Transformation in Classroom):</b><br>
+            <code>Character → Want → Problem → Action → Change → Meaning</code>
+            <p style="font-size:13px; color:var(--muted); margin-top:4px;">តួអង្គ (សិស្ស/គ្រូ) → បំណងប្រាថ្នា → ឧបសគ្គ/ភាពភ័យខ្លាច → សកម្មភាពអនុវត្ត → ការផ្លាស់ប្តូរ → អត្ថន័យសម្រាប់អនាគត។</p>
+          </div>
+          <div class="process-card">
+            <b>រូបមន្ត C (Continuous Improvement Cycle):</b><br>
+            <code>Create → Measure → Review → Improve → Repeat</code>
+            <p style="font-size:13px; color:var(--muted); margin-top:4px;">ផលិត → វាស់ទិន្នន័យ (Retention, Shares, Inquiries) → ពិនិត្យ Feedback → កែលម្អ Hook/Pacing ក្នុងវីដេអូបន្ទាប់។</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: BRAND GUIDELINES
+         ========================================== -->
+    <section id="brand" class="tab-section">
+      <div class="panel">
+        <h2><span>🎨</span> PSIS Colors Palette (កូដពណ៌ម៉ាកសញ្ញា)</h2>
+        <p style="color:var(--muted); font-size:14px;">ចុចលើប៊ូតុង "Copy" ដើម្បីចម្លងកូដ HEX យកទៅប្រើប្រាស់ក្នុង Premiere, Photoshop, Canva, ឬ CapCut៖</p>
+        <div class="color-palette-grid" id="colorPaletteGrid"></div>
+      </div>
+
+      <div class="panel">
+        <h2><span>🏫</span> បរិក្ខារ និងទីកន្លែងក្នុង Campus (Facilities)</h2>
+        <p style="color:var(--muted); font-size:14px;">ត្រូវផ្ទៀងផ្ទាត់វត្តមានពិតប្រាកដតាម Campus នីមួយៗ មុនពេលរៀបចំផែនការថត៖</p>
+        <div class="tag-collection" id="facilitiesTags"></div>
+      </div>
+
+      <div class="panel">
+        <h2><span>🎓</span> កម្មវិធីសិក្សា និងសកម្មភាពបន្ថែម (Curriculum & Programs)</h2>
+        <p style="color:var(--muted); font-size:14px;">កម្មវិធីសិក្សាទាំងជាតិ និងអន្តរជាតិដែលសាលាផ្តល់ជូន៖</p>
+        <div class="tag-collection" id="programsTags"></div>
+      </div>
+
+      <div class="panel">
+        <h2><span>📢</span> គោលការណ៍ទំនាក់ទំនង & Tone of Voice</h2>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
+          <div class="flow-step-item">
+            <div class="flow-step-badge">Show Value</div>
+            <div class="flow-step-content">
+              <b>បង្ហាញតម្លៃនៅពីក្រោយសកម្មភាព</b>
+              <p>កុំគ្រាន់តែថតសិស្សអង្គុយរៀន ឬលេង ត្រូវពន្យល់ថាពួកគេកំពុងហាត់ជំនាញអ្វី និងផ្តល់ប្រយោជន៍អ្វីសម្រាប់ជីវិត។</p>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-badge">Show Don't Claim</div>
+            <div class="flow-step-content">
+              <b>បង្ហាញសកម្មភាពពិត ចៀសវាងការអួតអាង</b>
+              <p>បង្ហាញភាពកក់ក្តៅរបស់គ្រូតាមរយៈកាយវិការជួយសិស្សពិតៗ ជាជាងការសរសេរ Caption វែងៗថាយកចិត្តទុកដាក់។</p>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-badge">Brand Consistency</div>
+            <div class="flow-step-content">
+              <b>រក្សាភាពស៊ីសង្វាក់នៃម៉ាកសញ្ញា</b>
+              <p>ប្រើ Font Kantumruy Pro, រក្សាកូដពណ៌ Navy & Gold, និងបែងចែកឱ្យដាច់រវាង PSIS និង AYLA។</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 4: PRE-PRODUCTION CHECKLIST
+         ========================================== -->
+    <section id="checklist" class="tab-section">
+      <div class="panel">
+        <h2><span>📋</span> Checklist មុនផលិតវីដេអូ ឬចេញផ្សាយ Content</h2>
+        <p style="color:var(--muted); font-size:14px; margin-bottom: 20px;">
+          ប្រើសម្រាប់ផ្ទៀងផ្ទាត់រាល់វីដេអូនីមួយៗ។ ប្រព័ន្ធនឹងរក្សាទុកស្ថានភាពធីករបស់អ្នកដោយស្វ័យប្រវត្តិក្នុង Browser។
+        </p>
+
+        <div class="checklist-head-bar">
+          <div class="progress-container">
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <span class="progress-text" id="progressText">0 / 10 បានរួចរាល់ (0%)</span>
+          </div>
+
+          <div style="display:flex; gap:10px;">
+            <button id="btnCopyChecklist" class="btn-secondary">📋 Copy Checklist</button>
+            <button id="btnResetChecklist" class="btn-secondary">🔄 Reset ទាំងអស់</button>
+          </div>
+        </div>
+
+        <div class="checklist-items" id="checklistContainer"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 5: SCRIPT & IDEA PLANNER TOOL
+         ========================================== -->
+    <section id="planner" class="tab-section">
+      <div class="panel">
+        <h2><span>✍️</span> ឧបករណ៍បង្កើត Script Brief & Outline វីដេអូ</h2>
+        <p style="color:var(--muted); font-size:14px; margin-bottom: 22px;">
+          បញ្ចូលទិន្នន័យនៃគំនិតវីដេអូរបស់អ្នក ដើម្បីបង្កើត Video Script Brief ស្តង់ដារភ្លាមៗសម្រាប់យកទៅថត ឬកាត់ត៖
+        </p>
+
+        <div class="planner-form-grid">
+          <div class="form-group">
+            <label for="plannerTopic">📌 ប្រធានបទវីដេអូ (Topic)</label>
+            <input type="text" id="plannerTopic" value="រៀនគិតជាប្រព័ន្ធតាមរយៈ Coding & Robotics">
+          </div>
+
+          <div class="form-group">
+            <label for="plannerPersona">🎯 ទស្សនិកជនគោលដៅ (Target Persona)</label>
+            <input type="text" id="plannerPersona" value="ម៉ាក់ប៉ារវល់ការងារការិយាល័យ ចង់ឱ្យកូនក្លាហាន និងមានជំនាញបច្ចេកវិទ្យា">
+          </div>
+
+          <div class="form-group">
+            <label for="plannerFunnel">📊 ដំណាក់កាល Funnel</label>
+            <select id="plannerFunnel">
+              <option value="Awareness (ឱ្យគេស្គាល់សាលា)">Awareness (ឱ្យគេស្គាល់សាលា)</option>
+              <option value="Interest (ឱ្យគេចង់ដឹងកម្មវិធីបន្ថែម)">Interest (ឱ្យគេចង់ដឹងកម្មវិធីបន្ថែម)</option>
+              <option value="Trust (កសាងទំនុកចិត្តលើការថែទាំ)" selected>Trust (កសាងទំនុកចិត្តលើការថែទាំ)</option>
+              <option value="Action (ជំរុញឱ្យទាក់ទងចុះឈ្មោះ)">Action (ជំរុញឱ្យទាក់ទងចុះឈ្មោះ)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="plannerPainPoint">⚠️ កង្វល់ ឬបញ្ហារបស់មាតាបិតា (Pain Point)</label>
+            <input type="text" id="plannerPainPoint" value="កូនរៀនតែទ្រឹស្តី មិនចេះអនុវត្តដោះស្រាយបញ្ហាពិត">
+          </div>
+
+          <div class="form-group">
+            <label for="plannerHookType">⏱️ ប្រភេទ Hook (First 3 Seconds)</label>
+            <select id="plannerHookType">
+              <option value="THINK (ធ្វើឱ្យគិត)" selected>THINK (ធ្វើឱ្យគិត)</option>
+              <option value="SHOCK (ភាពភ្ញាក់ផ្អើល)">SHOCK (ភាពភ្ញាក់ផ្អើល)</option>
+              <option value="PAIN-POINT (ចាក់ដោតកង្វល់)">PAIN-POINT (ចាក់ដោតកង្វល់)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="plannerHookText">💬 សារបើកឆាក (Hook Text on Screen / Audio)</label>
+            <input type="text" id="plannerHookText" value="«រៀនបានពិន្ទុល្អ… តែបើជួបបញ្ហាជាក់ស្តែង គាត់ចេះដោះស្រាយដោយរបៀបណា?»">
+          </div>
+
+          <div class="form-group full">
+            <label for="plannerAction">🎬 សកម្មភាពពិតក្នុងថ្នាក់រៀន (Action / Story Footage)</label>
+            <textarea id="plannerAction" rows="2">សិស្សអង្គុយសាកល្បងសរសេរ Code លើ CodeMonkey ខុសហើយកែឡើងវិញ ដោយមានគ្រូនៅក្បែរជួយលើកទឹកចិត្ត</textarea>
+          </div>
+
+          <div class="form-group full">
+            <label for="plannerProof">🏆 ភស្តុតាង និងលទ្ធផល (Visual Proof)</label>
+            <textarea id="plannerProof" rows="2">ស្នាមញញឹមពេល Robot ដើរត្រូវទិសដៅ និងការទះដៃអបអរជាមួយមិត្តភក្តិ</textarea>
+          </div>
+
+          <div class="form-group full">
+            <label for="plannerMeaning">🌱 អត្ថន័យ និងផលប្រយោជន៍ថ្ងៃមុខ (Meaning & Future Benefit)</label>
+            <textarea id="plannerMeaning" rows="2">នៅ PSIS ការរៀនបច្ចេកវិទ្យាមិនមែនគ្រាន់តែមើលអេក្រង់ទេ គឺការហាត់គិតដោះស្រាយបញ្ហាសម្រាប់អនាគត</textarea>
+          </div>
+
+          <div class="form-group full">
+            <label for="plannerCTA">📣 Call to Action (CTA ស្រាលស្រទន់)</label>
+            <input type="text" id="plannerCTA" value="ស្វែងយល់បន្ថែមអំពីកម្មវិធីសិក្សាអន្តរជាតិនៅ PSIS តាមរយៈ Message ឬទស្សនាសាលាផ្ទាល់។">
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin: 18px 0 8px;">
+          <h3 style="margin:0;">📄 សេចក្តីព្រាង Script Brief (Auto-generated)</h3>
+          <button id="btnCopyScript" class="btn-banner btn-banner-gold" style="color:var(--navy-dark);">
+            📋 ចម្លង Script Brief នេះ
+          </button>
+        </div>
+
+        <div class="script-preview-box" id="scriptOutput"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       Lesson Detail Modal Dialog
+       ========================================== -->
+  <dialog id="lessonModal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-badge" id="modalBadge">LESSON 01 / 33</span>
+        <h2 id="modalTitle">Understanding Where You Are</h2>
+        <div class="modal-km-title" id="modalKmTitle">ស្គាល់ចំណុចខ្លាំង និងអ្វីដែលត្រូវកែលម្អ</div>
+      </div>
+      <button class="btn-close-modal" id="btnCloseModal" aria-label="បិទ">×</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-core-box" id="modalCore"></div>
+
+      <div class="modal-section-title"><span>📖</span> អ្វីដែលត្រូវយល់ដឹង (What to Understand)</div>
+      <p class="modal-text" id="modalLearn"></p>
+
+      <div class="modal-section-title"><span>🚀</span> របៀបយកទៅអនុវត្តជាក់ស្តែង (Actionable Execution)</div>
+      <p class="modal-text" id="modalAction"></p>
+
+      <div class="modal-section-title"><span>💡</span> ឧទាហរណ៍ជាក់ស្តែង & ចំណុចរំលឹក (Examples & Reminders)</div>
+      <div class="modal-example-box" id="modalExample"></div>
+
+      <div class="modal-section-title"><span>🏷️</span> Tags</div>
+      <div class="tag-collection" id="modalTags"></div>
+    </div>
+
+    <div class="modal-footer">
+      <div class="modal-nav-group">
+        <button id="btnModalPrev" class="btn-secondary">← មេរៀនមុន</button>
+        <button id="btnModalNext" class="btn-secondary">មេរៀនបន្ទាប់ →</button>
+      </div>
+
+      <div style="display:flex; gap:10px;">
+        <button id="btnModalCopy" class="btn-secondary">📋 ចម្លងមេរៀន</button>
+        <button id="btnModalStar" class="btn-secondary">☆ ចំណាំមេរៀន</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span>💡</span>
+    <span id="toastMsg">សារជូនដំណឹង</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,536 @@
+// PSIS Content Mentoring Full Dataset
+// 33 Complete Lessons, Categories, Frameworks, and Brand Guidelines
+
+const PSIS_DATA = {
+  brand: {
+    title: "PSIS GUIDELINE & CONTENT MENTORING",
+    subtitle: "ប្រព័ន្ធរំលឹកមេរៀន និងឯកសារណែនាំយុទ្ធសាស្ត្រផលិត Content & Video",
+    source: "សេចក្តីសង្ខេប Mentoring ៣៣ ចំណុច (Chhit x PSIS)",
+    motto: "បង្ហាញថា អ្វីដែល PSIS ធ្វើ មានន័យអ្វីសម្រាប់កូន និងអនាគតរបស់កូន",
+    colors: [
+      { name: "PSIS Navy Deep", hex: "#06134b", desc: "ពណ៌គោល តំណាងឱ្យភាពច្បាស់លាស់ ទំនុកចិត្ត និងកិត្យានុភាព" },
+      { name: "PSIS Royal Blue", hex: "#0d47a1", desc: "ពណ៌រង ប្រើសម្រាប់ Header, Banner, និង Gradient" },
+      { name: "Accent Gold / Yellow", hex: "#fdb827", desc: "ពណ៌រំលេចចំណងជើង និមិត្តសញ្ញា និង Button Highlight" },
+      { name: "Action Blue", hex: "#1864d8", desc: "ពណ៌ Call-to-Action, Link, និង Tag" },
+      { name: "Soft Background", hex: "#f3f6fa", desc: "ពណ៌ផ្ទៃខាងក្រោយ ស្រួលមើល និងមានផាសុកភាពភ្នែក" },
+      { name: "Card Border / Line", hex: "#dde5ec", desc: "បន្ទាត់ព្រំដែន និងខណ្ឌផ្នែក" },
+      { name: "Deep Ink Text", hex: "#172e45", desc: "ពណ៌អក្សរចម្បង ងាយស្រួលអាន" }
+    ],
+    facilities: [
+      "ICT Room", "Science Lab", "Art Room", "Library", "Playground", "Canteen",
+      "Event Hall", "School Bus", "Interactive Classroom", "Student Card Security",
+      "Football Court", "Basketball Court", "Meditation Room", "Nap / Rest Area"
+    ],
+    programs: [
+      "English Curriculum", "Khmer Curriculum", "Chinese Language", "Mathematics",
+      "Science", "Art", "ICT & Coding", "Good Morals & Ethics", "ELIF Program",
+      "Taekwondo", "Swimming", "Robotics", "Raz-Kids Reading", "CodeMonkey"
+    ],
+    coreQuestions: [
+      "១. យើងកំពុងនិយាយទៅកាន់អ្នកណា? (Who is the audience?)",
+      "២. ចង់ឲ្យគេយល់ ឬមានអារម្មណ៍អ្វី? (What emotion / thought to spark?)",
+      "៣. មានរូបភាពពិតអ្វីបញ្ជាក់? (What visual proof is available?)"
+    ]
+  },
+
+  categories: [
+    { id: "all", label: "មេរៀនទាំងអស់ (33)", icon: "📚" },
+    { id: "foundation", label: "មូលដ្ឋានគ្រឹះ & Client", icon: "🏛️" },
+    { id: "audience", label: "Audience & Pain Points", icon: "🎯" },
+    { id: "strategy", label: "Funnel & Strategy", icon: "📈" },
+    { id: "storytelling", label: "Hook & Storytelling", icon: "🎬" },
+    { id: "trust", label: "Trust, Value & Teacher", icon: "🤝" },
+    { id: "optimization", label: "Review, Ads & Optimize", icon: "⚙️" }
+  ],
+
+  lessons: [
+    {
+      id: 1,
+      category: "foundation",
+      titleEn: "Understanding Where You Are",
+      titleKm: "ស្គាល់ចំណុចខ្លាំង និងអ្វីដែលត្រូវកែលម្អ",
+      subtitle: "វាយតម្លៃសមត្ថភាពផ្ទាល់ខ្លួន និងកំណត់គោលដៅអភិវឌ្ឍន៍ជំនាញ",
+      core: "Self-awareness + Improvement: ជ្រើសជំនាញមួយហាត់ ហើយប្រៀបធៀបការងារមុន និងក្រោយ។",
+      learn: "វាយតម្លៃសមត្ថភាពបច្ចុប្បន្ន អ្វីធ្វើបានដោយខ្លួនឯង អ្វីត្រូវការ Mentor និងគោលដៅ ៣ ខែ / ១ ឆ្នាំ។ គោលដៅរៀនរួមមាន Creative ideas, Modern design, Video production, Editing, Impactful content, English, Planning, Reporting និង Research។",
+      action: "រាល់ខែ កត់អ្វីដែលប្រសើរឡើង ចំណុចនៅខ្សោយ និងជំនាញត្រូវហាត់បន្ទាប់។ ធ្វើ Self-reflection ជាប្រចាំ។",
+      example: "ជ្រើសរើសជំនាញជាក់លាក់មួយ (ឧទាហរណ៍៖ ការកាត់ត Footage ឬការសរសេរ Hook) ហើយប្រៀបធៀបស្នាដៃខែមុន និងខែនេះ ដើម្បីវាស់ស្ទង់ការវិវឌ្ឍ។",
+      tags: ["Mindset", "Self-growth", "Skill Assessment"]
+    },
+    {
+      id: 2,
+      category: "foundation",
+      titleEn: "Understanding the Client",
+      titleKm: "ស្គាល់ PSIS មុនសរសេរ Content",
+      subtitle: "យល់ច្បាស់ពីប្រព័ន្ធសាលា កម្មវិធីសិក្សា និងបរិក្ខារនានា",
+      core: "Know the Brand: កុំជ្រើសប្រធានបទត្រឹមតែដោយសារមានអ្វីថត។",
+      learn: "យល់ពីប្រភេទសាលា កម្មវិធី Facilities, Campus, Extra programs, Mission, Vision, តម្លៃ គោលដៅអាជីវកម្ម និងគោលដៅ Social media។ បញ្ជីក្នុងសេចក្តីសង្ខេប៖ ICT Room, Science Lab, Art Room, Library, Playground, Canteen, Event Hall, School Bus, Interactive Classroom, Student Card Security, Football, Basketball, Meditation Room និង Nap/Rest Area។ កម្មវិធី៖ English, Khmer, Chinese, Maths, Science, Art, ICT, Good Morals, ELIF, Taekwondo, Swimming, Robotics, Raz-Kids និង CodeMonkey។",
+      action: "ផ្ទៀងផ្ទាត់ព័ត៌មានតាម Campus រួចសួរថា៖ អ្វីដែលខ្ញុំថត បង្ហាញអ្វីពី PSIS? តើវាឆ្លុះបញ្ចាំងពីគុណតម្លៃសាលាយ៉ាងដូចម្តេច?",
+      example: "មុននឹងផលិតវីដេអូពី Robotics ត្រូវដឹងថាសិស្សកម្រិតណាខ្លះដែលរៀន ហើយវាជួយអ្វីដល់ការគិតបែបរិះគន់ (Critical thinking) របស់កូន។",
+      tags: ["Brand Identity", "PSIS Context", "Facilities"]
+    },
+    {
+      id: 3,
+      category: "foundation",
+      titleEn: "Client Goals",
+      titleKm: "Content នីមួយៗត្រូវមានគោលដៅ",
+      subtitle: "កំណត់គោលដៅច្បាស់លាស់មុនពេលចាប់ផ្តើមផលិត",
+      core: "Clear Objectives: កំណត់គោលដៅចម្បងមួយមុនថត និងជ្រើសលទ្ធផលដែលត្រូវតាមដាន។",
+      learn: "គោលដៅអាចជា Enrollment, Awareness, Inquiries, School visits, Parent trust, Promote programs, Differentiation, Positioning, Education philosophy និងផ្តល់ប្រយោជន៍ដល់ Parent។",
+      action: "ជ្រើសរើសគោលដៅចម្បងតែមួយគត់សម្រាប់វីដេអូនីមួយៗ ដើម្បីចៀសវាងភាពរញ៉េរញ៉ៃនៃសារ។",
+      example: "Rest Time → Trust; 3 Languages → Differentiation; Enrollment → Action; Teacher explains Science → Educational authority។",
+      tags: ["Goal Setting", "Objectives", "KPI"]
+    },
+    {
+      id: 4,
+      category: "audience",
+      titleEn: "Understanding Target Audience",
+      titleKm: "ស្គាល់អ្នកមើលលើសពីអាយុ និងទីតាំង",
+      subtitle: "សិក្សាស៊ីជម្រៅលើចិត្តសាស្ត្រ និងទម្លាប់របស់មាតាបិតា",
+      core: "Right Message → Right Person: Parent រវល់ការងារ អាចចាប់អារម្មណ៍ Routine និងការថែទាំកូន។",
+      learn: "សិក្សា Age, Gender, Location, Income, Job, Family, Lifestyle, Hobbies, Likes, Dislikes, Shopping habits, Social media behavior, កង្វល់ និងបំណងប្រាថ្នាសម្រាប់កូន។",
+      action: "ប្រមូលសំណួរពិតពី Parent តាមរយៈការសាកសួរក្រុមការងារ Admission ឬគ្រូប្រចាំថ្នាក់ ហើយសរសេរអ្វីដែលពួកគេចង់ដឹងពិតប្រាកដ។",
+      example: "មាតាបិតាដែលធ្វើការងារការិយាល័យពេញម៉ោង ច្រើនតែបារម្ភពីរបបអាហារថ្ងៃត្រង់ ការសម្រាក និងសុវត្ថិភាពក្នុងការធ្វើដំណើររបស់កូន។",
+      tags: ["Audience Research", "Demographics", "Psychographics"]
+    },
+    {
+      id: 5,
+      category: "audience",
+      titleEn: "Creating Audience Persona",
+      titleKm: "សរសេរដូចនិយាយទៅកាន់មនុស្សម្នាក់",
+      subtitle: "បង្កើតរូបតំណាងទស្សនិកជនជាក់លាក់ (Persona)",
+      core: "Talk to Someone, Not Everyone: កុំសន្មតព័ត៌មាន Persona ថាជាការពិត បើគ្មានទិន្នន័យគាំទ្រ។",
+      learn: "Persona រួមមានកន្លែងរស់នៅ កូន ការងារ ចំណូល ចំណូលចិត្ត អ្វីមិនចូលចិត្ត ទម្លាប់ប្រើ Facebook និងក្តីរំពឹងចំពោះកូន។ សេចក្តីសង្ខេបបានលើកឈ្មោះ Persona «Pitou»។",
+      action: "សរសេររូបរាងទស្សនិកជនគោលដៅមួយ រួចអាន Script ដូចកំពុងនិយាយទៅកាន់គាត់ដោយផ្ទាល់។",
+      example: "ស្រមៃមើល 'ម៉ាក់ Pitou' អាយុ ៣២ ឆ្នាំ ជាអ្នកគ្រប់គ្រងក្រុមហ៊ុនឯកជន មានកូនអាយុ ៥ ឆ្នាំ ចង់ឱ្យកូនក្លាហាន និងចេះភាសាអង់គ្លេសស្ទាត់។",
+      tags: ["Persona", "Targeting", "Tone"]
+    },
+    {
+      id: 6,
+      category: "audience",
+      titleEn: "Audience Pain Points",
+      titleKm: "ចាប់ផ្តើមពីកង្វល់របស់ម៉ាក់ប៉ា",
+      subtitle: "ស្វែងយល់ពីបញ្ហាពិតដែលមាតាបិតាព្រួយបារម្ភរាល់ថ្ងៃ",
+      core: "Solve Real Problems: ជ្រើសកង្វល់មួយភ្ជាប់ទៅសកម្មភាពពិតដែលអាចបង្ហាញបាន។",
+      learn: "កង្វល់អាចជា កូនមិនហ៊ាននិយាយ ខ្មាស់អៀន ចាំតែមិនយល់ សុវត្ថិភាព គ្មានអ្នកមើលថ្ងៃត្រង់ អនាគត ភាសាអង់គ្លេស វិន័យ ទំនុកចិត្ត បច្ចេកវិទ្យា និងការគិតដោយខ្លួនឯង។",
+      action: "កត់ត្រាបញ្ហាទាំងនេះទុក ហើយយកមកធ្វើជាប្រធានបទចាប់ផ្តើមវីដេអូ។",
+      example: "«កូនរៀន English រាល់ថ្ងៃ… តែហេតុអីនៅតែមិនហ៊ាននិយាយ?» — ប្រើ Hook នេះដើម្បីបើកបង្ហាញពីរបៀបដែល PSIS ហាត់ឱ្យកូននិយាយក្នុងថ្នាក់។",
+      tags: ["Pain Points", "Parent Psychology", "Empathy"]
+    },
+    {
+      id: 7,
+      category: "strategy",
+      titleEn: "Effective Content",
+      titleKm: "Message + Audience + Purpose + Emotion + Result",
+      subtitle: "រូបមន្តមាតិកាដែលមានឥទ្ធិពល និងអត្ថន័យ",
+      core: "Content Must Have Meaning: មួយវីដេអូ ផ្តោតលើសារចម្បងមួយ។",
+      learn: "រូបស្អាត Video smooth, Transition និង Camera ជាផ្នែកមួយ។ ខ្លឹមសារត្រូវមានសារច្បាស់ និងអត្ថន័យចំពោះអ្នកមើល។",
+      action: "មុនផលិត សរសេរ៖ Viewer គួរដឹងអ្វី? មានអារម្មណ៍អ្វី? ធ្វើអ្វី?",
+      example: "វីដេអូមិនមែនគ្រាន់តែបង្ហាញកុមារលេងពណ៌នោះទេ តែត្រូវបង្ហាញថាការលេងពណ៌ជួយអភិវឌ្ឍខួរក្បាល និងការសម្រេចចិត្តរបស់កុមារកម្រិតណា។",
+      tags: ["Content Core", "Effectiveness", "Production Value"]
+    },
+    {
+      id: 8,
+      category: "strategy",
+      titleEn: "Types of Content",
+      titleKm: "ជ្រើសប្រភេទ Content ឲ្យត្រូវគោលដៅ",
+      subtitle: "ការបែងចែក Content Pillars ទាំង ៦ ប្រភេទ",
+      core: "Content Pillars: កុំឲ្យផែនការពេញមួយខែមានតែប្រភេទតែមួយ។",
+      learn: "Educational: Tips, Teacher advice, Parenting។ Proof: Speaking, Problem solving, Presentation, Coding, Group work។ Trust: Lunch, Rest, Safety, Care, Routine។ Program: ELIF, IFL, Robotics, Coding, Taekwondo, Art។ Story: Student, Parent, Teacher, Achievement។ Enrollment: Admissions, Promotion, Visit, CTA។",
+      action: "ប្រើក្រុមទាំងនេះដើម្បីរៀបចំ Calendar ប្រចាំខែឱ្យមានតុល្យភាព។",
+      example: "សប្តាហ៍ទី១ ផ្តោតលើ Educational & Trust; សប្តាហ៍ទី២ ផ្តោតលើ Program & Proof; សប្តាហ៍ទី៣ ផ្តោតលើ Story; សប្តាហ៍ទី៤ បញ្ចូល Enrollment CTA។",
+      tags: ["Content Pillars", "Calendar", "Diversity"]
+    },
+    {
+      id: 9,
+      category: "strategy",
+      titleEn: "Effective Marketing",
+      titleKm: "យល់តម្រូវការ រួចបង្ហាញតម្លៃ",
+      subtitle: "ពីការស្គាល់មនុស្ស ទៅការកសាងទំនុកចិត្ត និងសកម្មភាព",
+      core: "Right Message → Right Person: Advertising ជាផ្នែកមួយនៃ Marketing។",
+      learn: "ស្គាល់មនុស្ស → យល់តម្រូវការ → បង្កើត Message → បង្ហាញ Value → បង្កើត Trust → Action។",
+      action: "ពិនិត្យថា សារនេះសមនឹងអ្នកមើល និងដំណាក់កាលសម្រេចចិត្តរបស់គេឬអត់។",
+      example: "កុំទាន់អាលទាក់ទាញឱ្យគាត់ចុះឈ្មោះ បើគាត់ទើបតែឃើញសាលាយើងលើកដំបូង។ ត្រូវបង្ហាញពីតម្លៃសាលាសិន។",
+      tags: ["Marketing", "Value Proposition", "Strategy"]
+    },
+    {
+      id: 10,
+      category: "strategy",
+      titleEn: "Marketing Funnel",
+      titleKm: "Awareness → Interest → Trust → Action",
+      subtitle: "ដំណើរនៃការសម្រេចចិត្តរបស់មាតាបិតា",
+      core: "Funnel Alignment: សម្គាល់ Funnel stage របស់ Post នីមួយៗ ហើយប្រើ CTA សមស្រប។",
+      learn: "Awareness: Reels, Activities, Events។ Interest: Program explanation, Classroom experience, Teaching methods។ Trust: Teacher expertise, Student proof, Testimonials, Care, Safety, Results។ Action: Message, Visit, Ask price, Register, Enroll។",
+      action: "កំណត់ថាវីដេអូនីមួយៗស្ថិតក្នុងដំណាក់កាលណា ហើយកុំលាយឡំ CTA ខុសដំណាក់កាល។",
+      example: "អ្នកទើបស្គាល់សាលា អាចត្រូវការយល់ពីថ្នាក់រៀន (Interest/Trust) មុនសម្រេចចិត្តមកទស្សនា ឬចុះឈ្មោះ (Action)។",
+      tags: ["Funnel", "Customer Journey", "Conversion"]
+    },
+    {
+      id: 11,
+      category: "strategy",
+      titleEn: "Advertising Without Being Pushy",
+      titleKm: "ផ្តល់តម្លៃ មុនស្នើឲ្យធ្វើសកម្មភាព",
+      subtitle: "កសាងមាតិកាដែលទាក់ទាញដោយមិនបង្ខំឱ្យចុះឈ្មោះ",
+      core: "Value-First Approach: ផ្តល់តម្លៃ មុនស្នើឲ្យធ្វើសកម្មភាព។",
+      learn: "បើគ្រប់វីដេអូផ្តោតតែ Enroll Now ឬ Register Now អ្នកមើលអាចមានអារម្មណ៍ថាត្រូវបានលក់ខ្លាំងពេក និងធុញទ្រាន់។",
+      action: "បង្ហាញអ្វីដែលកូនហាត់រៀន និងភស្តុតាង រួចដាក់ CTA ស្រាលនៅចុងក្រោយ។",
+      example: "«ពេលរៀន Coding កូនកំពុងហាត់គិតជាជំហានៗ និងដោះស្រាយបញ្ហា» — បង្ហាញសកម្មភាពដែលគាំទ្រសារនេះ រួចបញ្ចប់ដោយ 'ស្វែងយល់បន្ថែមអំពីកម្មវិធីសិក្សា'។",
+      tags: ["Soft Selling", "Value First", "CTA"]
+    },
+    {
+      id: 12,
+      category: "trust",
+      titleEn: "Show Value Behind Activities",
+      titleKm: "Activity → Skill → Benefit → Future",
+      subtitle: "បង្ហាញអត្ថន័យ និងអត្ថប្រយោជន៍នៅពីក្រោយសកម្មភាពនីមួយៗ",
+      core: "Deep Meaning: ជ្រើសជំនាញមួយដែល Footage បង្ហាញច្បាស់ រួចភ្ជាប់ទៅប្រយោជន៍សម្រាប់កូន។",
+      learn: "Group discussion អាចបង្ហាញការហាត់ Communication, Confidence, Listening, Teamwork និង Critical thinking។ ប្រាប់ហេតុអ្វីសកម្មភាពនេះមានន័យ។",
+      action: "រាល់ពេលថតសកម្មភាពមួយ សួរថា៖ សកម្មភាពនេះជួយអ្វីដល់កូន? ហាត់ជំនាញអ្វី? ផ្តល់ប្រយោជន៍អ្វីថ្ងៃមុខ?",
+      example: "ឃើញសិស្សស្តាប់មិត្ត ហើយឆ្លើយតប → មិនមែនគ្រាន់តែអង្គុយជជែកគ្នាទេ គឺការហាត់ស្តាប់ដោយយកចិត្តទុកដាក់ និងការចែករំលែកគំនិត។",
+      tags: ["Value Creation", "Skills", "Future Benefit"]
+    },
+    {
+      id: 13,
+      category: "storytelling",
+      titleEn: "Impactful Video",
+      titleKm: "ធ្វើឲ្យអ្នកមើលឈប់ មានអារម្មណ៍ និងចងចាំ",
+      subtitle: "គោលការណ៍ Stop + Feel + Remember ក្នុងផលិតកម្មវីដេអូ",
+      core: "Make People Stop + Feel + Remember: វិនាទីដំបូង សារ និងអារម្មណ៍ត្រូវស៊ីគ្នា។",
+      learn: "រួមមាន Strong first seconds, Clear idea, Visual proof, Human emotion, Story, Result, Short message និង Strong ending។",
+      action: "ពិនិត្យបើកវីដេអូ សារចម្បង ភស្តុតាង និងចុងបញ្ចប់ឲ្យស៊ីចង្វាក់គ្នា។",
+      example: "វិនាទីដំបូងបញ្ឈប់ការ Scroll ដោយរូបភាពប្លែក ឬសំណួរចាក់ដោត → បង្កើតអារម្មណ៍កក់ក្តៅ → បញ្ចប់ដោយសារដែលធ្វើឱ្យគាត់ចងចាំឈ្មោះ PSIS។",
+      tags: ["Video Production", "Hook", "Retention"]
+    },
+    {
+      id: 14,
+      category: "storytelling",
+      titleEn: "Hooks: Think / Shock / Pain Point",
+      titleKm: "Hook ទាញចំណាប់អារម្មណ៍ក្នុងវិនាទីដំបូង",
+      subtitle: "ទម្រង់ Hook ទាំង ៣ ប្រភេទ និងការអនុវត្តជាក់ស្តែង",
+      core: "The First 3 Seconds: សរសេរ Hook ៣ ជម្រើស រួចជ្រើសមួយដែលពាក់ព័ន្ធបំផុត។",
+      learn: "THINK ធ្វើឲ្យគិត។ SHOCK បង្ហាញអ្វីផ្ទុយការរំពឹង។ Pain-point ចាប់ផ្តើមពីកង្វល់ Parent។ ប្រើ ១–៣ វិនាទីជាគោលរំលឹកសម្រាប់ការបើក។",
+      action: "មុនថត សរសេរ Hook ទាំង ៣ ប្រភេទទុក ហើយយកមួយណាដែល Footage អាចឆ្លើយតបបានល្អបំផុត។",
+      example: "THINK: «រៀនបានពិន្ទុល្អ… តែបើមិនហ៊ាននិយាយវិញ?» | SHOCK: «មកសាលា… តែអត់ប្រើសៀវភៅ?» | Pain-point: «កូនញ៉ាំបាយហើយឬនៅ?»",
+      tags: ["Hook", "Engagement", "Attention"]
+    },
+    {
+      id: 15,
+      category: "storytelling",
+      titleEn: "Thinking Outside the Box",
+      titleKm: "សកម្មភាពមួយ អាចមានច្រើនមុំសាច់រឿង",
+      subtitle: "One Activity = Many Stories",
+      core: "Diverse Angles: សរសេរមុំ ៣ ពី Footage ដូចគ្នា មុនជ្រើសរបៀបកាត់។",
+      learn: "Science Class អាចធ្វើជា Why, Student POV, Parent POV, Teacher challenge, Before/After, Problem/Solution, Q&A ឬ Story។",
+      action: "កុំមើលសកម្មភាពក្នុងផ្លូវតែមួយ។ ប្តូរមុំមើលពីទស្សនៈគ្រូ សិស្ស ឬមាតាបិតា។",
+      example: "ការពិសោធន៍វិទ្យាសាស្ត្រមួយ៖ មុំទី១ បង្ហាញពីការចង់ដឹងរបស់កូន; មុំទី២ បង្ហាញពីវិធីគ្រូជួយកូនពេលធ្វើខុស; មុំទី៣ បង្ហាញពីភាពសប្បាយរីករាយពេលរកឃើញលទ្ធផល។",
+      tags: ["Creativity", "Angles", "Perspectives"]
+    },
+    {
+      id: 16,
+      category: "storytelling",
+      titleEn: "Ideating From Pain Points",
+      titleKm: "Pain Point → Question → Hook → Proof → Solution",
+      subtitle: "រូបមន្តបង្កើតគំនិតមាតិកាចេញពីបញ្ហាជាក់ស្តែង",
+      core: "Systematic Ideation: គំនិតកើតពីកង្វល់ជាក់លាក់ ហើយត្រូវភ្ជាប់ទៅភស្តុតាងដែលមាន។",
+      learn: "Pain Point → Question → Hook → Proof → Solution។ ដំណើរការនេះជួយឱ្យ Video មានទម្ងន់ និងមិនទទេស្អាត។",
+      action: "កត់កង្វល់ សំណួរ Hook និង Footage ត្រូវការ លើបន្ទាត់តែមួយក្នុង Template មុនផលិត។",
+      example: "កូនខ្មាស់អៀន → «កូនចេះចម្លើយ តែមិនហ៊ានលើកដៃ?» → Student presentation footage → ឱកាសហាត់និយាយ និងបរិយាកាសលើកទឹកចិត្តនៅ PSIS។",
+      tags: ["Ideation", "Problem Solving", "Scripting"]
+    },
+    {
+      id: 17,
+      category: "optimization",
+      titleEn: "Review & Feedback",
+      titleKm: "មើល Feedback ជាឱកាសកែលម្អ",
+      subtitle: "របៀបវាយតម្លៃវីដេអូ និងការរៀនសូត្រពីកំហុស",
+      core: "Review → Learn → Improve: កត់បញ្ហា ការកែ និងលទ្ធផលក្រោយកែ។",
+      learn: "ពិនិត្យ Hook ខ្សោយ Story យឺត Message មិនច្បាស់ Video វែង Footage ខ្សោយ ឬ CTA លក់ខ្លាំងពេក។",
+      action: "បន្ទាប់ពី Review ជ្រើសចំណុចមួយកែលម្អក្នុងវីដេអូបន្ទាប់។ កុំព្យាយាមកែអ្វីៗគ្រប់យ៉ាងក្នុងពេលតែមួយ។",
+      example: "ប្រសិនបើទិន្នន័យបង្ហាញថាអ្នកមើលចាកចេញនៅវិនាទីទី ៣ បញ្ជាក់ថា Hook មិនទាន់ទាក់ទាញ ឬ Footage បើកឆាកយឺតពេក។",
+      tags: ["Feedback", "Continuous Improvement", "Quality"]
+    },
+    {
+      id: 18,
+      category: "strategy",
+      titleEn: "Content Planning",
+      titleKm: "រៀបផែនការ មុនចាប់ផ្តើមផលិត",
+      subtitle: "Plan Before Production ដើម្បីប្រសិទ្ធភាពការងារ",
+      core: "Structured Planning: កំណត់អ្នកទទួលខុសត្រូវ និងកាលកំណត់សម្រាប់ការងារជាក់ស្តែង។",
+      learn: "ផែនការមាន Content pillar, Funnel stage, Target audience, Topic, Hook, Footage, CTA និង Publish date។ គោលដៅក្នុងសេចក្តីសង្ខេបគឺរៀបចំមុនមួយខែ។",
+      action: "កំណត់ប្រធានបទសប្តាហ៍ រួចបញ្ជី Footage ដែលត្រូវសុំតាម Campus ជាមុន។",
+      example: "បង្កើត Calendar ប្រចាំខែ ចែកកាលវិភាគថតឱ្យច្បាស់លាស់ជាមួយ Campus ដើម្បីត្រៀមសិស្ស និងគ្រូឱ្យរួចរាល់។",
+      tags: ["Planning", "Workflow", "Production Calendar"]
+    },
+    {
+      id: 19,
+      category: "storytelling",
+      titleEn: "Powerful Hooks + Storytelling",
+      titleKm: "Hook ទាញចូល Story ឲ្យគេមើលបន្ត",
+      subtitle: "ការតភ្ជាប់ពីការទាក់ទាញចំណាប់អារម្មណ៍ ទៅកាន់សាច់រឿង",
+      core: "Hook-to-Story Flow: កុំបើកសំណួរមួយ ហើយបង្ហាញសាច់រឿងដែលមិនឆ្លើយសំណួរនោះ។",
+      learn: "Hook → Context → Action → Result → Meaning។ សាច់រឿងត្រូវបន្តឆ្លើយការចង់ដឹងដែល Hook បង្កើត។",
+      action: "ដាក់លំដាប់ Shot ឱ្យអ្នកមើលយល់ពីអ្វីកំពុងកើតឡើង និងចង់ដឹងលទ្ធផល។",
+      example: "បើ Hook សួរថា 'តើកុមារអាយុ ៦ ឆ្នាំអាចបង្កើត Game ដោយខ្លួនឯងបានទេ?' — សាច់រឿងបន្ទាប់ត្រូវបង្ហាញពីដំណើរការដែលគាត់អង្គុយសរសេរកូដ CodeMonkey ពិតប្រាកដ។",
+      tags: ["Hook", "Story Structure", "Pacing"]
+    },
+    {
+      id: 20,
+      category: "storytelling",
+      titleEn: "Storytelling",
+      titleKm: "សូម្បី Classroom activity ក៏អាចជាសាច់រឿង",
+      subtitle: "ស្វែងរកសាច់រឿងក្នុងសកម្មភាពប្រចាំថ្ងៃធម្មតាៗ",
+      core: "Authentic Stories: រកពេលវេលាពិតដែលមានសកម្មភាព និងការផ្លាស់ប្តូរ។ មិនចាំបាច់មាន Drama ទេ។",
+      learn: "រឿងអាចកើតពីគ្រូសួរ សិស្សស្ទាក់ស្ទើរ សាកឆ្លើយ និងទទួលបានលទ្ធផល។ មិនចាំបាច់មាន Actor ឬ Drama។",
+      action: "ចាប់យកពេលវេលាពិតនៃការតស៊ូ និងការជម្នះឧបសគ្គរបស់សិស្សក្នុងថ្នាក់។",
+      example: "«ដំបូងគាត់មិនហ៊ាននិយាយ…» ប្រើបាននៅពេលមានភស្តុតាងនៃស្ថានភាពដើម។ កុំប្រឌិតប្រវត្តិសិស្សពី Clip ខ្លី។",
+      tags: ["Classroom Story", "Authenticity", "Micro-moments"]
+    },
+    {
+      id: 21,
+      category: "storytelling",
+      titleEn: "Constructing a Captivating Story",
+      titleKm: "Character → Problem → Change",
+      subtitle: "រចនាសម្ព័ន្ធតួអង្គ និងការផ្លាស់ប្តូរទាំង ៦ ធាតុ",
+      core: "6-Element Framework: ផ្តោតលើមនុស្សម្នាក់ និងការផ្លាស់ប្តូរមួយ។",
+      learn: "សាច់រឿងមាន Character: អ្នកណា? Want: ចង់អ្វី? Problem: អ្វីរារាំង? Action: ធ្វើអ្វី? Change: ផ្លាស់ប្តូរអ្វី? Meaning: អ្នកមើលបានអ្វី?",
+      action: "សរសេរ ៦ ចំណុចនេះជាប្រយោគខ្លី មុនសរសេរ Script ពេញ។",
+      example: "តួអង្គ (សិស្សថ្នាក់ទី៣) → ចង់ (ធ្វើបទបង្ហាញមុខថ្នាក់) → បញ្ហា (ខ្លាចខុស ញ័រដៃ) → សកម្មភាព (គ្រូលើកទឹកចិត្ត និងឱ្យមិត្តភក្តិទះដៃ) → ការផ្លាស់ប្តូរ (ញញឹម និងនិយាយចប់) → អត្ថន័យ (PSIS ជាកន្លែងដែលកូនមានទំនុកចិត្ត)។",
+      tags: ["Story Arc", "Character", "Transformation"]
+    },
+    {
+      id: 22,
+      category: "audience",
+      titleEn: "Parent-Focused Content",
+      titleKm: "ផ្តល់ហេតុផលឲ្យម៉ាក់ប៉ាចង់តាមដាន",
+      subtitle: "បង្កើត Page ឱ្យក្លាយជាធនធានចំណេះដឹងសម្រាប់មាតាបិតា",
+      core: "Give Parents a Reason to Follow: Page អាចជាធនធានចំណេះដឹងសម្រាប់ Parent។",
+      learn: "Page អាចផ្តល់ Parenting tips, Child development, Educational tips, Teacher insights, Learning tips, Student achievement, Program explanation និង Real stories។",
+      action: "ជ្រើសសំណួរដែល Parent សួរញឹកញាប់ រួចឱ្យគ្រូជួយពន្យល់ និងណែនាំដំណោះស្រាយ។",
+      example: "វីដេអូខ្លីពីគ្រូចែករំលែកវិធីជួយកូនកុំឱ្យញៀនទូរស័ព្ទនៅផ្ទះ ឬវិធីជួយកូនឱ្យឆាប់ចាំពាក្យអង់គ្លេស។",
+      tags: ["Parent Resource", "Value Add", "Community"]
+    },
+    {
+      id: 23,
+      category: "trust",
+      titleEn: "Building Parent Trust",
+      titleKm: "បង្ហាញភស្តុតាងនៃការថែទាំ និងការរៀន",
+      subtitle: "Show, Don’t Claim — កសាងទំនុកចិត្តតាមរយៈការពិត",
+      core: "Show, Don't Claim: ជ្រើសរូបភាព សំឡេង ឬមតិពិតដែលគាំទ្រអ្វីដែលបាននិយាយ។",
+      learn: "Trust អាចកើតពី Teacher care, Student confidence, Safety, Routine, Learning environment, Results, Student voice និង Parent testimonials។",
+      action: "បង្ហាញសកម្មភាពថែទាំជាក់ស្តែង ជាជាងការអួតអាងដោយពាក្យសម្តី។",
+      example: "ជំនួសឱ្យការសរសេរថា 'គ្រូយើងយកចិត្តទុកដាក់' — ថតសកម្មភាពគ្រូកំពុងអង្គុយជង្គង់ចុះជួយចងខ្សែស្បែកជើង ឬពន្យល់មេរៀនសិស្សមួយទល់មួយ។",
+      tags: ["Trust Building", "Proof", "Authenticity"]
+    },
+    {
+      id: 24,
+      category: "trust",
+      titleEn: "Educational Authority",
+      titleKm: "ចែករំលែកចំណេះដឹងតាមអ្នកអប់រំ",
+      subtitle: "Teach Before You Sell ដើម្បីបង្កើនកិត្យានុភាពអប់រំ",
+      core: "Teach Before You Sell: ការពន្យល់ច្បាស់ផ្តល់ប្រយោជន៍ និងជួយកសាងទំនុកចិត្ត។",
+      learn: "គ្រូអាចពន្យល់ហេតុអ្វីកុមារត្រូវការសម្រាក, Group work, Coding, Art ឬ Confidence មានតួនាទីអ្វីក្នុងការរៀន។",
+      action: "រៀបចំសំណួរខ្លីមួយ ឱ្យគ្រូឆ្លើយជាភាសាងាយយល់ និងបង្ហាញសកម្មភាពគាំទ្រក្នុងថ្នាក់។",
+      example: "គ្រូពន្យល់ពីសារៈសំខាន់នៃការគេងថ្ងៃត្រង់ចំពោះការលូតលាស់នៃខួរក្បាលរបស់កុមារកម្រិតមត្តេយ្យ។",
+      tags: ["Thought Leadership", "Authority", "Educational Insight"]
+    },
+    {
+      id: 25,
+      category: "trust",
+      titleEn: "Student Success Stories",
+      titleKm: "Before → Practice → Progress → Achievement",
+      subtitle: "ដំណើរនៃការខិតខំ និងការរីកចម្រើនរបស់សិស្ស",
+      core: "Proof Through People: ពានរង្វាន់ជាចុងរឿង ការហាត់រៀនជាសាច់រឿង។",
+      learn: "បង្ហាញការខិតខំ និងដំណើរមុនទទួលសមិទ្ធផល ដើម្បីឱ្យអ្នកមើលយល់តម្លៃនៃលទ្ធផល។",
+      action: "ប្រមូល Footage ហាត់រៀន មតិសិស្ស និងសមិទ្ធផលពិត ដើម្បីរៀបចំជា Case Study ខ្លី។",
+      example: "មិនមែនគ្រាន់តែបង្ហាញសិស្សឈរកាន់មេដាយនោះទេ ត្រូវបង្ហាញពីថ្ងៃដំបូងដែលគាត់ហាត់ហែលទឹក ធ្លាក់ទឹក តស៊ូ រហូតដល់ឈ្នះការប្រកួត។",
+      tags: ["Case Study", "Student Success", "Growth Journey"]
+    },
+    {
+      id: 26,
+      category: "trust",
+      titleEn: "Teacher Expertise",
+      titleKm: "បង្ហាញមនុស្សនៅពីក្រោយការអប់រំ",
+      subtitle: "Humanize the School តាមរយៈសំឡេង និងមុខមាត់គ្រូបង្រៀន",
+      core: "Humanize the School: សំឡេងគ្រូ និងការបង្រៀនពិតជួយឱ្យ Parent ស្គាល់សាលា។",
+      learn: "ទម្រង់មាន Teacher explains, Teacher tip, Classroom demonstration, Quick Q&A និង Teacher philosophy។",
+      action: "ឱ្យគ្រូពន្យល់វិធីជួយសិស្សមួយ ហើយបង្ហាញការអនុវត្តក្នុងថ្នាក់ជាក់ស្តែង។",
+      example: "ស៊េរី 'មួយនាទីជាមួយលោកគ្រូអ្នកគ្រូ PSIS' ឆ្លើយតបសំណួរមាតាបិតាពីការបង្រៀនកូនរៀនអាន។",
+      tags: ["Teacher Spotlight", "Human Connection", "Credibility"]
+    },
+    {
+      id: 27,
+      category: "trust",
+      titleEn: "Character Development",
+      titleKm: "ការអប់រំរួមមានចរិត និងទម្លាប់",
+      subtitle: "Education Beyond Grades — ការបណ្តុះបណ្តាលសីលធម៌ និងចរិយាសម្បត្តិ",
+      core: "Values Beyond Marks: ថតសកម្មភាពតូចៗដែលបង្ហាញតម្លៃពិត។",
+      learn: "Discipline, Responsibility, Independence, Compassion, Kindness, Good morals និង Collaboration។",
+      action: "ថតសកម្មភាពតូចៗដែលបង្ហាញតម្លៃទាំងនេះ ដូចជាជួយមិត្ត ទុករបស់ឱ្យមានរបៀប ឬទទួលខុសត្រូវលើការងារ។",
+      example: "សិស្សរៀបចំចានបាយទុកដាក់ដោយខ្លួនឯងក្រោយញ៉ាំរួច ឬការសំពះសួរសុខទុក្ខលោកគ្រូអ្នកគ្រូដោយទឹកមុខរីករាយ។",
+      tags: ["Morals", "Character", "Discipline"]
+    },
+    {
+      id: 28,
+      category: "trust",
+      titleEn: "Future-Ready Education",
+      titleKm: "Think · Understand · Collaborate · Communicate",
+      subtitle: "រៀបចំកុមារសម្រាប់ជីវិត និងអនាគត មិនមែនត្រឹមតែការប្រឡង",
+      core: "Prepare for Life: ពន្យល់ជំនាញដោយមិនធានាលទ្ធផលអនាគតដែលមិនអាចបញ្ជាក់។",
+      learn: "ការរៀបចំសម្រាប់អនាគតរួមមានការគិត ការយល់ ការសហការ ការទំនាក់ទំនង ការប្រើបច្ចេកវិទ្យា និងការកសាងចរិត។",
+      action: "ភ្ជាប់សកម្មភាពថ្ងៃនេះទៅជំនាញដែលសិស្សកំពុងហាត់សម្រាប់ពេលអនាគត។",
+      example: "ការរៀនធ្វើការជាក្រុមក្នុងបន្ទប់ ICT បង្ហាញពីការហាត់ធ្វើការងារបែបសហការដែលចាំបាច់ក្នុងយុគសម័យឌីជីថល។",
+      tags: ["Future Skills", "21st Century Skills", "Vision"]
+    },
+    {
+      id: 29,
+      category: "foundation",
+      titleEn: "Brand Identity",
+      titleKm: "រក្សាភាពស៊ីសង្វាក់របស់ Brand",
+      subtitle: "Be Recognizable — ឯកភាពនៃអត្តសញ្ញាណម៉ាកសញ្ញា",
+      core: "Brand Consistency: ប្រើ Khmer font Kantumruy Pro តាមចំណូលចិត្ត Chhit និងរក្សា PSIS / AYLA ដាច់ពីគ្នា។",
+      learn: "Logo, Colors, Fonts, Visual style, Video style, Tone of voice, Photography និង Templates ត្រូវមានភាពស៊ីសង្វាក់។",
+      action: "ផ្ទៀងផ្ទាត់ការរចនាជាមួយ Brand guideline មុនចេញផ្សាយរាល់ដង។",
+      example: "ប្រើប្រាស់កូដពណ៌ Navy (#06134b), Blue (#1864d8), Gold (#fdb827) និង Font Kantumruy Pro ឱ្យបានខ្ជាប់ខ្ជួនគ្រប់ Post។",
+      tags: ["Brand Identity", "Design System", "Consistency"]
+    },
+    {
+      id: 30,
+      category: "strategy",
+      titleEn: "Platform Strategy",
+      titleKm: "សម្របរបៀបប្រាប់រឿងតាមវេទិកា",
+      subtitle: "Same Brand, Different Platform Purpose",
+      core: "Contextual Adaptation: កែប្រវែង ការបើក និងរបៀបប្រាប់សារ តាមអ្នកមើល និងលទ្ធផលជាក់ស្តែង។",
+      learn: "Facebook ផ្តោត Parent, Trust, Information, Enrollment។ TikTok ផ្តោត Reach និងវីដេអូខ្លីទាក់ភ្នែក។ YouTube សម្រាប់រឿងវែង Interviews និង Campus Tours។",
+      action: "ថតម្តង អាចកាត់ត និងរៀបចំសារជាច្រើនទម្រង់ទៅតាមវេទិកានីមួយៗ។",
+      example: "វីដេអូពិសោធន៍វិទ្យាសាស្ត្រ៖ TikTok កាត់ត្រឹម ៣០ វិនាទីផ្តោតលើភាពភ្ញាក់ផ្អើល; Facebook រៀបរាប់អត្ថន័យ និងភ្ជាប់ទៅកម្មវិធីសិក្សា; YouTube ធ្វើជា Vlog ពេញលេញ។",
+      tags: ["Multi-platform", "Facebook", "TikTok", "YouTube"]
+    },
+    {
+      id: 31,
+      category: "optimization",
+      titleEn: "Paid Advertising",
+      titleKm: "វាស់លទ្ធផលដែលជួយគោលដៅសាលា",
+      subtitle: "Results Over Vanity Metrics — ផ្តោតលើលទ្ធផលពិត",
+      core: "Actionable Metrics: Views ច្រើនតែមួយមុខ មិនបញ្ជាក់ថាមានការចុះឈ្មោះច្រើនទេ។",
+      learn: "តាមដាន Inquiry, Messages, Campus visits, Enrollment និង Conversion ជាមួយ Reach និង Views។",
+      action: "កំណត់ថាសកម្មភាពណាជាលទ្ធផលចម្បង និងតាមដានពីសារ ទៅការទស្សនា និងការចុះឈ្មោះជាក់ស្តែង។",
+      example: "វីដេអូទទួលបាន View តិចជាង ប៉ុន្តែមាតាបិតាផ្ញើសារសួរតម្លៃ ឬមកទស្សនាសាលាច្រើន គឺមានតម្លៃជាងវីដេអូ Viral ដែលគ្មានអ្នកទាក់ទង។",
+      tags: ["Paid Ads", "Conversion", "ROI"]
+    },
+    {
+      id: 32,
+      category: "optimization",
+      titleEn: "Content Optimization",
+      titleKm: "Create → Measure → Improve",
+      subtitle: "វដ្តនៃការតាមដានទិន្នន័យ និងការកែលម្អឥតឈប់ឈរ",
+      core: "Data-Driven Iteration: សាក Hook ថ្មីមួយ ហើយមើលថាការរក្សាអ្នកមើលប្រសើរឡើងឬអត់។",
+      learn: "ពិនិត្យ Reach, Watch time, Retention, Engagement, Comments, Shares, Messages, Cost និង Conversion តាមគោលដៅ។",
+      action: "សួរថាហេតុអ្វីវាដំណើរការ ឬហេតុអ្វីអ្នកមើលឈប់។ កែចំណុចជាក់លាក់ ហើយប្រៀបធៀប Content ប្រហាក់ប្រហែល។",
+      example: "ប្រសិន Retention Curve ធ្លាក់ចុះនៅវិនាទីទី ៥ ត្រូវសាកល្បងប្តូរ Footage ឬបន្ថែមកាត់តឱ្យលឿនជាងមុនក្នុងវីដេអូបន្ទាប់។",
+      tags: ["Optimization", "Analytics", "Audience Retention"]
+    },
+    {
+      id: 33,
+      category: "foundation",
+      titleEn: "Main Strategic Direction",
+      titleKm: "បង្ហាញអត្ថន័យសម្រាប់កូន និងអនាគតកូន",
+      subtitle: "Beyond Memorization → Understanding → Character → Future",
+      core: "The Master Strategy: Know Yourself → Client → Goals → Audience → Pain Points → Purpose → Funnel → Hook → Story → Proof → Trust → Value → CTA → Measure → Improve។",
+      learn: "Beyond Memorization → Understanding → Character → Future។ ភ្ជាប់ការងាររបស់សាលាទៅការរៀន ការលូតលាស់ និងតម្រូវការរបស់ Parent។",
+      action: "មុន Publish សួរថា៖ Parent យល់ហេតុអ្វីសកម្មភាពនេះមានតម្លៃចំពោះកូនឬនៅ?",
+      example: "រាល់ខ្លឹមសារទាំងអស់ដែលចេញពី PSIS ត្រូវឆ្លុះបញ្ចាំងពីការយកចិត្តទុកដាក់ និងការកសាងអនាគតដ៏ភ្លឺស្វាងសម្រាប់កុមារ។",
+      tags: ["Master Strategy", "Core Purpose", "Future Vision"]
+    }
+  ],
+
+  frameworks: {
+    processSteps: [
+      { step: 1, title: "Know Yourself", desc: "ស្គាល់សមត្ថភាព និងចំណុចខ្លាំងផ្ទាល់ខ្លួន" },
+      { step: 2, title: "Know the Client", desc: "យល់ច្បាស់ពីសាលា PSIS និងបរិក្ខារ" },
+      { step: 3, title: "Client Goals", desc: "កំណត់គោលដៅជាក់លាក់នៃ Content" },
+      { step: 4, title: "Audience Persona", desc: "ស្គាល់មាតាបិតាដែលកំពុងនិយាយជាមួយ" },
+      { step: 5, title: "Pain Points", desc: "ចាប់ផ្តើមពីកង្វល់ និងតម្រូវការជាក់ស្តែង" },
+      { step: 6, title: "Content Purpose", desc: "កំណត់សារចម្បងតែមួយគត់" },
+      { step: 7, title: "Funnel Stage", desc: "តម្រឹមតាមដំណាក់កាលសម្រេចចិត្ត" },
+      { step: 8, title: "Craft Hook", desc: "បង្កើត Hook (Think, Shock, Pain-point)" },
+      { step: 9, title: "Story Structure", desc: "រៀបរៀងសាច់រឿងតាមលំដាប់លំដោយ" },
+      { step: 10, title: "Visual Proof", desc: "បង្ហាញភស្តុតាងសកម្មភាពពិត" },
+      { step: 11, title: "Build Trust", desc: "កសាងទំនុកចិត្តតាមរយៈការយកចិត្តទុកដាក់" },
+      { step: 12, title: "Demonstrate Value", desc: "ភ្ជាប់សកម្មភាពទៅអត្ថប្រយោជន៍ថ្ងៃមុខ" },
+      { step: 13, title: "Appropriate CTA", desc: "ដាក់សកម្មភាពឱ្យធ្វើសមស្របនឹង Funnel" },
+      { step: 14, title: "Measure Results", desc: "តាមដានទិន្នន័យពិតក្រោយ Post" },
+      { step: 15, title: "Review & Improve", desc: "រៀនសូត្រពី Feedback និងកែលម្អបន្ត" }
+    ],
+    videoStructure: [
+      { stage: "Hook", km: "ចាប់អារម្មណ៍", desc: "ទាញឱ្យឈប់មើលក្នុង ១–៣ វិនាទីដំបូង (សំណួរ, រូបភាពប្លែក, កង្វល់)" },
+      { stage: "Context", km: "ប្រាប់បរិបទ", desc: "ប្រាប់ស្ថានភាព ឬប្រធានបទដែលកំពុងកើតឡើងឱ្យអ្នកមើលយល់" },
+      { stage: "Action / Story", km: "បង្ហាញសកម្មភាព", desc: "សកម្មភាពពិតរបស់សិស្ស ឬគ្រូ ការជម្នះឧបសគ្គ ឬការអនុវត្តជាក់ស្តែង" },
+      { stage: "Result / Proof", km: "បង្ហាញលទ្ធផលពិត", desc: "ភស្តុតាងជាក់ស្តែងនៃភាពជោគជ័យ ស្នាមញញឹម ឬលទ្ធផលពិសោធន៍" },
+      { stage: "Meaning", km: "ប្រាប់អត្ថន័យ", desc: "ហេតុអ្វីសកម្មភាពនេះសំខាន់ចំពោះកូន និងអនាគតរបស់កូន" },
+      { stage: "CTA", km: "អញ្ជើញធ្វើសកម្មភាព", desc: "Call to Action ស្រាលស្រទន់ ឬណែនាំឱ្យទស្សនាសាលា / ផ្ញើសារ" }
+    ],
+    funnelStages: [
+      {
+        stage: "01 · Awareness",
+        km: "ឱ្យគេស្គាល់សាលា",
+        formats: "Reels, Activities, Events, Campus Highlights",
+        objective: "ទាក់ទាញចំណាប់អារម្មណ៍ និងបង្កើន Reach ទូលំទូលាយ"
+      },
+      {
+        stage: "02 · Interest",
+        km: "ឱ្យគេចង់ដឹងបន្ថែម",
+        formats: "Program explanation, Teaching methods, Classroom experience",
+        objective: "ពន្យល់ពីវិធីសាស្ត្របង្រៀន និងកម្មវិធីពិសេសៗ (ELIF, Robotics...)"
+      },
+      {
+        stage: "03 · Trust",
+        km: "បង្កើតទំនុកចិត្ត",
+        formats: "Teacher care, Student proof, Safety, Routine, Testimonials",
+        objective: "បង្ហាញពីភាពកក់ក្តៅ សុវត្ថិភាព និងការរីកចម្រើនពិតរបស់កូន"
+      },
+      {
+        stage: "04 · Action",
+        km: "ឱ្យគេធ្វើសកម្មភាព",
+        formats: "Admissions, School Tour, Open House, Enroll CTA",
+        objective: "ជំរុញឱ្យទាក់ទងចុះឈ្មោះ ឬមកទស្សនាសាលាផ្ទាល់"
+      }
+    ],
+    storyFormulas: [
+      {
+        name: "Formula A: Pain Point to Solution",
+        flow: "Pain Point → Question → Hook → Proof → Solution",
+        desc: "ស័ក្តិសមបំផុតសម្រាប់មាតិកាដែលដោះស្រាយកង្វល់ជាក់លាក់របស់មាតាបិតា"
+      },
+      {
+        name: "Formula B: Character Transformation",
+        flow: "Character → Want → Problem → Action → Change → Meaning",
+        desc: "ស័ក្តិសមសម្រាប់ Student / Teacher Success Stories ក្នុងថ្នាក់រៀន"
+      },
+      {
+        name: "Formula C: Continuous Improvement",
+        flow: "Create → Measure → Review → Improve → Repeat",
+        desc: "វដ្តការងារសម្រាប់ Content Team ក្នុងការអភិវឌ្ឍគុណភាពវីដេអូជាប្រចាំ"
+      }
+    ]
+  },
+
+  checklist: [
+    "កំណត់គោលដៅចម្បង និង Funnel stage ច្បាស់លាស់ (Awareness / Interest / Trust / Action)។",
+    "ដឹងច្បាស់ថាកំពុងនិយាយទៅកាន់ Persona ណា (ម៉ាក់ប៉ារវល់, ចង់បានភាសា, បារម្ភសុវត្ថិភាព)។",
+    "ជ្រើសកង្វល់ ឬតម្រូវការមួយដែលពាក់ព័ន្ធ និងមានទម្ងន់។",
+    "មានសារចម្បង (Single Core Message) តែមួយគត់សម្រាប់វីដេអូនេះ។",
+    "មាន Hook (Think / Shock / Pain-point) ដែល Footage និងសាច់រឿងអាចឆ្លើយតបបាន។",
+    "រៀបលំដាប់លំដោយ៖ Hook → Context → Action → Result → Meaning → CTA។",
+    "មានភស្តុតាងពិត (Visual Proof) និងព័ត៌មានកម្មវិធីសិក្សា/បរិក្ខារត្រឹមត្រូវតាម Campus។",
+    "បង្ហាញតម្លៃសម្រាប់កូន និងអនាគតកូន (Activity → Skill → Benefit → Future)។",
+    "មាន CTA សមស្រប និងរចនាតាម Brand guideline (Font Kantumruy Pro, Navy/Gold colors)។",
+    "កំណត់ថ្ងៃចេញផ្សាយ និងសូចនាករលទ្ធផល (KPIs) ត្រូវវាស់ស្ទង់ក្រោយ Post។"
+  ]
+};
+
+// Export for module systems or attach to window
+if (typeof window !== "undefined") {
+  window.PSIS_DATA = PSIS_DATA;
+}
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = PSIS_DATA;
+}
