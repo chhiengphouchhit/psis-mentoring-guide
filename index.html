@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="km">
+<html lang="km" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,11 +20,19 @@
   <aside class="app-sidebar">
     <div class="sidebar-brand-box">
       <div class="brand-badge-row">
-        <span class="version-pill">SYSTEM V2.0 PRO</span>
+        <span class="version-pill">SYSTEM V2.5 ENTERPRISE</span>
         <span class="institution-tag">PSIS MENTORING</span>
       </div>
       <h2 class="brand-main-title">PSIS GUIDELINE</h2>
       <div class="brand-subtitle-text">CONTENT &amp; VIDEO OS / CHHIT</div>
+    </div>
+
+    <!-- Theme Switcher Container -->
+    <div class="theme-switch-container">
+      <span>ម៉ូដផ្ទៃ (Theme)</span>
+      <button id="btnThemeToggle" class="theme-switch-btn" title="ប្តូររវាង Dark &amp; Light Theme">
+        <span id="themeIcon">☀️</span> <span id="themeLabel">Light Mode</span>
+      </button>
     </div>
 
     <div class="sidebar-separator"></div>
@@ -45,6 +53,12 @@
       <button class="nav-item-btn" data-view="brand">
         <svg class="nav-svg-icon" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.59 10.57 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
         <span>Brand Guidelines</span>
+      </button>
+
+      <button class="nav-item-btn" data-view="campuses">
+        <svg class="nav-svg-icon" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+        <span>Campuses &amp; Battlecards</span>
+        <span class="nav-pill-count">6</span>
       </button>
 
       <button class="nav-item-btn" data-view="checklist">
@@ -264,7 +278,28 @@
     </section>
 
     <!-- ==========================================
-         SECTION 4: PRE-PRODUCTION CHECKLIST
+         SECTION 4: CAMPUSES & COMPETITOR BATTLECARDS (NEW)
+         ========================================== -->
+    <section id="campuses" class="tab-section-content">
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>🏫</span> បណ្តាញសាខាទាំង ៦ របស់ PSIS (Campus Profiles Explorer)</h2>
+        <p class="panel-lead">
+          ស្វែងយល់ពីចំណុចពិសេស កម្រិតថ្នាក់ បរិយាកាស និងមុំមាតិកាដែលត្រូវថតសម្រាប់ Campus នីមួយៗ (TK, TTP, RSK, CAP, NR3, BTB)៖
+        </p>
+        <div class="campus-explorer-grid" id="campusExplorerGrid"></div>
+      </div>
+
+      <div class="enterprise-panel">
+        <h2 class="panel-headline"><span>⚔️</span> ការវិភាគគូប្រជែង &amp; យុទ្ធសាស្ត្រឈ្នះ (Competitor Battlecards)</h2>
+        <p class="panel-lead">
+          ទិន្នន័យស្រាវជ្រាវពីឯកសារ Client Master Doc ដើម្បីកំណត់ទីតាំងឈ្នះរបស់ PSIS លើ Western, Sovannaphumi និង Beltei៖
+        </p>
+        <div class="competitor-battlecards-grid" id="competitorBattlecardsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 5: PRE-PRODUCTION CHECKLIST
          ========================================== -->
     <section id="checklist" class="tab-section-content">
       <div class="enterprise-panel">
@@ -278,7 +313,8 @@
             <div class="progress-rail">
               <div class="progress-fill" id="progressBarFill"></div>
             </div>
-            <span class="progress-score-text" id="progressScoreText">0 / 10 បានរួចរាល់ (0%)</span>
+            <span class="progress-score-text" id="progressScoreText">0 / 16 បានរួចរាល់ (0%)</span>
+            <div id="checklistReadinessBadge" class="readiness-status-badge needs-work">⚠️ ត្រូវការរៀបចំ Plan &amp; Hook</div>
           </div>
 
           <div style="display:flex; gap:10px;">
@@ -292,7 +328,7 @@
     </section>
 
     <!-- ==========================================
-         SECTION 5: SCRIPT & IDEA PLANNER TOOL
+         SECTION 6: SCRIPT & IDEA PLANNER TOOL
          ========================================== -->
     <section id="planner" class="tab-section-content">
       <div class="enterprise-panel">
@@ -300,6 +336,21 @@
         <p class="panel-lead">
           បញ្ចូលទិន្នន័យនៃគំនិតវីដេអូរបស់អ្នក ដើម្បីបង្កើត Video Script Brief ស្តង់ដារភ្លាមៗសម្រាប់យកទៅថត ឬកាត់ត៖
         </p>
+
+        <!-- Studio Quick Tools Header -->
+        <div class="studio-tools-header">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <label for="plannerPresetSelector" style="font-size:13px; font-weight:600; color:var(--text-title);">⚡ ជ្រើសរើស Script គំរូ (Quick Presets):</label>
+            <select id="plannerPresetSelector" style="padding:6px 12px; font-size:13px; border-radius:var(--radius-sm); border:1px solid #cbd5e1; outline:none; background:var(--bg-surface); color:var(--text-title);">
+              <option value="">-- ជ្រើសរើស Preset គំរូ --</option>
+              <option value="preset-robotics">🤖 Robotics &amp; Problem Solving (Think Hook)</option>
+              <option value="preset-lunch">🥗 Safe Lunch, Nap Routine &amp; Peace of Mind</option>
+              <option value="preset-english">🗣️ ELIF English Natural Speaking Breakthrough</option>
+              <option value="preset-character">🤝 Kindness, Collaboration &amp; Moral Ethics</option>
+            </select>
+          </div>
+          <div id="plannerStatsBadge" class="planner-stats-badge">⏱️ 0 ពាក្យ (~0 វិនាទី)</div>
+        </div>
 
         <div class="studio-input-grid">
           <div class="field-group-cell">
@@ -374,11 +425,19 @@
           </div>
         </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center; margin: 18px 0 8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin: 18px 0 8px; flex-wrap:wrap; gap:10px;">
           <h3 style="margin:0; font-size:16px;">📄 សេចក្តីព្រាង Script Studio Output (Auto-Generated)</h3>
-          <button id="btnCopyScript" class="btn-enterprise-action primary" style="padding: 8px 16px;">
-            📋 ចម្លង Script Studio Brief
-          </button>
+          <div style="display:flex; gap:8px;">
+            <button id="btnCopyScript" class="btn-enterprise-action primary" style="padding: 8px 14px;">
+              📋 ចម្លង Script
+            </button>
+            <button id="btnDownloadTxt" class="btn-enterprise-action" style="padding: 8px 14px;">
+              💾 Save .TXT
+            </button>
+            <button id="btnDownloadMd" class="btn-enterprise-action" style="padding: 8px 14px;">
+              📝 Save .MD
+            </button>
+          </div>
         </div>
 
         <pre class="script-output-console" id="scriptOutput"></pre>
@@ -386,7 +445,7 @@
     </section>
 
     <!-- ==========================================
-         SECTION 6: PERSONA & DRIVE RESOURCE HUB
+         SECTION 7: PERSONA & DRIVE RESOURCE HUB
          ========================================== -->
     <section id="persona" class="tab-section-content">
       <!-- Drive Vault Panel -->
@@ -550,15 +609,18 @@
         </div>
       </div>
 
-      <!-- Roadmap Table Panel -->
+      <!-- Roadmap Table Panel with Week Navigator -->
       <div class="enterprise-panel">
         <h2 class="panel-headline"><span>📅</span> ផែនទីបង្ហាញផ្លូវ Media Mentoring (9-Week Mentoring Roadmap)</h2>
         <p class="panel-lead">
-          ផ្អែកលើកាលវិភាគបណ្តុះបណ្តាលផ្លូវការក្នុង Google Sheet រវាង Chit និង Sievling៖
+          ផ្អែកលើកាលវិភាគបណ្តុះបណ្តាលផ្លូវការក្នុង Google Sheet រវាង Chit និង Sievling (ចុចលើសប្តាហ៍ដើម្បីច្រោះមើល)៖
         </p>
 
+        <!-- Week Navigator Buttons -->
+        <div class="week-navigator-pills" id="weekNavigatorPills"></div>
+
         <div class="table-scroll-frame">
-          <table class="enterprise-data-table">
+          <table class="enterprise-data-table" id="roadmapTable">
             <thead>
               <tr>
                 <th>សប្តាហ៍</th>
@@ -567,61 +629,8 @@
                 <th>កិច្ចការ &amp; គោលដៅ (Tasks &amp; Milestones)</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td><b>Week 1</b></td>
-                <td>28/07 - 31/07</td>
-                <td>Understanding where they are at • Intro to Marketing • Understanding the Client</td>
-                <td>Brand Guides, Content Plans &amp; Campus Facilities preparation</td>
-              </tr>
-              <tr>
-                <td><b>Week 2</b></td>
-                <td>04/08 - 07/08</td>
-                <td>Understanding Target Audience &amp; Psychographics</td>
-                <td>Client Goals Document &amp; Parent Research</td>
-              </tr>
-              <tr>
-                <td><b>Week 3</b></td>
-                <td>11/08 - 14/08</td>
-                <td>Effective Content (6 Content Pillars) • Effective Marketing</td>
-                <td>Client Goals Document &amp; Content Mix Balance</td>
-              </tr>
-              <tr>
-                <td><b>Week 4</b></td>
-                <td>18/08 - 21/08</td>
-                <td>Identifying Target Audience • Marketing Funnel</td>
-                <td>Awareness → Interest → Trust → Action Mapping</td>
-              </tr>
-              <tr>
-                <td><b>Week 5</b></td>
-                <td>25/08 - 28/08</td>
-                <td>Advertising that doesn't feel pushy (Value-first) • Impactful Video</td>
-                <td>How to capture attention without aggressive selling</td>
-              </tr>
-              <tr>
-                <td><b>Week 6</b></td>
-                <td>02/09 - 04/09</td>
-                <td>Hooks (Think, Shock, Pain Point) • Thinking outside the box</td>
-                <td>Ideating impactful hooks pertaining to parent pain points</td>
-              </tr>
-              <tr>
-                <td><b>Week 7</b></td>
-                <td>08/09</td>
-                <td>Monthly Goals Review • Video Feedback &amp; Quality Advice</td>
-                <td>Retention optimization &amp; Reviewing Reel performance</td>
-              </tr>
-              <tr>
-                <td><b>Week 8</b></td>
-                <td>16/09 - 18/09</td>
-                <td>Review videos &amp; Shoot Video with powerful hooks • Intro to Storytelling</td>
-                <td>Micro-moments in classrooms (Teacher &amp; Student)</td>
-              </tr>
-              <tr>
-                <td><b>Week 9</b></td>
-                <td>23/09 - 25/09</td>
-                <td>Impactful Storytelling: Constructing a Captivating Story</td>
-                <td>Character → Want → Problem → Action → Change → Meaning</td>
-              </tr>
+            <tbody id="roadmapTableBody">
+              <!-- Dynamically populated or rendered -->
             </tbody>
           </table>
         </div>

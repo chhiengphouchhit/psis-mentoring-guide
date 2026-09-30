@@ -47,12 +47,72 @@ const PSIS_DATA = {
       captionRule: "អក្សរលើអេក្រង់មិនលើសពី ២ បន្ទាត់ក្នុងមួយ Screen, ប្រើពណ៌ស ឬលឿង មានស្រមោល Drop-shadow ខ្មៅ"
     },
     campuses: [
-      { code: "TK", name: "Toul Kork Campus (ទួលគោក)", focus: "Kindergarten to High School, Elite Academic Hub" },
-      { code: "TTP", name: "Toul Tom Poung Campus (ទួលទំពូង)", focus: "Central City, Interactive Classrooms & Language Center" },
-      { code: "RSK", name: "Russey Keo Campus (ឫស្សីកែវ)", focus: "Modern Facilities, Sports Courts & Science Labs" },
-      { code: "CAP", name: "Chbar Ampov Campus (ច្បារអំពៅ)", focus: "Spacious Campus, Kindergarten & Primary Excellence" },
-      { code: "NR3", name: "National Road 3 Campus (ផ្លូវជាតិលេខ ៣)", focus: "Growing Community, Scholarship & Quality Education" },
-      { code: "BTB", name: "Battambang Campus (ខេត្តបាត់ដំបង)", focus: "Regional Flagship, Traditional & Future Skills Combined" }
+      {
+        code: "TK",
+        name: "Toul Kork Campus (ទួលគោក)",
+        focus: "Kindergarten to High School • Elite Academic Hub",
+        grades: "Kindergarten to Grade 12",
+        highlights: "Robotics Lab, Semi-Olympic Pool, Science Lab, Interactive Boards",
+        vibe: "Dynamic, Academic Rigor, High Parent Engagement",
+        bestContentAngle: "STEM Experiments, Robotics Coding Showcase, Australia Exchange Preparation",
+        targetFamilies: "Business owners, executives living in Toul Kork & Sen Sok",
+        sampleHook: "«រៀននៅទួលគោក… ហេតុអ្វីកូនៗនៅ PSIS ហ៊ានជជែកដេញដោលភាសាអង់គ្លេសស្ទាត់បែបនេះ?»"
+      },
+      {
+        code: "TTP",
+        name: "Toul Tom Poung Campus (ទួលទំពូង)",
+        focus: "Central City • Interactive Classrooms & Language Center",
+        grades: "Kindergarten to Grade 9",
+        highlights: "Smart Interactive Screens, Language Labs, Modern Library",
+        vibe: "Urban, Cosmopolitan, Creative and Collaborative",
+        bestContentAngle: "Trilingual Language Confidence (Khmer, English, Chinese) in Daily Real Conversations",
+        targetFamilies: "Urban professionals and modern parents in BKK & TTP",
+        sampleHook: "«មិនបាច់ទន្ទេញ… តែអាចនិយាយភាសាអង់គ្លេស និងចិនបានដោយធម្មជាតិ!»"
+      },
+      {
+        code: "RSK",
+        name: "Russey Keo Campus (ឫស្សីកែវ)",
+        focus: "Modern Green Campus • Sports & Science Labs",
+        grades: "Kindergarten to Grade 12",
+        highlights: "Full Football Pitch, Basketball Courts, Science Labs, Art Studios",
+        vibe: "Spacious, Active, Physical Wellness and Teamwork",
+        bestContentAngle: "Sports Discipline + Science Experiments (Balancing Physical & Mental Growth)",
+        targetFamilies: "Families in Russey Keo & Chroy Changvar desiring spacious learning grounds",
+        sampleHook: "«កូនរៀនបានពូកែ តែសុខភាព និងកាយសម្បទាក៏រឹងមាំជាមួយកីឡា PSIS RSK»"
+      },
+      {
+        code: "CAP",
+        name: "Chbar Ampov Campus (ច្បារអំពៅ)",
+        focus: "Premium Campus • Kindergarten & Primary Excellence",
+        grades: "Kindergarten to Grade 6 (Expanding)",
+        highlights: "Lush Greenery, Modern Kindergarten Zone, Safe Nap & Dining Hall, Bus System",
+        vibe: "Warm, Safe, Nurturing & Close-knit Family Community",
+        bestContentAngle: "Caring Environment, Healthy Lunch, Routine & Nap Safety (Ideal for Pitou Persona)",
+        targetFamilies: "Executives in Borey Chipmong 271, Peng Huoth, The Palm",
+        sampleHook: "«ម៉ាក់ប៉ារវល់ធ្វើការពេញមួយថ្ងៃ… តើកូននៅសាលាទទួលបានការថែទាំយ៉ាងដូចម្តេច?»"
+      },
+      {
+        code: "NR3",
+        name: "National Road 3 Campus (ផ្លូវជាតិលេខ ៣)",
+        focus: "Growing Community • Accessible Quality International Education",
+        grades: "Kindergarten to Grade 9",
+        highlights: "Spacious Classrooms, Affordable Quality, Dedicated Teachers",
+        vibe: "Supportive, Community-rooted, High Value Education",
+        bestContentAngle: "Value-first International Standard, Scholarships & Character Building",
+        targetFamilies: "Growing middle-class families seeking international education for their children",
+        sampleHook: "«ផ្តល់ឱកាសឱ្យកូនទទួលបានការអប់រំស្តង់ដារអន្តរជាតិជិតផ្ទះអ្នក»"
+      },
+      {
+        code: "BTB",
+        name: "Battambang Campus (ខេត្តបាត់ដំបង)",
+        focus: "Western Flagship • Tradition meets 21st Century Skills",
+        grades: "Kindergarten to Grade 12",
+        highlights: "Large Campus, Computer Labs, Cultural Events, Meditation Hall",
+        vibe: "Prestigious Regional Standard, Polite & Disciplined",
+        bestContentAngle: "Preserving Khmer Cultural Morals combined with Global English Standards",
+        targetFamilies: "Prestigious families and entrepreneurs in Battambang Province",
+        sampleHook: "«អនាគតកូននៅបាត់ដំបង អាចដើរទាន់កម្រិតអន្តរជាតិដោយមិនបាច់ឃ្លាតឆ្ងាយពីផ្ទះ»"
+      }
     ],
     facilities: [
       { name: "ICT & Computer Lab", desc: "បំពាក់កុំព្យូទ័រទំនើប សម្រាប់រៀន Coding, CodeMonkey និងស្រាវជ្រាវ" },
@@ -75,11 +135,98 @@ const PSIS_DATA = {
       { name: "Good Morals & Life Skills", desc: "បណ្តុះបណ្តាលសីលធម៌ គុណធម៌ និងការទទួលខុសត្រូវក្នុងជីវិតប្រចាំថ្ងៃ" }
     ],
     competitors: [
-      { name: "Western International School", type: "Direct", strength: "Strong marketing reach", weakness: "Focuses heavily on discounts; lacks deep character storytelling" },
-      { name: "Sovannaphumi School", type: "Direct", strength: "Large campus branch network", weakness: "High classroom density; more traditional rote approach" },
-      { name: "Beltei International", type: "Indirect", strength: "Strict discipline & large scale", weakness: "Rote-memorization oriented; less focus on 21st century creative skills" }
+      {
+        name: "Western International School",
+        type: "Direct Competitor",
+        tuition: "$2,800 - $3,500",
+        marketPosition: "Heavy promotion, massive discounts & marketing blitz",
+        keyStrength: "Strong social media noise, large volume of students",
+        keyWeakness: "Perceived as highly transactional and discount-driven; lacks deep emotional connection with affluent parents",
+        counterStrategy: "PSIS Positioning: Show authentic value, character, and future-ready robotics rather than competing on price discounts."
+      },
+      {
+        name: "Sovannaphumi School",
+        type: "Direct Competitor",
+        tuition: "$1,500 - $2,500",
+        marketPosition: "Mass-market network across entire city & provinces",
+        keyStrength: "Everywhere in the city, very affordable pricing",
+        keyWeakness: "Crowded classrooms, traditional rote-learning methods, limited premium facilities",
+        counterStrategy: "PSIS Positioning: Highlight spacious interactive classrooms, modern Infinity Pro tools, and individualized teacher care."
+      },
+      {
+        name: "Beltei International",
+        type: "Indirect Competitor",
+        tuition: "$1,800 - $2,600",
+        marketPosition: "Strict discipline & large-scale academic examinations",
+        keyStrength: "High discipline, strict uniform rules, recognizable brand",
+        keyWeakness: "Traditional memorization-focused; children often lack creative expression, critical thinking, and collaborative confidence",
+        counterStrategy: "PSIS Positioning: 'Beyond Memorization → Understanding → Character'. Show children questioning, coding, and collaborating happily."
+      }
     ]
   },
+
+  scriptPresets: [
+    {
+      id: "preset-robotics",
+      label: "🤖 Robotics & Problem Solving (Think Hook)",
+      campus: "TK",
+      topic: "រៀនគិតជាប្រព័ន្ធតាមរយៈ Coding & Robotics",
+      persona: "ប៉ា ពីទូ (រវល់ការងារការិយាល័យ ចង់ឱ្យកូនក្លាហាន និងមានជំនាញបច្ចេកវិទ្យា)",
+      funnel: "Trust (កសាងទំនុកចិត្តលើការថែទាំ)",
+      painPoint: "កូនរៀនតែទ្រឹស្តី មិនចេះអនុវត្តដោះស្រាយបញ្ហាពិត",
+      hookType: "THINK (ធ្វើឱ្យគិត)",
+      hookText: "«រៀនបានពិន្ទុល្អ… តែបើជួបបញ្ហាជាក់ស្តែង គាត់ចេះដោះស្រាយដោយរបៀបណា?»",
+      action: "សិស្សអង្គុយសាកល្បងសរសេរ Code លើ CodeMonkey ខុសហើយកែឡើងវិញ ដោយមានគ្រូនៅក្បែរជួយលើកទឹកចិត្ត",
+      proof: "ស្នាមញញឹមពេល Robot ដើរត្រូវទិសដៅ និងការទះដៃអបអរជាមួយមិត្តភក្តិ",
+      meaning: "នៅ PSIS ការរៀនបច្ចេកវិទ្យាមិនមែនគ្រាន់តែមើលអេក្រង់ទេ គឺការហាត់គិតដោះស្រាយបញ្ហាសម្រាប់អនាគត",
+      cta: "ស្វែងយល់បន្ថែមអំពីកម្មវិធីសិក្សាអន្តរជាតិនៅ PSIS តាមរយៈ Message ឬទស្សនាសាលាផ្ទាល់។"
+    },
+    {
+      id: "preset-lunch",
+      label: "🥗 Safe Lunch, Nap Routine & Peace of Mind",
+      campus: "CAP",
+      topic: "ការថែទាំអាហារូបត្ថម្ភ និងការគេងថ្ងៃត្រង់របស់កុមារ",
+      persona: "ម៉ាក់ប៉ារវល់ធ្វើការពេញម៉ោង បារម្ភសុខភាព និងការហូបចុករបស់កូន",
+      funnel: "Trust (កសាងទំនុកចិត្តលើការថែទាំ)",
+      painPoint: "បារម្ភថាកូនញ៉ាំមិនគ្រប់គ្រាន់ និងគ្មានអ្នកមើលថែទាំពេលថ្ងៃត្រង់",
+      hookType: "PAIN-POINT (ចាក់ដោតកង្វល់)",
+      hookText: "«ម៉ាក់ប៉ាធ្វើការពេញមួយថ្ងៃ… តើកូននៅសាលាហូបបាយ និងគេងលក់ស្រួលដែរឬទេ?»",
+      action: "ចុងភៅរៀបចំអាហារក្តៅៗមានអនាម័យខ្ពស់ គ្រូជួយបញ្ចុក និងកែសម្រួលឥរិយាបថតុអាហារ មុននាំកូនចូលបន្ទប់គេងម៉ាស៊ីនត្រជាក់ស្អាត",
+      proof: "កូនៗគេងលក់ស្រួលញញឹម និងភ្ញាក់ឡើងដោយភាពស្រស់ស្រាយដើម្បីរៀនវគ្គរសៀល",
+      meaning: "នៅ PSIS យើងយល់ពីចិត្តម៉ាក់ប៉ា។ ការថែទាំប្រកបដោយក្តីមេត្តា ធ្វើឱ្យសាលាក្លាយជាផ្ទះទីពីររបស់កូន។",
+      cta: "ទស្សនាបរិវេណសាលា និងសាកសួរព័ត៌មានការចុះឈ្មោះឥឡូវនេះ។"
+    },
+    {
+      id: "preset-english",
+      label: "🗣️ ELIF English Natural Speaking Breakthrough",
+      campus: "TTP",
+      topic: "ជំនាញនិយាយភាសាអង់គ្លេសប្រកបដោយទំនុកចិត្តតាមកម្មវិធី ELIF",
+      persona: "មាតាបិតាដែលកូនរៀនអង់គ្លេសយូរហើយ តែនៅតែមិនហ៊ាននិយាយ",
+      funnel: "Interest (ឱ្យគេចង់ដឹងកម្មវិធីបន្ថែម)",
+      painPoint: "កូនចាំពាក្យច្រើន តែអៀនខ្មាស់ មិនហ៊ានឆ្លើយ",
+      hookType: "SHOCK (ភាពភ្ញាក់ផ្អើល)",
+      hookText: "«កូនទន្ទេញចាំ Vocabulary រាប់រយពាក្យ… តែហេតុអីពេលជួបជនបរទេសបែរជាងាកមុខចេញ?»",
+      action: "គ្រូបរទេសលេងល្បែង Interactive Game ជាមួយសិស្ស លើកទឹកចិត្តឱ្យសិស្សឆ្លើយសាកល្បងដោយគ្មានការស្តីបន្ទោស",
+      proof: "សិស្សលើកដៃដណ្តើមគ្នាឆ្លើយ និងសើចក្អាកក្អាយជាមួយមិត្តភក្តិក្នុងថ្នាក់",
+      meaning: "ភាសាអង់គ្លេសនៅ PSIS មិនមែនជាមុខវិជ្ជាទន្ទេញទេ គឺភាសាទំនាក់ទំនងរស់រវើកក្នុងជីវិតប្រចាំថ្ងៃ។",
+      cta: "ចុះឈ្មោះសាកល្បងចូលរៀនដើម្បីទទួលបានបទពិសោធន៍ ELIF ផ្ទាល់នៅ PSIS។"
+    },
+    {
+      id: "preset-character",
+      label: "🤝 Kindness, Collaboration & Moral Ethics",
+      campus: "BTB",
+      topic: "បណ្តុះបណ្តាលសីលធម៌ គុណធម៌ និងការសហការក្នុងសង្គម",
+      persona: "មាតាបិតាចង់ឱ្យកូនមានការគួរសម គោរពចាស់ទុំ និងចេះជួយអ្នកដទៃ",
+      funnel: "Awareness (ឱ្យគេស្គាល់សាលា)",
+      painPoint: "កូនឆាប់ខឹង មានអត្តនោម័តិ និងញៀនអេក្រង់ទូរស័ព្ទ",
+      hookType: "THINK (ធ្វើឱ្យគិត)",
+      hookText: "«ពិភពលោកផ្លាស់ប្តូរលឿន… តើអ្វីដែលកូនត្រូវការបំផុតក្រៅពីពិន្ទុលេខ ១?»",
+      action: "សិស្សអង្គុយធ្វើសមាធិស្ងប់ចិត្ត ៥ នាទី និងរៀនចែករំលែកសម្ភារសិក្សាជាមួយមិត្តភក្តិក្នុងថ្នាក់",
+      proof: "កាយវិការលើកដៃសំពះគួរសមទៅកាន់លោកគ្រូអ្នកគ្រូ និងការជួយលើកសៀវភៅមិត្តរួមថ្នាក់",
+      meaning: "នៅ PSIS យើងបណ្តុះបណ្តាលទាំងបញ្ញា និងបេះដូង (Head, Heart, and Hands) សម្រាប់អនាគតដ៏ភ្លឺស្វាង។",
+      cta: "ស្វែងយល់ពីទស្សនវិជ្ជាអប់រំនៅ PSIS ថ្ងៃនេះ។"
+    }
+  ],
 
   dossier: {
     parent: {

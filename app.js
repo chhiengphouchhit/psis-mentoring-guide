@@ -1,5 +1,5 @@
 // PSIS Content Mentoring & Video OS - Core Application Logic
-// Enterprise Edition with 4-phase checklist, Idea Generator, Do's/Don'ts, and Studio Builder
+// Enterprise Edition v2.5 with Dark/Light Theme, Campus Explorer, Battlecards, Idea Engine & Studio Tools
 
 document.addEventListener("DOMContentLoaded", () => {
   if (typeof PSIS_DATA === "undefined") {
@@ -14,13 +14,20 @@ document.addEventListener("DOMContentLoaded", () => {
     starredLessons: JSON.parse(localStorage.getItem("psis_starred_lessons") || "[]"),
     checkedChecklist: JSON.parse(localStorage.getItem("psis_checklist_enterprise") || "{}"),
     activeLessonIndex: 0,
-    currentTab: "lessons"
+    currentTab: "lessons",
+    currentTheme: localStorage.getItem("psis_theme") || "dark",
+    activeWeekFilter: "all"
   };
 
   const $ = selector => document.querySelector(selector);
   const $$ = selector => document.querySelectorAll(selector);
 
   const elements = {
+    // Theme Switcher
+    btnThemeToggle: $("#btnThemeToggle"),
+    themeIcon: $("#themeIcon"),
+    themeLabel: $("#themeLabel"),
+
     // Navigation
     navButtons: $$(".nav-item-btn"),
     tabSections: $$(".tab-section-content"),
@@ -43,15 +50,22 @@ document.addEventListener("DOMContentLoaded", () => {
     colorPaletteGrid: $("#colorPaletteGrid"),
     facilitiesTags: $("#facilitiesTags"),
     programsTags: $("#programsTags"),
+
+    // Campuses & Battlecards
+    campusExplorerGrid: $("#campusExplorerGrid"),
+    competitorBattlecardsGrid: $("#competitorBattlecardsGrid"),
     
     // Checklist
     checklistPhasesContainer: $("#checklistPhasesContainer"),
     progressBarFill: $("#progressBarFill"),
     progressScoreText: $("#progressScoreText"),
+    checklistReadinessBadge: $("#checklistReadinessBadge"),
     btnResetChecklist: $("#btnResetChecklist"),
     btnCopyChecklist: $("#btnCopyChecklist"),
     
     // Script Studio
+    plannerPresetSelector: $("#plannerPresetSelector"),
+    plannerStatsBadge: $("#plannerStatsBadge"),
     plannerCampus: $("#plannerCampus"),
     plannerTopic: $("#plannerTopic"),
     plannerPersona: $("#plannerPersona"),
@@ -65,6 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
     plannerCTA: $("#plannerCTA"),
     scriptOutput: $("#scriptOutput"),
     btnCopyScript: $("#btnCopyScript"),
+    btnDownloadTxt: $("#btnDownloadTxt"),
+    btnDownloadMd: $("#btnDownloadMd"),
+
+    // Roadmap
+    weekNavigatorPills: $("#weekNavigatorPills"),
+    roadmapTableBody: $("#roadmapTableBody"),
     
     // Modal
     lessonModal: $("#lessonModal"),
@@ -94,7 +114,36 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // ==========================================
-  // Toast Notification
+  // 1. Theme Management (Obsidian Dark / Light)
+  // ==========================================
+  function applyTheme(theme) {
+    state.currentTheme = theme;
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("psis_theme", theme);
+
+    if (elements.themeIcon && elements.themeLabel) {
+      if (theme === "dark") {
+        elements.themeIcon.textContent = "☀️";
+        elements.themeLabel.textContent = "Light Mode";
+      } else {
+        elements.themeIcon.textContent = "🌙";
+        elements.themeLabel.textContent = "Dark Mode";
+      }
+    }
+  }
+
+  if (elements.btnThemeToggle) {
+    elements.btnThemeToggle.addEventListener("click", () => {
+      const nextTheme = state.currentTheme === "dark" ? "light" : "dark";
+      applyTheme(nextTheme);
+      showToast(`🎨 បានប្តូរទៅកាន់ ${nextTheme === "dark" ? "Obsidian Dark" : "Executive Light"} Theme`);
+    });
+  }
+
+  applyTheme(state.currentTheme);
+
+  // ==========================================
+  // 2. Toast Notification
   // ==========================================
   function showToast(message) {
     if (!elements.toast) return;
@@ -106,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
-  // Category Segmented Chips
+  // 3. Category Segmented Chips
   // ==========================================
   const categories = [
     { id: "all", label: "មេរៀនទាំងអស់ (33)", icon: "📚" },
@@ -137,46 +186,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==========================================
   // Category Meta Mapping
-  // ==========================================
   const categoryMeta = {
-    foundation: { label: "មូលដ្ឋានគ្រឹះ", color: "#d97706", bg: "#fef3c7" },
-    audience: { label: "Audience & Pain", color: "#db2777", bg: "#fce7f3" },
-    strategy: { label: "Strategy & Funnel", color: "#2563eb", bg: "#eff6ff" },
-    storytelling: { label: "Hook & Story", color: "#7c3aed", bg: "#f5f3ff" },
-    trust: { label: "Trust & Value", color: "#059669", bg: "#ecfdf5" },
-    optimization: { label: "Optimize & Ads", color: "#0891b2", bg: "#ecfeff" }
+    foundation: { label: "មូលដ្ឋានគ្រឹះ", color: "#d97706", bg: "rgba(217, 119, 6, 0.15)" },
+    audience: { label: "Audience & Pain", color: "#db2777", bg: "rgba(219, 39, 119, 0.15)" },
+    strategy: { label: "Strategy & Funnel", color: "#2563eb", bg: "rgba(37, 99, 235, 0.15)" },
+    storytelling: { label: "Hook & Story", color: "#7c3aed", bg: "rgba(124, 58, 237, 0.15)" },
+    trust: { label: "Trust & Value", color: "#059669", bg: "rgba(5, 150, 105, 0.15)" },
+    optimization: { label: "Optimize & Ads", color: "#0891b2", bg: "rgba(8, 145, 178, 0.15)" }
   };
 
   // ==========================================
-  // Render Lesson Cards Grid
+  // 4. Render 33 Lessons Grid
   // ==========================================
   function renderLessons() {
     if (!elements.lessonsGrid) return;
     elements.lessonsGrid.innerHTML = "";
-    
+
     const query = state.searchQuery.toLowerCase().trim();
-    
-    const filtered = PSIS_DATA.lessons.filter(item => {
-      const matchesCategory = 
-        state.currentCategory === "all" || 
-        item.category === state.currentCategory ||
-        (state.currentCategory === "starred" && state.starredLessons.includes(item.id));
-      
-      const searchFields = [
-        item.titleEn,
-        item.titleKm,
-        item.subtitle,
-        item.core,
-        item.learn,
-        item.action,
-        item.example,
-        ...(item.tags || [])
-      ].join(" ").toLowerCase();
-      
-      const matchesSearch = !query || searchFields.includes(query);
-      return matchesCategory && matchesSearch;
+
+    const filtered = PSIS_DATA.lessons.filter(lesson => {
+      // Category match
+      let matchesCat = true;
+      if (state.currentCategory === "starred") {
+        matchesCat = state.starredLessons.includes(lesson.id);
+      } else if (state.currentCategory !== "all") {
+        matchesCat = lesson.category === state.currentCategory;
+      }
+
+      if (!matchesCat) return false;
+
+      // Search match
+      if (!query) return true;
+      const haystack = `${lesson.id} ${lesson.titleEn} ${lesson.titleKm} ${lesson.subtitle} ${lesson.core} ${lesson.learn} ${lesson.action} ${lesson.example} ${(lesson.tags || []).join(" ")}`.toLowerCase();
+      return haystack.includes(query);
     });
 
     if (elements.resultsStats) {
@@ -185,10 +228,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (filtered.length === 0) {
       elements.lessonsGrid.innerHTML = `
-        <div class="empty-state">
-          <p style="font-size: 28px; margin-bottom: 8px;">🔍</p>
-          <h3>រកមិនឃើញមេរៀនដែលត្រូវនឹង "${state.searchQuery}"</h3>
-          <p>សូមសាកល្បងស្វែងរកដោយប្រើពាក្យផ្សេង ដូចជា Hook, Story, Trust, Persona ឬជ្រើសប្រភេទមេរៀនទាំងអស់។</p>
+        <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; background: var(--bg-surface); border: 1px dashed var(--border-subtle); border-radius: var(--radius-lg);">
+          <span style="font-size: 38px;">🔍</span>
+          <h3 style="margin-top: 10px; color: var(--text-title);">រកមិនឃើញមេរៀនដែលត្រូវនឹង «${state.searchQuery}» ទេ</h3>
+          <p style="color: var(--text-muted); font-size: 14px;">សូមសាកល្បងពាក្យគន្លឹះផ្សេង ដូចជា Hook, Story, Trust, Persona, Campus ឬជ្រើសរើសប្រភេទទាំងអស់។</p>
         </div>
       `;
       return;
@@ -196,50 +239,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
     filtered.forEach(lesson => {
       const isStarred = state.starredLessons.includes(lesson.id);
-      const cat = categoryMeta[lesson.category] || { label: "PSIS", color: "#2563eb", bg: "#eff6ff" };
-      const card = document.createElement("div");
+      const meta = categoryMeta[lesson.category] || { label: "ទូទៅ", color: "#2563eb", bg: "rgba(37, 99, 235, 0.15)" };
+
+      const card = document.createElement("article");
       card.className = "enterprise-lesson-card";
-      card.style.borderLeft = `4px solid ${cat.color}`;
-      
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", `បើកមើលមេរៀនទី ${lesson.id}: ${lesson.titleEn}`);
+
       card.innerHTML = `
         <div class="card-top-status-row">
-          <span class="lesson-index-tag">LESSON ${String(lesson.id).padStart(2, "0")}</span>
-          <span class="category-indicator-pill" style="color:${cat.color}; background:${cat.bg};">${cat.label}</span>
-          <button class="card-bookmark-btn ${isStarred ? "starred" : ""}" title="${isStarred ? "លុបចំណាំ" : "ចំណាំមេរៀន"}" data-id="${lesson.id}">
+          <div style="display:flex; align-items:center;">
+            <span class="lesson-index-tag">LESSON ${String(lesson.id).padStart(2, "0")}</span>
+            <span class="category-indicator-pill" style="color: ${meta.color}; background: ${meta.bg};">${meta.label}</span>
+          </div>
+          <button class="card-bookmark-btn ${isStarred ? "starred" : ""}" data-id="${lesson.id}" title="${isStarred ? "ដកចំណាំ" : "ចំណាំទុក"}">
             ${isStarred ? "★" : "☆"}
           </button>
         </div>
+
         <h3 class="lesson-title-english">${lesson.titleEn}</h3>
         <div class="lesson-title-khmer">${lesson.titleKm}</div>
+
         <div class="lesson-core-quote">${lesson.core}</div>
+
         <div class="card-meta-footer-row">
-          <span class="tag-label-text">🏷️ ${lesson.tags ? lesson.tags[0] : ""}</span>
-          <span class="read-details-link">អានលម្អិត →</span>
+          <span class="tag-label-text">#${(lesson.tags && lesson.tags[0]) || "Mentoring"}</span>
+          <span class="read-details-link">
+            <span>អានលម្អិត</span>
+            <span>→</span>
+          </span>
         </div>
       `;
 
-      card.addEventListener("click", (e) => {
-        if (e.target.closest(".card-bookmark-btn")) return;
-        openModal(lesson.id - 1);
-      });
-
-      const starBtn = card.querySelector(".card-bookmark-btn");
-      starBtn.addEventListener("click", (e) => {
+      // Bookmark action
+      const bookmarkBtn = card.querySelector(".card-bookmark-btn");
+      bookmarkBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         toggleStar(lesson.id);
+      });
+
+      // Open Modal
+      card.addEventListener("click", () => {
+        const fullIndex = PSIS_DATA.lessons.findIndex(l => l.id === lesson.id);
+        openModal(fullIndex);
+      });
+
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          const fullIndex = PSIS_DATA.lessons.findIndex(l => l.id === lesson.id);
+          openModal(fullIndex);
+        }
       });
 
       elements.lessonsGrid.appendChild(card);
     });
   }
 
-  function toggleStar(id) {
-    if (state.starredLessons.includes(id)) {
-      state.starredLessons = state.starredLessons.filter(item => item !== id);
-      showToast(`បានដកមេរៀនទី ${id} ចេញពីបញ្ជីចំណាំ`);
+  function toggleStar(lessonId) {
+    const idx = state.starredLessons.indexOf(lessonId);
+    if (idx > -1) {
+      state.starredLessons.splice(idx, 1);
+      showToast(`☆ បានដកមេរៀនទី ${lessonId} ចេញពីចំណាំ`);
     } else {
-      state.starredLessons.push(id);
-      showToast(`⭐ បានចំណាំមេរៀនទី ${id} ទុកមើលពេលក្រោយ`);
+      state.starredLessons.push(lessonId);
+      showToast(`★ បានចំណាំមេរៀនទី ${lessonId} ទុក`);
     }
     localStorage.setItem("psis_starred_lessons", JSON.stringify(state.starredLessons));
     renderLessons();
@@ -247,53 +312,61 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
-  // Creative Reel Idea Generator
+  // 5. Creative Reel Idea Engine (Interactive)
   // ==========================================
-  function generateRandomReelIdea() {
-    const bank = PSIS_DATA.ideaBank;
-    const prog = bank.programs[Math.floor(Math.random() * bank.programs.length)];
-    const angle = bank.angles[Math.floor(Math.random() * bank.angles.length)];
-    const pain = bank.painPoints[Math.floor(Math.random() * bank.painPoints.length)];
-
-    const ideaText = `💡 គំនិតវីដេអូ Reel ថ្មី៖
-• កម្មវិធីសិក្សា៖ ${prog}
-• មុំសាច់រឿង (Angle)៖ ${angle}
-• ដោះស្រាយកង្វល់ (Pain Point)៖ «${pain}»
-• គន្លឹះថត៖ ចាប់ផ្តើមដោយសំណួរចាក់ដោត ឬទឹកមុខសិស្សកំពុងផ្ចង់គិត រួចបង្ហាញសកម្មភាពអនុវត្តជាក់ស្តែងក្នុងថ្នាក់ ${prog} និងបញ្ចប់ដោយសាររំលឹកពីតម្លៃសម្រាប់អនាគតកូន។`;
-
-    if (elements.ideaOutputText) {
-      elements.ideaOutputText.textContent = ideaText;
-    }
-    if (elements.ideaOutputCard) {
-      elements.ideaOutputCard.classList.add("active");
-    }
-    showToast("🎲 បានបង្កើតគំនិតវីដេអូ Reel ថ្មី!");
-  }
+  const ideaHooks = [
+    { hook: "«រៀនបានពិន្ទុល្អ… តែបើជួបបញ្ហាជាក់ស្តែង គាត់ចេះដោះស្រាយដោយរបៀបណា?»", program: "Coding & Robotics", angle: "សំណួរចាក់ដោត (Think)" },
+    { hook: "«ម៉ាក់ប៉ាធ្វើការពេញមួយថ្ងៃ… តើកូននៅសាលាហូបបាយ និងគេងលក់ស្រួលដែរឬទេ?»", program: "Nap & Lunch Routine", angle: "កង្វល់ម៉ាក់ប៉ា (Pain Point)" },
+    { hook: "«កូនទន្ទេញចាំ Vocabulary រាប់រយពាក្យ… តែហេតុអីពេលជួបជនបរទេសបែរជាងាកមុខចេញ?»", program: "ELIF Fun English", angle: "ភាពភ្ញាក់ផ្អើល (Shock)" },
+    { hook: "«ពីក្មេងម្នាក់ដែលខ្លាចទឹក និងយំពេលចុះអាង… ឥឡូវហែលបាន ១០០ ម៉ែត្រយ៉ាងជឿជាក់!»", program: "Swimming Class", angle: "ដំណើរផ្លាស់ប្តូរ (Before/After)" },
+    { hook: "«តើការរៀន Code តាំងពីអាយុ ៦ ឆ្នាំ ជួយអ្វីដល់ការគិតរបស់កុមារ?»", program: "CodeMonkey Challenge", angle: "ពន្យល់ពីអនាគត (Future Benefit)" },
+    { hook: "«ពិភពលោកផ្លាស់ប្តូរលឿន… តើអ្វីដែលកូនត្រូវការបំផុតក្រៅពីពិន្ទុលេខ ១?»", program: "Traditional Morals & Meditation", angle: "សីលធម៌ និងគុណធម៌ (Character)" },
+    { hook: "«ពេលសិស្សធ្វើការជាក្រុម ខ្វែងគំនិតគ្នា… តើលោកគ្រូអ្នកគ្រូជួយសម្របសម្រួលយ៉ាងដូចម្តេច?»", program: "Group Discussion & Teamwork", angle: "ភាពកក់ក្តៅរបស់គ្រូ (Teacher Compassion)" },
+    { hook: "«មិនបាច់ទន្ទេញ… តែអាចនិយាយភាសាអង់គ្លេស និងចិនបានដោយធម្មជាតិ!»", program: "Trilingual Curriculum", angle: "ភាពខុសប្លែកគ្នា (Differentiation)" }
+  ];
 
   if (elements.btnGenerateIdea) {
-    elements.btnGenerateIdea.addEventListener("click", generateRandomReelIdea);
+    elements.btnGenerateIdea.addEventListener("click", () => {
+      const randomIdea = ideaHooks[Math.floor(Math.random() * ideaHooks.length)];
+      if (elements.ideaOutputCard && elements.ideaOutputText) {
+        elements.ideaOutputText.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 4px;">
+            <b style="color: #7c3aed;">💡 មុំគំនិត Reel ណែនាំ៖ ${randomIdea.angle}</b>
+            <span style="font-size:12px; color: var(--text-muted); background: var(--bg-page); padding: 2px 8px; border-radius: var(--radius-pill); border: 1px solid var(--border-subtle);">${randomIdea.program}</span>
+          </div>
+          <div style="font-size: 15.5px; font-weight: 600; color: var(--text-title); margin-top: 4px;">
+            ${randomIdea.hook}
+          </div>
+          <div style="margin-top: 8px; font-size: 12.5px; color: var(--text-muted);">
+            👉 <b>សកម្មភាពថតបន្ទាប់៖</b> ថត Close-up ទឹកមុខសិស្សកំពុងផ្ចង់គិត → បង្ហាញគ្រូជួយលើកទឹកចិត្ត → បញ្ចប់ដោយស្នាមញញឹមសម្រេចបានជោគជ័យ។
+          </div>
+        `;
+        elements.ideaOutputCard.classList.add("active");
+        showToast("🎲 បានបង្កើតគំនិត Reel ថ្មីជោគជ័យ!");
+      }
+    });
   }
 
   // ==========================================
-  // Lesson Detail Modal
+  // 6. Lesson Detail Floating Sheet Modal
   // ==========================================
   function openModal(index) {
     if (index < 0 || index >= PSIS_DATA.lessons.length) return;
     state.activeLessonIndex = index;
     const lesson = PSIS_DATA.lessons[index];
 
-    elements.modalBadge.textContent = `LESSON ${String(lesson.id).padStart(2, "0")} / ${PSIS_DATA.lessons.length}`;
+    elements.modalBadge.textContent = `LESSON ${String(lesson.id).padStart(2, "0")} / 33`;
     elements.modalTitle.textContent = lesson.titleEn;
-    elements.modalKmTitle.textContent = lesson.titleKm + (lesson.subtitle ? ` — ${lesson.subtitle}` : "");
-    elements.modalCore.textContent = `💡 គំនិតស្នូល៖ ${lesson.core}`;
+    elements.modalKmTitle.textContent = lesson.titleKm;
+    elements.modalCore.textContent = lesson.core;
     elements.modalLearn.textContent = lesson.learn;
     elements.modalAction.textContent = lesson.action;
     elements.modalExample.textContent = lesson.example;
 
-    // Do's & Don'ts
+    // Do's and Don'ts
     if (elements.modalDosList && elements.modalDontsList) {
       elements.modalDosList.innerHTML = "";
-      (lesson.dos || ["អនុវត្តតាមជំហានដែលបានណែនាំ"]).forEach(d => {
+      (lesson.dos || ["ផ្តោតលើគុណតម្លៃពិត"]).forEach(d => {
         const li = document.createElement("li");
         li.textContent = d;
         elements.modalDosList.appendChild(li);
@@ -410,7 +483,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
-  // Render Frameworks & Brand Panels
+  // 7. Render Frameworks & Brand Panels
   // ==========================================
   function renderFrameworksAndBrand() {
     // 15-Step Content Process
@@ -511,14 +584,90 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
-  // 4-Phase Quality Checklist Logic
+  // 8. Render Campuses Explorer & Battlecards
+  // ==========================================
+  function renderCampusesAndBattlecards() {
+    // 6 Campus Explorer Cards
+    if (elements.campusExplorerGrid) {
+      elements.campusExplorerGrid.innerHTML = "";
+      PSIS_DATA.brand.campuses.forEach(c => {
+        const card = document.createElement("div");
+        card.className = "campus-profile-card";
+        card.innerHTML = `
+          <div class="campus-card-header">
+            <span class="campus-code-pill">${c.code} CAMPUS</span>
+            <span class="campus-grade-badge">${c.grades}</span>
+          </div>
+          <h3 class="campus-card-title">${c.name}</h3>
+          <div class="campus-focus-text">${c.focus}</div>
+          
+          <div class="campus-features-box">
+            <div><b>🏛️ បរិក្ខារចម្បង៖</b> ${c.highlights}</div>
+            <div style="margin-top:4px;"><b>🎯 ក្រុមគ្រួសារគោលដៅ៖</b> ${c.targetFamilies}</div>
+            <div style="margin-top:4px;"><b>✨ មុំមាតិកាត្រូវថត៖</b> ${c.bestContentAngle}</div>
+          </div>
+
+          <div class="campus-hook-quote">${c.sampleHook}</div>
+
+          <button class="btn-use-campus" data-code="${c.code}" data-name="${c.name}">
+            <span>✍️</span> យក Campus នេះទៅសរសេរ Script
+          </button>
+        `;
+
+        card.querySelector(".btn-use-campus").addEventListener("click", () => {
+          if (elements.plannerCampus) {
+            elements.plannerCampus.value = `${c.code} (${c.name.split(" ")[0]})`;
+            // Switch to planner tab
+            const plannerNav = $(`[data-view="planner"]`);
+            if (plannerNav) plannerNav.click();
+            updateScriptStudio();
+            showToast(`🏫 បានជ្រើសរើសសាខា ${c.code} សម្រាប់ Script Studio!`);
+          }
+        });
+
+        elements.campusExplorerGrid.appendChild(card);
+      });
+    }
+
+    // Competitor Battlecards
+    if (elements.competitorBattlecardsGrid) {
+      elements.competitorBattlecardsGrid.innerHTML = "";
+      PSIS_DATA.brand.competitors.forEach(comp => {
+        const card = document.createElement("div");
+        card.className = "competitor-battlecard";
+        card.innerHTML = `
+          <div class="competitor-header">
+            <span class="competitor-name">${comp.name}</span>
+            <span class="competitor-tuition-pill">${comp.tuition}</span>
+          </div>
+          <div class="competitor-meta-row"><b>ប្រភេទ៖</b> ${comp.type} • ${comp.marketPosition}</div>
+          
+          <div class="battle-point-box">
+            <b>💪 ចំណុចខ្លាំងរបស់គេ (Their Strength):</b>
+            <p>${comp.keyStrength}</p>
+          </div>
+
+          <div class="battle-point-box weakness">
+            <b>⚠️ ចំណុចខ្សោយរបស់គេ (Their Weakness):</b>
+            <p>${comp.keyWeakness}</p>
+          </div>
+
+          <div class="battle-point-box counter">
+            <b>🏆 យុទ្ធសាស្ត្រឈ្នះរបស់ PSIS (Our Winning Edge):</b>
+            <p>${comp.counterStrategy}</p>
+          </div>
+        `;
+        elements.competitorBattlecardsGrid.appendChild(card);
+      });
+    }
+  }
+
+  // ==========================================
+  // 9. 4-Phase Quality Checklist Logic
   // ==========================================
   function renderChecklistPhases() {
     if (!elements.checklistPhasesContainer) return;
     elements.checklistPhasesContainer.innerHTML = "";
-
-    let totalItems = 0;
-    let checkedItems = 0;
 
     PSIS_DATA.checklistPhases.forEach((phaseGroup, phaseIndex) => {
       const groupDiv = document.createElement("div");
@@ -532,8 +681,6 @@ document.addEventListener("DOMContentLoaded", () => {
       phaseGroup.items.forEach((item, itemIndex) => {
         const key = `p${phaseIndex}_i${itemIndex}`;
         const isChecked = !!state.checkedChecklist[key];
-        totalItems++;
-        if (isChecked) checkedItems++;
 
         const row = document.createElement("label");
         row.className = `checkbox-row-label ${isChecked ? "completed" : ""}`;
@@ -579,6 +726,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (elements.progressScoreText) {
       elements.progressScoreText.textContent = `${checked} / ${total} បានរួចរាល់ (${pct}%)`;
     }
+
+    if (elements.checklistReadinessBadge) {
+      elements.checklistReadinessBadge.className = "readiness-status-badge";
+      if (pct === 100) {
+        elements.checklistReadinessBadge.classList.add("ready");
+        elements.checklistReadinessBadge.textContent = "🚀 ត្រៀមរួចរាល់ 100% សម្រាប់ការចេញផ្សាយ!";
+      } else if (pct >= 60) {
+        elements.checklistReadinessBadge.classList.add("in-progress");
+        elements.checklistReadinessBadge.textContent = "✂️ កំពុងកាត់ត & ពិនិត្យ Safe Zones";
+      } else if (pct >= 30) {
+        elements.checklistReadinessBadge.classList.add("in-progress");
+        elements.checklistReadinessBadge.textContent = "🎬 កំពុងស្ថិតក្នុងដំណាក់កាលផលិត";
+      } else {
+        elements.checklistReadinessBadge.classList.add("needs-work");
+        elements.checklistReadinessBadge.textContent = "⚠️ ត្រូវការរៀបចំ Plan & Hook";
+      }
+    }
   }
 
   if (elements.btnResetChecklist) {
@@ -609,12 +773,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
-  // Interactive Script Studio Planner
+  // 10. Interactive Script Studio & Presets
   // ==========================================
   function updateScriptStudio() {
     if (!elements.scriptOutput) return;
 
-    const campus = elements.plannerCampus ? elements.plannerCampus.value : "Toul Kork (TK)";
+    const campus = elements.plannerCampus ? elements.plannerCampus.value : "CAP (Chbar Ampov)";
     const topic = elements.plannerTopic ? elements.plannerTopic.value.trim() : "រៀនគិតជាប្រព័ន្ធតាមរយៈ Coding & Robotics";
     const persona = elements.plannerPersona ? elements.plannerPersona.value : "ប៉ា ពីទូ (រវល់ការងារការិយាល័យ ចង់ឱ្យកូនក្លាហាន និងមានជំនាញបច្ចេកវិទ្យា)";
     const funnel = elements.plannerFunnel ? elements.plannerFunnel.value : "Trust (កសាងទំនុកចិត្តលើការថែទាំ)";
@@ -660,6 +824,39 @@ document.addEventListener("DOMContentLoaded", () => {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
     elements.scriptOutput.textContent = script;
+
+    // Calculate word count & speech estimation
+    const spokenText = `${hookText} ${action} ${meaning} ${cta}`;
+    const words = spokenText.trim().split(/\s+/).filter(Boolean).length;
+    const estSeconds = Math.round((words / 125) * 60) || 45;
+    if (elements.plannerStatsBadge) {
+      elements.plannerStatsBadge.textContent = `⏱️ ~${words} ពាក្យ (អានប្រហែល ${estSeconds} វិនាទី)`;
+    }
+  }
+
+  // Preset selector
+  if (elements.plannerPresetSelector) {
+    elements.plannerPresetSelector.addEventListener("change", (e) => {
+      const presetId = e.target.value;
+      if (!presetId) return;
+
+      const p = (PSIS_DATA.scriptPresets || []).find(x => x.id === presetId);
+      if (p) {
+        if (elements.plannerCampus) elements.plannerCampus.value = `${p.campus} (${p.campus === "TK" ? "Toul Kork" : p.campus === "CAP" ? "Chbar Ampov" : p.campus === "TTP" ? "Toul Tom Poung" : "Battambang"})`;
+        if (elements.plannerTopic) elements.plannerTopic.value = p.topic;
+        if (elements.plannerPersona) elements.plannerPersona.value = p.persona;
+        if (elements.plannerFunnel) elements.plannerFunnel.value = p.funnel;
+        if (elements.plannerPainPoint) elements.plannerPainPoint.value = p.painPoint;
+        if (elements.plannerHookType) elements.plannerHookType.value = p.hookType;
+        if (elements.plannerHookText) elements.plannerHookText.value = p.hookText;
+        if (elements.plannerAction) elements.plannerAction.value = p.action;
+        if (elements.plannerProof) elements.plannerProof.value = p.proof;
+        if (elements.plannerMeaning) elements.plannerMeaning.value = p.meaning;
+        if (elements.plannerCTA) elements.plannerCTA.value = p.cta;
+        updateScriptStudio();
+        showToast(`⚡ បានផ្ទុក Script Preset: ${p.label}`);
+      }
+    });
   }
 
   const studioInputs = [
@@ -685,8 +882,91 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Download .TXT
+  if (elements.btnDownloadTxt) {
+    elements.btnDownloadTxt.addEventListener("click", () => {
+      if (!elements.scriptOutput) return;
+      const content = elements.scriptOutput.textContent;
+      const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `PSIS-Script-${(elements.plannerTopic ? elements.plannerTopic.value : "Brief").replace(/[^a-zA-Z0-9\u1780-\u17FF]/g, "_")}.txt`;
+      a.click();
+      showToast("💾 បានរក្សាទុក Script ជាឯកសារ .TXT ជោគជ័យ!");
+    });
+  }
+
+  // Download .MD
+  if (elements.btnDownloadMd) {
+    elements.btnDownloadMd.addEventListener("click", () => {
+      if (!elements.scriptOutput) return;
+      const content = `# PSIS Video Script Brief\n\n\`\`\`\n${elements.scriptOutput.textContent}\n\`\`\`\n`;
+      const blob = new Blob([content], { type: "text/markdown;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `PSIS-Script-${(elements.plannerTopic ? elements.plannerTopic.value : "Brief").replace(/[^a-zA-Z0-9\u1780-\u17FF]/g, "_")}.md`;
+      a.click();
+      showToast("📝 បានរក្សាទុក Script ជាឯកសារ .MD ជោគជ័យ!");
+    });
+  }
+
   // ==========================================
-  // Sidebar Tab Navigation
+  // 11. 9-Week Mentoring Roadmap & Navigator
+  // ==========================================
+  function renderRoadmapTable() {
+    if (!elements.roadmapTableBody) return;
+    elements.roadmapTableBody.innerHTML = "";
+
+    const syllabus = PSIS_DATA.syllabus || [];
+    const filtered = state.activeWeekFilter === "all" 
+      ? syllabus 
+      : syllabus.filter(item => item.week === Number(state.activeWeekFilter));
+
+    filtered.forEach(row => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><b>Week ${row.week}</b></td>
+        <td>${row.dates}</td>
+        <td>${row.title}</td>
+        <td>${row.tasks}</td>
+      `;
+      elements.roadmapTableBody.appendChild(tr);
+    });
+  }
+
+  function initWeekNavigator() {
+    if (!elements.weekNavigatorPills) return;
+    elements.weekNavigatorPills.innerHTML = "";
+
+    const weekButtons = [
+      { id: "all", label: "សប្តាហ៍ទាំងអស់ (All 9 Weeks)" },
+      { id: "1", label: "Week 1" },
+      { id: "2", label: "Week 2" },
+      { id: "3", label: "Week 3" },
+      { id: "4", label: "Week 4" },
+      { id: "5", label: "Week 5" },
+      { id: "6", label: "Week 6" },
+      { id: "7", label: "Week 7" },
+      { id: "8", label: "Week 8" },
+      { id: "9", label: "Week 9" }
+    ];
+
+    weekButtons.forEach(wb => {
+      const btn = document.createElement("button");
+      btn.className = `week-nav-btn ${wb.id === state.activeWeekFilter ? "active" : ""}`;
+      btn.textContent = wb.label;
+      btn.addEventListener("click", () => {
+        state.activeWeekFilter = wb.id;
+        $$(".week-nav-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderRoadmapTable();
+      });
+      elements.weekNavigatorPills.appendChild(btn);
+    });
+  }
+
+  // ==========================================
+  // 12. Sidebar Tab Navigation
   // ==========================================
   elements.navButtons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -716,10 +996,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Init
+  // Initialization
   initCategories();
   renderLessons();
   renderFrameworksAndBrand();
+  renderCampusesAndBattlecards();
   renderChecklistPhases();
+  initWeekNavigator();
+  renderRoadmapTable();
   updateScriptStudio();
 });
