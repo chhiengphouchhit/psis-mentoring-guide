@@ -73,16 +73,17 @@
   <main>
 
     <!-- Top Banner -->
-    <header class="top-banner">
-      <div class="top-banner-title">
+    <header class="hero-header top-banner">
+      <div class="hero-text top-banner-title">
+        <span class="hero-badge">✨ PSIS CONTENT PLAYBOOK & MENTORING</span>
         <h1>PSIS GUIDELINE & MENTORING</h1>
         <p>ប្រព័ន្ធរំលឹកមេរៀន និងឯកសារណែនាំយុទ្ធសាស្ត្រផលិត Content & Video ប្រកបដោយអត្ថន័យ និងកសាងទំនុកចិត្តមាតាបិតា</p>
       </div>
-      <div class="top-actions">
-        <button id="btnPrintDoc" class="btn-banner" title="បោះពុម្ព ឬរក្សាទុកជា PDF">
+      <div class="hero-actions top-actions">
+        <button id="btnPrintDoc" class="btn-hero btn-banner" title="បោះពុម្ព ឬរក្សាទុកជា PDF">
           <span>🖨️</span> Print / PDF
         </button>
-        <button id="btnHeaderPlanner" class="btn-banner btn-banner-gold">
+        <button id="btnHeaderPlanner" class="btn-hero btn-hero-primary btn-banner btn-banner-gold">
           <span>✍️</span> បង្កើត Script
         </button>
       </div>
@@ -94,36 +95,46 @@
     <section id="lessons" class="tab-section active">
       
       <!-- Highlights Overview -->
-      <div class="hero-highlights">
-        <div class="highlight-box dark">
-          <span class="tag-pill">គំនិតស្នូលចម្បង (CORE PURPOSE)</span>
+      <div class="highlights-container hero-highlights">
+        <div class="highlight-card dark-theme highlight-box dark">
+          <span class="card-tag-pill tag-pill">💡 គំនិតស្នូលចម្បង (CORE PURPOSE)</span>
           <h3>បង្ហាញថា អ្វីដែល PSIS ធ្វើ<br>មានន័យអ្វីសម្រាប់កូន និងអនាគតរបស់កូន។</h3>
-          <p>Activity → Skill → Benefit → Future | Beyond Memorization → Understanding → Character</p>
+          <p class="subtitle-hint">Activity → Skill → Benefit → Future | Beyond Memorization → Understanding → Character</p>
         </div>
 
-        <div class="highlight-box">
-          <span class="tag-pill" style="color:var(--blue); background:var(--blue-soft);">មុនចាប់ផ្តើមផលិតវីដេអូនីមួយៗ</span>
-          <h3 style="font-size: 17px; margin-bottom: 6px;">សួរខ្លួនឯងនូវ ៣ សំណួរគន្លឹះ៖</h3>
-          <ol>
-            <li><b>តើយើងកំពុងនិយាយទៅកាន់អ្នកណា?</b> (Audience Persona)</li>
-            <li><b>ចង់ឲ្យគេយល់ ឬមានអារម្មណ៍អ្វី?</b> (Core Emotion / Message)</li>
-            <li><b>មានរូបភាពពិតអ្វីបញ្ជាក់?</b> (Visual Proof)</li>
-          </ol>
+        <div class="highlight-card highlight-box">
+          <span class="card-tag-pill tag-pill" style="color:var(--brand-blue); background:var(--brand-blue-light);">មុនចាប់ផ្តើមផលិតវីដេអូនីមួយៗ</span>
+          <h3 style="font-size: 16.5px; margin-bottom: 6px;">សួរខ្លួនឯងនូវ ៣ សំណួរគន្លឹះ៖</h3>
+          <ul class="questions-list">
+            <li class="question-item">
+              <span class="question-num">1</span>
+              <div><b>តើយើងកំពុងនិយាយទៅកាន់អ្នកណា?</b> <span style="color:var(--slate-500);">(Audience Persona)</span></div>
+            </li>
+            <li class="question-item">
+              <span class="question-num">2</span>
+              <div><b>ចង់ឲ្យគេយល់ ឬមានអារម្មណ៍អ្វី?</b> <span style="color:var(--slate-500);">(Core Emotion / Message)</span></div>
+            </li>
+            <li class="question-item">
+              <span class="question-num">3</span>
+              <div><b>មានរូបភាពពិតអ្វីបញ្ជាក់?</b> <span style="color:var(--slate-500);">(Visual Proof)</span></div>
+            </li>
+          </ul>
         </div>
       </div>
 
       <!-- Toolbar: Search & Filter -->
-      <div class="toolbar-wrap">
-        <div class="search-bar-row">
-          <div class="search-input-wrapper">
-            <span class="search-icon">🔍</span>
+      <div class="toolbar-container toolbar-wrap">
+        <div class="search-row search-bar-row">
+          <div class="search-box search-input-wrapper">
+            <span class="search-icon-left search-icon">🔍</span>
             <input type="search" id="searchInput" placeholder="ស្វែងរកមេរៀន… Hook, Story, Trust, Persona, Future, Funnel, Paid Ads...">
+            <span class="search-shortcut-hint">Ctrl + K</span>
           </div>
-          <span id="resultsStats" class="results-stats">33 / 33 មេរៀន</span>
+          <span id="resultsStats" class="results-counter results-stats">33 / 33 មេរៀន</span>
         </div>
 
         <!-- Category Chips -->
-        <div class="category-chips" id="categoryChips"></div>
+        <div class="category-filter-bar category-chips" id="categoryChips"></div>
       </div>
 
       <!-- Grid of 33 Lesson Cards -->

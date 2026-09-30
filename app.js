@@ -165,24 +165,36 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const categoryMeta = {
+      foundation: { label: "មូលដ្ឋានគ្រឹះ", color: "#d97706", bg: "#fef3c7" },
+      audience: { label: "Audience", color: "#db2777", bg: "#fce7f3" },
+      strategy: { label: "Strategy", color: "#2563eb", bg: "#eff6ff" },
+      storytelling: { label: "Storytelling", color: "#7c3aed", bg: "#f5f3ff" },
+      trust: { label: "Trust & Value", color: "#059669", bg: "#ecfdf5" },
+      optimization: { label: "Optimize", color: "#0891b2", bg: "#ecfeff" }
+    };
+
     filtered.forEach(lesson => {
       const isStarred = state.starredLessons.includes(lesson.id);
+      const cat = categoryMeta[lesson.category] || { label: "PSIS", color: "#2563eb", bg: "#eff6ff" };
       const card = document.createElement("div");
       card.className = "lesson-card";
+      card.style.borderLeft = `3.5px solid ${cat.color}`;
       
       card.innerHTML = `
-        <div class="card-top">
-          <span class="card-num">LESSON ${String(lesson.id).padStart(2, "0")}</span>
-          <button class="btn-star ${isStarred ? "starred" : ""}" title="${isStarred ? "លុបចំណាំ" : "ចំណាំមេរៀន"}" data-id="${lesson.id}">
+        <div class="card-header-row card-top">
+          <span class="card-index-badge card-num">LESSON ${String(lesson.id).padStart(2, "0")}</span>
+          <span style="font-size:11px; font-weight:600; color:${cat.color}; background:${cat.bg}; padding:2px 8px; border-radius:12px; margin-left:8px;">${cat.label}</span>
+          <button class="btn-star btn-star-bookmark ${isStarred ? "starred" : ""}" style="margin-left:auto;" title="${isStarred ? "លុបចំណាំ" : "ចំណាំមេរៀន"}" data-id="${lesson.id}">
             ${isStarred ? "★" : "☆"}
           </button>
         </div>
-        <h3>${lesson.titleEn}</h3>
-        <div class="card-km-title">${lesson.titleKm}</div>
-        <p class="card-snippet">${lesson.core}</p>
-        <div class="card-footer">
-          <span class="card-tag">🏷️ ${lesson.tags ? lesson.tags[0] : ""}</span>
-          <span class="card-action-text">អានលម្អិត →</span>
+        <h3 class="card-title-en">${lesson.titleEn}</h3>
+        <div class="card-title-km card-km-title">${lesson.titleKm}</div>
+        <div class="card-core-box card-snippet">${lesson.core}</div>
+        <div class="card-footer-row card-footer">
+          <span class="card-category-tag card-tag">🏷️ ${lesson.tags ? lesson.tags[0] : ""}</span>
+          <span class="card-read-more card-action-text">អានលម្អិត →</span>
         </div>
       `;
 
@@ -308,6 +320,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Keyboard navigation
   window.addEventListener("keydown", (e) => {
+    // Ctrl+K or Cmd+K to search
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      const lessonsNav = $(`[data-view="lessons"]`);
+      if (lessonsNav) lessonsNav.click();
+      if (elements.searchInput) {
+        elements.searchInput.focus();
+        elements.searchInput.select();
+      }
+      return;
+    }
+
     if (elements.lessonModal && elements.lessonModal.open) {
       if (e.key === "ArrowLeft" && state.activeLessonIndex > 0) {
         openModal(state.activeLessonIndex - 1);
